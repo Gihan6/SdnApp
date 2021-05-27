@@ -1,8 +1,6 @@
 package com.example.sdnapp.db
 
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
-import com.example.sdnapp.model.Repo
 
 @Dao
 

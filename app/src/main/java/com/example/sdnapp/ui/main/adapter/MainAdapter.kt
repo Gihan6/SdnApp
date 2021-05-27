@@ -2,12 +2,10 @@ package com.example.sdnapp.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnLongClickListener
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sdnapp.R
-import com.example.sdnapp.model.Repo
+import com.example.sdnapp.db.Repo
 import java.util.*
 
 

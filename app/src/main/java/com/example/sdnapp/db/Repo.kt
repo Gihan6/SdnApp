@@ -1,4 +1,4 @@
-package com.example.sdnapp.model
+package com.example.sdnapp.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

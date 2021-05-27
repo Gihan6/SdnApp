@@ -1,35 +1,32 @@
 package com.example.sdnapp.ui.main.viewModel
 
 
-import androidx.lifecycle.*
-import com.example.sdnapp.data.networkModel.response.RepoResponse
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.sdnapp.data.networkModels.request.SessionTokenRequest
+import com.example.sdnapp.data.networkModels.response.SessionTokenResponse
 import com.example.sdnapp.ui.main.repository.MainRepository
-import com.example.sdnapp.model.Repo
 import com.example.sdnapp.util.Resource
-
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    private val repos = MutableLiveData<Resource<List<Repo>>>()
-    fun getRepos(): LiveData<Resource<List<Repo>>> {
-        return repos
+    private val sessionToken = MutableLiveData<Resource<SessionTokenResponse>>()
+    fun getSessionToken(): LiveData<Resource<SessionTokenResponse>> {
+        return sessionToken
     }
 
-    fun getReposFromWebServices(page: Int) {
+    fun getSessionTokenFromWebServices(request: SessionTokenRequest) {
         viewModelScope.launch {
-            repos.postValue(Resource.loading(data = null))
-            if (page == 0) //clear database
-                mainRepository.clearRepo()
-
+            sessionToken.postValue(Resource.loading(data = null))
             try {
-                val response = mainRepository.getRepo(page, 10)
-                if (response.isNotEmpty())//save in local dataBase
-                    mainRepository.saveRepos(parseRepoResponse(response))
+                val response = mainRepository.getSessionTokenRepo(request)
 
-                repos.postValue(Resource.success(data = parseRepoResponse(response)))
+                sessionToken.postValue(Resource.success(data = response))
             } catch (exception: Exception) {
-                repos.postValue(
+                sessionToken.postValue(
                     Resource.error(
                         data = null,
                         message = exception.message ?: "Error Occurred!$exception"
@@ -39,36 +36,4 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         }
     }
 
-    fun filterDataFromLocal(keyWord: String) {
-        viewModelScope.launch {
-            try {
-                val response = mainRepository.search(keyWord)
-                repos.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                repos.postValue(
-                    Resource.error(
-                        data = null,
-                        message = exception.message ?: "Error Occurred!$exception"
-                    )
-                )
-            }
-        }
-    }
-
-    private fun parseRepoResponse(repos: List<RepoResponse>): List<Repo> {
-
-        val data = ArrayList<Repo>()
-        for (repo in repos) {
-
-            with(data) {
-                add(
-                    Repo(
-                        repo.id, repo.name, repo.fullName, repo.description, repo.fork
-                        , repo.url, repo.owner.login, repo.owner.url
-                    )
-                )
-            }
-        }
-        return data
-    }
 }

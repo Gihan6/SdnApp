@@ -1,6 +1,6 @@
 package com.example.sdnapp.ui.main.adapter
 
-import com.example.sdnapp.model.Repo
+import com.example.sdnapp.db.Repo
 
 
 interface ListenerAdapter {
