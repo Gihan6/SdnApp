@@ -3,7 +3,7 @@ package com.example.sdnapp.di
 
 import com.example.sdnapp.data.api.ApiHelper
 import com.example.sdnapp.data.api.RetrofitBuilder
-import com.example.sdnapp.ui.main.repository.MainRepository
+import com.example.sdnapp.data.repository.MainRepository
 import com.example.sdnapp.db.DataBase
 import com.example.sdnapp.ui.main.viewModel.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
