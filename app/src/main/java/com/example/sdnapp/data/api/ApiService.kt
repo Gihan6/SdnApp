@@ -47,8 +47,38 @@ interface ApiService {
     @POST("cam.updatecommand")
     suspend fun updateCommand(request: UpdateCommandRequest): UpdateCommandResponse
 
+    @POST("account.adduser")
+    suspend fun addUser(request: AddUserRequest): AddUserResponse
 
+    @POST("account.edituser")
+    suspend fun editUser(request: EditUserRequest): EditUserResponse
 
+    @POST("account.deleteuser")
+    suspend fun deleteUser(request: DeleteUserRequest): DeleteUserResponse
+
+    @POST("role.getcatlist")
+    suspend fun getCategoryList(request: GetCategoryListRequest): GetCategoryListResponse
+
+    @POST("role.getrolelist")
+    suspend fun getRoleList(request: GetRolesListRequest): GetRolesListResponse
+
+    @POST("user.saveuserrole")
+    suspend fun saveUserRole(request: SaveUserRoleRequest): SaveUserRoleResponse
+
+    @POST("user.saveuserunits")
+    suspend fun saveUserUnits(request: SaveUserUnitsRequest): SaveUserUnitsResponse
+
+    @POST("vehicle.getvehiclelist")
+    suspend fun getVehicleList(request: GetVehicleListRequest): GetVehicleListResponse
+
+    @POST("driver.getdriverlist")
+    suspend fun getDriverList(request: GetDriverListRequest): GetDriverListResponse
+
+    @POST("driver.adddriver")
+    suspend fun addDriver(request: AddDriverRequest): AddDriverResponse
+
+    @POST("vehicle.addvehicle")
+    suspend fun addVehicle(request: AddDriverRequest): AddDriverResponse
 
 
 }

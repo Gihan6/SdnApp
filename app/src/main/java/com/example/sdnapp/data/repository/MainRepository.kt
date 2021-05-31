@@ -49,6 +49,36 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
 
     suspend fun updateCommand(request: UpdateCommandRequest) =
             apiHelper.updateCommand(request)
+
+    suspend fun addUser(request: AddUserRequest) =
+            apiHelper.addUser(request)
+
+    suspend fun editUser(request: EditUserRequest) =
+            apiHelper.editUser(request)
+
+    suspend fun deleteUser(request: DeleteUserRequest) =
+            apiHelper.deleteUser(request)
+
+    suspend fun getCategoryList(request: GetCategoryListRequest) =
+            apiHelper.getCategoryList(request)
+
+    suspend fun getRoleList(request: GetRolesListRequest) =
+            apiHelper.getRoleList(request)
+
+    suspend fun saveUserRole(request: SaveUserRoleRequest) =
+            apiHelper.saveUserRole(request)
+
+    suspend fun saveUserUnits(request: SaveUserUnitsRequest) =
+            apiHelper.saveUserUnits(request)
+
+    suspend fun getVehicleList(request: GetVehicleListRequest) =
+            apiHelper.getVehicleList(request)
+
+    suspend fun getDriverList(request: GetDriverListRequest) =
+            apiHelper.getDriverList(request)
+
+    suspend fun addDriver(request: AddDriverRequest) =
+            apiHelper.addDriver(request)
 //    suspend fun saveRepos(repos: List<Repo>) {
 //        try {
 //            withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {

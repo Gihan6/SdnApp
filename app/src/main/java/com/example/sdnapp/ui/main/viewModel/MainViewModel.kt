@@ -320,4 +320,244 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
             }
         }
     }
+
+    //addUser----------------------------------
+    private val _addUser = MutableLiveData<Resource<AddUserResponse>>()
+    fun addUSer(): LiveData<Resource<AddUserResponse>> {
+        return _addUser
+    }
+
+    fun addUserToWebServices(request: AddUserRequest) {
+        viewModelScope.launch {
+            _addUser.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.addUser(request)
+
+                _addUser.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _addUser.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //editUser----------------------------------
+    private val _editUser = MutableLiveData<Resource<EditUserResponse>>()
+    fun editUSer(): LiveData<Resource<EditUserResponse>> {
+        return _editUser
+    }
+
+    fun editUserToWebServices(request: EditUserRequest) {
+        viewModelScope.launch {
+            _editUser.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.editUser(request)
+
+                _editUser.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _editUser.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //deleteUser----------------------------------
+    private val _deleteUser = MutableLiveData<Resource<DeleteUserResponse>>()
+    fun deleteUSer(): LiveData<Resource<DeleteUserResponse>> {
+        return _deleteUser
+    }
+
+    fun deleteUserFromWebServices(request: DeleteUserRequest) {
+        viewModelScope.launch {
+            _deleteUser.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.deleteUser(request)
+
+                _deleteUser.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _deleteUser.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getCategoryList----------------------------------
+    private val _categoryList = MutableLiveData<Resource<GetCategoryListResponse>>()
+    fun getCategoryList(): LiveData<Resource<GetCategoryListResponse>> {
+        return _categoryList
+    }
+
+    fun getCategoryListFromWebServices(request: GetCategoryListRequest) {
+        viewModelScope.launch {
+            _categoryList.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getCategoryList(request)
+
+                _categoryList.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _categoryList.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getRoleList----------------------------------
+    private val _roleList = MutableLiveData<Resource<GetRolesListResponse>>()
+    fun getRoleList(): LiveData<Resource<GetRolesListResponse>> {
+        return _roleList
+    }
+
+    fun getRoleListFromWebServices(request: GetRolesListRequest) {
+        viewModelScope.launch {
+            _roleList.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getRoleList(request)
+
+                _roleList.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _roleList.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //saveUserRole----------------------------------
+    private val _saveUserRole = MutableLiveData<Resource<SaveUserRoleResponse>>()
+    fun saveUserRole(): LiveData<Resource<SaveUserRoleResponse>> {
+        return _saveUserRole
+    }
+
+    fun saveUserRoleToWebServices(request: SaveUserRoleRequest) {
+        viewModelScope.launch {
+            _saveUserRole.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.saveUserRole(request)
+
+                _saveUserRole.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _saveUserRole.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //saveUserUnit----------------------------------
+    private val _saveUserUnits = MutableLiveData<Resource<SaveUserUnitsResponse>>()
+    fun saveUserUnits(): LiveData<Resource<SaveUserUnitsResponse>> {
+        return _saveUserUnits
+    }
+
+    fun saveUserUnitsToWebServices(request: SaveUserUnitsRequest) {
+        viewModelScope.launch {
+            _saveUserUnits.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.saveUserUnits(request)
+
+                _saveUserUnits.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _saveUserUnits.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getVehicleUnit----------------------------------
+    private val _getVehicleList = MutableLiveData<Resource<GetVehicleListResponse>>()
+    fun getVehicleList(): LiveData<Resource<GetVehicleListResponse>> {
+        return _getVehicleList
+    }
+
+    fun getVehicleListFromWebServices(request: GetVehicleListRequest) {
+        viewModelScope.launch {
+            _getVehicleList.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getVehicleList(request)
+
+                _getVehicleList.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getVehicleList.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getDriverList----------------------------------
+    private val _getDriverList = MutableLiveData<Resource<GetDriverListResponse>>()
+    fun getDriverList(): LiveData<Resource<GetDriverListResponse>> {
+        return _getDriverList
+    }
+
+    fun getDriverListFromWebServices(request: GetDriverListRequest) {
+        viewModelScope.launch {
+            _getDriverList.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getDriverList(request)
+
+                _getDriverList.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getDriverList.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //addDriver----------------------------------
+    private val _addDriver = MutableLiveData<Resource<AddDriverResponse>>()
+    fun addDriver(): LiveData<Resource<AddDriverResponse>> {
+        return _addDriver
+    }
+
+    fun addDriverToWebServices(request: AddDriverRequest) {
+        viewModelScope.launch {
+            _addDriver.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.addDriver(request)
+
+                _addDriver.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _addDriver.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
 }

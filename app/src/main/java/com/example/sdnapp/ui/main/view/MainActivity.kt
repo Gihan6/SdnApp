@@ -94,7 +94,39 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                 GetCommandRequest("", "", "",
                         "", "")
         )
-        viewModel.updateCommandFromWebServices(UpdateCommandRequest())
+        viewModel.updateCommandFromWebServices(UpdateCommandRequest(""))
+
+        viewModel.addUserToWebServices(AddUserRequest(
+                "", "", "", "", true,
+                true, "", "", "", "",
+                "", ""))
+
+        viewModel.editUserToWebServices(EditUserRequest(
+                "", "", "", true,
+                true, "", "", "", "",
+                ""))
+        viewModel.deleteUserFromWebServices(DeleteUserRequest(
+                "", "", "", "", ""))
+
+        viewModel.getCategoryListFromWebServices(
+                GetCategoryListRequest("", "", "", ""))
+
+        viewModel.getRoleListFromWebServices(
+                GetRolesListRequest("", "", "", "", ""))
+
+        viewModel.saveUserRoleToWebServices(SaveUserRoleRequest(""))
+
+        viewModel.saveUserUnitsToWebServices(SaveUserUnitsRequest(""))
+
+        viewModel.getVehicleListFromWebServices(
+                GetVehicleListRequest("", "", "", ""))
+
+        viewModel.getDriverListFromWebServices(
+                GetDriverListRequest("", "", "", ""))
+
+        viewModel.addDriverToWebServices(
+                AddDriverRequest("", "", "", "",
+                        "", "", "", "", ""))
     }
 
 
@@ -261,6 +293,147 @@ class MainActivity : BaseActivity(), ListenerAdapter {
         })
         //----------updateCommand
         viewModel.updateCommand().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------addUser
+        viewModel.addUSer().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------editUser
+        viewModel.editUSer().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------editUser
+        viewModel.deleteUSer().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getCategoryList
+        viewModel.getCategoryList().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getRoleList
+        viewModel.getRoleList().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------saveUserRole
+        viewModel.saveUserRole().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------saveUserUnits
+        viewModel.saveUserUnits().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------saveUserUnits
+        viewModel.getVehicleList().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------saveUserUnits
+        viewModel.getDriverList().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+
+        //----------addDriver
+        viewModel.addDriver().observe(this, Observer {
             it?.let { resource ->
                 dismissLoading()
                 when (resource.status) {

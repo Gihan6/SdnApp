@@ -26,12 +26,30 @@ class ApiHelper (private val apiService: ApiService) {
     suspend fun updateSilentMode(request: UpdateSilentModeRequest) =
             apiService.updateSilentMode(request)
 
-    suspend fun sendCommand(request: SendCommandRequest) =
-            apiService.sendCommand(request)
+    suspend fun sendCommand(request: SendCommandRequest) = apiService.sendCommand(request)
 
-    suspend fun getCommand(request: GetCommandRequest) =
-            apiService.getCommand(request)
-    suspend fun updateCommand(request: UpdateCommandRequest) =
-            apiService.updateCommand(request)
+    suspend fun getCommand(request: GetCommandRequest) = apiService.getCommand(request)
+
+    suspend fun updateCommand(request: UpdateCommandRequest) = apiService.updateCommand(request)
+
+    suspend fun addUser(request: AddUserRequest) = apiService.addUser(request)
+
+    suspend fun editUser(request: EditUserRequest) = apiService.editUser(request)
+
+    suspend fun deleteUser(request: DeleteUserRequest) = apiService.deleteUser(request)
+
+    suspend fun getCategoryList(request: GetCategoryListRequest) = apiService.getCategoryList(request)
+
+    suspend fun getRoleList(request: GetRolesListRequest) = apiService.getRoleList(request)
+
+    suspend fun saveUserRole(request: SaveUserRoleRequest) = apiService.saveUserRole(request)
+
+    suspend fun saveUserUnits(request: SaveUserUnitsRequest) = apiService.saveUserUnits(request)
+
+    suspend fun getVehicleList(request: GetVehicleListRequest) = apiService.getVehicleList(request)
+
+    suspend fun getDriverList(request: GetDriverListRequest) = apiService.getDriverList(request)
+
+    suspend fun addDriver(request: AddDriverRequest) = apiService.addDriver(request)
 
 }
