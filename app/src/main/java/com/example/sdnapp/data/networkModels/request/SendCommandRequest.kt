@@ -20,4 +20,6 @@ data class SendCommandRequest(@SerializedName("sensorid")
                               var token: String,
                               @SerializedName("app_version")
                               @Expose
-                              var appVersion: Int)
+                              var appVersion: Int,
+                              @SerializedName("_userid")
+                              @Expose var _userid: String)

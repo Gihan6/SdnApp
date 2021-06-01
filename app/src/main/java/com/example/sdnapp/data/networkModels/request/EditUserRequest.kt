@@ -22,5 +22,7 @@ data class EditUserRequest(@SerializedName("email")
                            @SerializedName("min_speed")
                            @Expose var min_speed: String,
                            @SerializedName("app_version")
-                           @Expose var app_version: String)
+                           @Expose var app_version: Int,
+                           @SerializedName("_userid")
+                           @Expose var _userid: String)
 

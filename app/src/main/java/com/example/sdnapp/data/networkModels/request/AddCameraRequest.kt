@@ -15,6 +15,8 @@ data class AddCameraRequest(
     @SerializedName("token")
     @Expose var token: String,
     @SerializedName("app_version")
-    @Expose var app_version: String
+    @Expose var app_version: Int,
+    @SerializedName("_userid")
+    @Expose var _userid: String
 
 )

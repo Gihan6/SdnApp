@@ -52,81 +52,81 @@ class MainActivity : BaseActivity(), ListenerAdapter {
         viewModel.getAccountEventFromWebServices(
                 AccountEventRequest(
                         "",
-                        "", "", "", "", ""
+                        "", "", "", 1, ""
                 )
         )
 
         viewModel.getEventByTagsFromWebServices(
                 EventsByTagsRequest(
                         "",
-                        "", "", "", ""
+                        "", "", "", 1,""
                 )
         )
         viewModel.getTagsDashboardFromWebServices(
-                TagsDashboardRequest("", "", "")
+                TagsDashboardRequest("", "", 1,"")
         )
         viewModel.addCameraToWebServices(
                 AddCameraRequest("", "", "", "", "",
-                        "")
+                        1,"")
         )
         viewModel.getCameraListFromWebServices(
-                CameraListRequest("", "", "")
+                CameraListRequest("", "", 1,"")
         )
         viewModel.updateCameraFromWebServices(
                 UpdateCameraRequest("", "", "", "",
-                        "")
+                        "","","",1,"")
         )
         viewModel.deleteCameraFromWebServices(
-                DeleteCameraRequest("", "", "", "")
+                DeleteCameraRequest("", "", "", 1,"")
         )
         viewModel.getCameraByIdFromWebServices(
-                CameraByIdRequest("", "", "", "")
+                CameraByIdRequest("", "", "", 1,"")
         )
         viewModel.updateSilentModeFromWebServices(
                 UpdateSilentModeRequest("", true, "",
-                        "", "")
+                        "", 1,"")
         )
         viewModel.sendCommandToWebServices(
                 SendCommandRequest("", "", "",
-                        "", "", 1)
+                        "", "", 1,"")
         )
         viewModel.getCommandFromWebServices(
                 GetCommandRequest("", "", "",
-                        "", "")
+                        "", 1,"")
         )
         viewModel.updateCommandFromWebServices(UpdateCommandRequest(""))
 
         viewModel.addUserToWebServices(AddUserRequest(
                 "", "", "", "", true,
                 true, "", "", "", "",
-                "", ""))
+                "", 1,""))
 
         viewModel.editUserToWebServices(EditUserRequest(
                 "", "", "", true,
                 true, "", "", "", "",
-                ""))
+                1,""))
         viewModel.deleteUserFromWebServices(DeleteUserRequest(
-                "", "", "", "", ""))
+                "", "", "", "", 1,""))
 
         viewModel.getCategoryListFromWebServices(
-                GetCategoryListRequest("", "", "", ""))
+                GetCategoryListRequest("", "", 1, ""))
 
         viewModel.getRoleListFromWebServices(
-                GetRolesListRequest("", "", "", "", ""))
+                GetRolesListRequest("", "", "", 1, ""))
 
         viewModel.saveUserRoleToWebServices(SaveUserRoleRequest(""))
 
         viewModel.saveUserUnitsToWebServices(SaveUserUnitsRequest(""))
 
         viewModel.getVehicleListFromWebServices(
-                GetVehicleListRequest("", "", "", ""))
+                GetVehicleListRequest("", "", 1, ""))
 
         viewModel.getDriverListFromWebServices(
-                GetDriverListRequest("", "", "", ""))
+                GetDriverListRequest("", "", 1, ""))
 
         viewModel.addDriverToWebServices(
                 AddDriverRequest("", "", "", "",
-                        "", "", "", "", ""))
+                        "", "", "", 1, ""))
     }
 
 

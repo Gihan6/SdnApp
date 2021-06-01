@@ -9,7 +9,7 @@ data class GetCategoryListRequest(
         @SerializedName("userid")
         @Expose var userid: String,
         @SerializedName("app_version")
-        @Expose var app_version: String,
+        @Expose var app_version: Int,
         @SerializedName("_userid")
         @Expose var _userid: String
 )

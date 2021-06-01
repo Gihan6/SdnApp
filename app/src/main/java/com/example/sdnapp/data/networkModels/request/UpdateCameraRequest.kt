@@ -7,12 +7,20 @@ data class UpdateCameraRequest(
         @SerializedName("registerid")
         @Expose var registerid: String,
         @SerializedName("end_time")
-        @Expose var sensor_name: String,
+        @Expose var end_time: String,
         @SerializedName("sensor_name")
-        @Expose var Userid: String,
+        @Expose var sensor_name: String,
+        @SerializedName("ai_type")
+        @Expose var ai_type: String,
+        @SerializedName("sensorid")
+        @Expose var sensorid: String,
+        @SerializedName("userid")
+        @Expose var userid: String,
         @SerializedName("Token")
         @Expose var Token: String,
         @SerializedName("app_version")
-        @Expose var app_version: String,
+        @Expose var app_version: Int,
+        @SerializedName("_userid")
+        @Expose var _userid: String
 )
 
