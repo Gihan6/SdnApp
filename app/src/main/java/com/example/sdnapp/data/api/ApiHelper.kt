@@ -52,4 +52,37 @@ class ApiHelper (private val apiService: ApiService) {
 
     suspend fun addDriver(request: AddDriverRequest) = apiService.addDriver(request)
 
+    suspend fun addVehicle(request: AddVehicleRequest) = apiService.addVehicle(request)
+
+    suspend fun updateDriverVehicle(request: UpdateDriverVehicleRequest) =
+            apiService.updateDriverVehicle(request)
+
+    suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest) =
+            apiService.updateCameraVehicle(request)
+
+    suspend fun accountGroups(request: AccountGroupsRequest) = apiService.accountGroups(request)
+
+    suspend fun addAccountGroups(request: AddAccountGroupsRequest) =
+            apiService.addAccountGroups(request)
+
+    suspend fun updateVehicle(request: UpdateVehicleRequest) =
+            apiService.updateVehicle(request)
+
+    suspend fun updateDriver(request: UpdateDriverRequest) =
+            apiService.updateDriver(request)
+
+    suspend fun groupUnitsInformation(request: GroupUnitsInformationRequest) =
+            apiService.groupUnitInformation(request)
+
+    suspend fun updateAccountGroupName(request: UpdateAccountGroupNameRequest) =
+            apiService.updateAccountGroupName(request)
+
+    suspend fun deleteAccountGroup(request: DeleteAccountGroupRequest) =
+            apiService.deleteAccountGroup(request)
+
+    suspend fun getUserById(request: GetUserByIdRequest) =
+            apiService.getUserById(request)
+
+    suspend fun changeUserPassword(request: ChangeUserPasswordRequest) =
+            apiService.changeUserPassword(request)
 }

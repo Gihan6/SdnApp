@@ -560,4 +560,292 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
             }
         }
     }
+
+    //addVehicle----------------------------------
+    private val _addVehicle = MutableLiveData<Resource<AddVehicleResponse>>()
+    fun addVehicle(): LiveData<Resource<AddVehicleResponse>> {
+        return _addVehicle
+    }
+
+    fun addVehicleToWebServices(request: AddVehicleRequest) {
+        viewModelScope.launch {
+            _addVehicle.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.addVehicle(request)
+
+                _addVehicle.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _addVehicle.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //updateDriverVehicle----------------------------------
+    private val _updateDriverVehicle = MutableLiveData<Resource<UpdateDriverVehicleResponse>>()
+    fun updateDriverVehicle(): LiveData<Resource<UpdateDriverVehicleResponse>> {
+        return _updateDriverVehicle
+    }
+
+    fun updateDriverVehicleToWebServices(request: UpdateDriverVehicleRequest) {
+        viewModelScope.launch {
+            _updateDriverVehicle.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.updateDriverVehicle(request)
+
+                _updateDriverVehicle.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _updateDriverVehicle.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //updateCameraVehicle----------------------------------
+    private val _updateCameraVehicle = MutableLiveData<Resource<UpdateCameraVehicleResponse>>()
+    fun updateCameraVehicle(): LiveData<Resource<UpdateCameraVehicleResponse>> {
+        return _updateCameraVehicle
+    }
+
+    fun updateCameraVehicleToWebServices(request: UpdateCameraVehicleRequest) {
+        viewModelScope.launch {
+            _updateCameraVehicle.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.updateCameraVehicle(request)
+
+                _updateCameraVehicle.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _updateCameraVehicle.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //account groups----------------------------------
+    private val _accountGroups = MutableLiveData<Resource<AccountGroupsResponse>>()
+    fun accountGroups(): LiveData<Resource<AccountGroupsResponse>> {
+        return _accountGroups
+    }
+
+    fun accountGroupsFromWebServices(request: AccountGroupsRequest) {
+        viewModelScope.launch {
+            _accountGroups.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.accountGroups(request)
+
+                _accountGroups.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _accountGroups.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //add account groups----------------------------------
+    private val _addAccountGroups = MutableLiveData<Resource<AddAccountGroupsResponse>>()
+    fun addAccountGroups(): LiveData<Resource<AddAccountGroupsResponse>> {
+        return _addAccountGroups
+    }
+
+    fun addAccountGroupsFromWebServices(request: AddAccountGroupsRequest) {
+        viewModelScope.launch {
+            _addAccountGroups.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.addAccountGroups(request)
+
+                _addAccountGroups.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _addAccountGroups.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //update vehicle----------------------------------
+    private val _updateVehicle = MutableLiveData<Resource<UpdateVehicleResponse>>()
+    fun updateVehicle(): LiveData<Resource<UpdateVehicleResponse>> {
+        return _updateVehicle
+    }
+
+    fun updateVehicleToWebServices(request: UpdateVehicleRequest) {
+        viewModelScope.launch {
+            _updateVehicle.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.updateVehicle(request)
+
+                _updateVehicle.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _updateVehicle.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //update Driver----------------------------------
+    private val _updateDriver = MutableLiveData<Resource<UpdateDriverResponse>>()
+    fun updateDriver(): LiveData<Resource<UpdateDriverResponse>> {
+        return _updateDriver
+    }
+
+    fun updateDriverToWebServices(request: UpdateDriverRequest) {
+        viewModelScope.launch {
+            _updateDriver.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.updateDriver(request)
+
+                _updateDriver.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _updateDriver.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //GroupUnitsInformation----------------------------------
+    private val _groupUnitsInformation = MutableLiveData<Resource<GroupUnitsInformationResponse>>()
+    fun groupUnitsInformation(): LiveData<Resource<GroupUnitsInformationResponse>> {
+        return _groupUnitsInformation
+    }
+
+    fun getGroupUnitsInformationFromWebServices(request: GroupUnitsInformationRequest) {
+        viewModelScope.launch {
+            _groupUnitsInformation.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.groupUnitsInformation(request)
+
+                _groupUnitsInformation.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _groupUnitsInformation.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //updateAccount----------------------------------
+    private val _updateAccountGroupName = MutableLiveData<Resource<UpdateAccountGroupNameResponse>>()
+    fun updateAccountGroupName(): LiveData<Resource<UpdateAccountGroupNameResponse>> {
+        return _updateAccountGroupName
+    }
+
+    fun updateAccountGroupNameToWebServices(request: UpdateAccountGroupNameRequest) {
+        viewModelScope.launch {
+            _updateAccountGroupName.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.updateAccountGroupName(request)
+
+                _updateAccountGroupName.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _updateAccountGroupName.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //deleteAccount----------------------------------
+    private val _deleteAccountGroupName = MutableLiveData<Resource<DeleteAccountGroupResponse>>()
+    fun deleteAccountGroupName(): LiveData<Resource<DeleteAccountGroupResponse>> {
+        return _deleteAccountGroupName
+    }
+
+    fun deleteAccountGroupFromWebServices(request: DeleteAccountGroupRequest) {
+        viewModelScope.launch {
+            _deleteAccountGroupName.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.deleteAccountGroup(request)
+
+                _deleteAccountGroupName.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _deleteAccountGroupName.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getUSerById----------------------------------
+    private val _getUSerById = MutableLiveData<Resource<GetUserByIdResponse>>()
+    fun getUSerById(): LiveData<Resource<GetUserByIdResponse>> {
+        return _getUSerById
+    }
+
+    fun getUSerByIdFromWebServices(request: GetUserByIdRequest) {
+        viewModelScope.launch {
+            _getUSerById.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getUserById(request)
+
+                _getUSerById.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getUSerById.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //changeUserPassword----------------------------------
+    private val _changeUserPassword = MutableLiveData<Resource<ChangeUserPasswordResponse>>()
+    fun changeUserPassword(): LiveData<Resource<ChangeUserPasswordResponse>> {
+        return _changeUserPassword
+    }
+
+    fun changeUserPasswordFromWebServices(request: ChangeUserPasswordRequest) {
+        viewModelScope.launch {
+            _changeUserPassword.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.changeUserPassword(request)
+
+                _changeUserPassword.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _changeUserPassword.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
 }

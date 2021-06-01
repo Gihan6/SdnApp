@@ -78,7 +78,45 @@ interface ApiService {
     suspend fun addDriver(request: AddDriverRequest): AddDriverResponse
 
     @POST("vehicle.addvehicle")
-    suspend fun addVehicle(request: AddDriverRequest): AddDriverResponse
+    suspend fun addVehicle(request: AddVehicleRequest): AddVehicleResponse
 
+    @POST("driver.updatedrivervehicle")
+    suspend fun updateDriverVehicle(request: UpdateDriverVehicleRequest):
+            UpdateDriverVehicleResponse
+
+    @POST("cam.updatecamvehicle")
+    suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest):
+            UpdateCameraVehicleResponse
+
+    @POST("groups.accountGroups")
+    suspend fun accountGroups(request: AccountGroupsRequest): AccountGroupsResponse
+
+    @POST("groups.addAccountGroups")
+    suspend fun addAccountGroups(request: AddAccountGroupsRequest): AddAccountGroupsResponse
+
+    @POST("vehicle.updatevehicle")
+    suspend fun updateVehicle(request: UpdateVehicleRequest): UpdateVehicleResponse
+
+    @POST("driver.updatedriver")
+    suspend fun updateDriver(request: UpdateDriverRequest): UpdateDriverResponse
+
+    @POST("groups.groupUnitsInformation")
+    suspend fun groupUnitInformation(request: GroupUnitsInformationRequest):
+            GroupUnitsInformationResponse
+
+    @POST("groups.updateAccountGroupName")
+    suspend fun updateAccountGroupName(request: UpdateAccountGroupNameRequest):
+            UpdateAccountGroupNameResponse
+
+    @POST("groups.deleteAccountGroup")
+    suspend fun deleteAccountGroup(request: DeleteAccountGroupRequest):
+            DeleteAccountGroupResponse
+
+    @POST("user.getuserbyid")
+    suspend fun getUserById(request: GetUserByIdRequest): GetUserByIdResponse
+
+
+    @POST("user.changeuserpassword")
+    suspend fun changeUserPassword(request: ChangeUserPasswordRequest): ChangeUserPasswordResponse
 
 }

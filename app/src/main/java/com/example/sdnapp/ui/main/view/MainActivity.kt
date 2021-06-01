@@ -48,7 +48,9 @@ class MainActivity : BaseActivity(), ListenerAdapter {
 
     private fun getDataFromServer() {
         showLoading()
-        viewModel.getSessionTokenFromWebServices(SessionTokenRequest("", "", true))
+        viewModel.getSessionTokenFromWebServices(
+                SessionTokenRequest("", "", true))
+
         viewModel.getAccountEventFromWebServices(
                 AccountEventRequest(
                         "",
@@ -59,7 +61,7 @@ class MainActivity : BaseActivity(), ListenerAdapter {
         viewModel.getEventByTagsFromWebServices(
                 EventsByTagsRequest(
                         "",
-                        "", "", "", 1,""
+                        "", "", "", 1, ""
                 )
         )
         viewModel.getTagsDashboardFromWebServices(
@@ -127,6 +129,51 @@ class MainActivity : BaseActivity(), ListenerAdapter {
         viewModel.addDriverToWebServices(
                 AddDriverRequest("", "", "", "",
                         "", "", "", 1, ""))
+
+        viewModel.addVehicleToWebServices(
+                AddVehicleRequest("", "", "", "",
+                        "", "", 1, ""))
+
+        viewModel.updateDriverVehicleToWebServices(
+                UpdateDriverVehicleRequest("", "", "", "",
+                        1, ""))
+
+        viewModel.updateCameraVehicleToWebServices(
+                UpdateCameraVehicleRequest("", "", "", "",
+                        "", "", 1, ""))
+
+        viewModel.accountGroupsFromWebServices(
+                AccountGroupsRequest("", "", 1, ""))
+
+        viewModel.addAccountGroupsFromWebServices(
+                AddAccountGroupsRequest("", "", "",
+                        "", 1, ""))
+
+        viewModel.updateVehicleToWebServices(UpdateVehicleRequest(""))
+
+        viewModel.updateDriverToWebServices(
+                UpdateDriverRequest("", "", "",
+                        "", "", "", "", "", 2,
+                        ""))
+
+        viewModel.getGroupUnitsInformationFromWebServices(
+                GroupUnitsInformationRequest("", "", "",
+                        2,
+                        ""))
+
+        viewModel.updateAccountGroupNameToWebServices(
+                UpdateAccountGroupNameRequest("", "", "", "",
+                        2, ""))
+
+        viewModel.deleteAccountGroupFromWebServices(
+                DeleteAccountGroupRequest("", "", "", 1, ""))
+
+        viewModel.getUSerByIdFromWebServices(
+                GetUserByIdRequest("", "", 1, ""))
+
+        viewModel.changeUserPasswordFromWebServices(
+                ChangeUserPasswordRequest("", "", "",
+                        "", 1, ""))
     }
 
 
@@ -434,6 +481,174 @@ class MainActivity : BaseActivity(), ListenerAdapter {
 
         //----------addDriver
         viewModel.addDriver().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------addVehicle
+        viewModel.addVehicle().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------updateDriveVehicle
+        viewModel.updateDriverVehicle().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------updateDriveVehicle
+        viewModel.updateCameraVehicle().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------accountGroups
+        viewModel.accountGroups().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------addAccountGroup
+        viewModel.addAccountGroups().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------addAccountGroup
+        viewModel.updateVehicle().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------Update Driver
+        viewModel.updateDriver().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------groupUnitsInformation
+        viewModel.groupUnitsInformation().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------updateAccountGroupName
+        viewModel.updateAccountGroupName().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------deleteAccountGroupName
+        viewModel.deleteAccountGroupName().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getUserByID
+        viewModel.getUSerById().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------changeUserPassword
+        viewModel.changeUserPassword().observe(this, Observer {
             it?.let { resource ->
                 dismissLoading()
                 when (resource.status) {
