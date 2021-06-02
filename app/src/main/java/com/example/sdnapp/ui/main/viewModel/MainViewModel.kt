@@ -848,4 +848,269 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
             }
         }
     }
+
+    //Get Zone List----------------------------------
+    private val _getZoneList = MutableLiveData<Resource<ZoneListResponse>>()
+    fun getZoneList(): LiveData<Resource<ZoneListResponse>> {
+        return _getZoneList
+    }
+
+    fun getZoneListFromWebServices(request: ZoneListRequest) {
+        viewModelScope.launch {
+            _getZoneList.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getZoneList(request)
+
+                _getZoneList.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getZoneList.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+
+    //Get Units trips----------------------------------
+    private val _unitsTrips = MutableLiveData<Resource<UnitsTripsResponse>>()
+    fun getUnitsTrips(): LiveData<Resource<UnitsTripsResponse>> {
+        return _unitsTrips
+    }
+
+    fun getUnitsTripsFromWebServices(request: UnitsTripsRequest) {
+        viewModelScope.launch {
+            _unitsTrips.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.unitsTrips(request)
+
+                _unitsTrips.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _unitsTrips.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //Get trip zones----------------------------------
+    private val _tripZones = MutableLiveData<Resource<TripZonesResponse>>()
+    fun getTripZones(): LiveData<Resource<TripZonesResponse>> {
+        return _tripZones
+    }
+
+    fun getTripZonesFromWebServices(request: TripZonesRequest) {
+        viewModelScope.launch {
+            _tripZones.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getTripZones(request)
+
+                _tripZones.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _tripZones.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //start trip----------------------------------
+    private val _startTrip = MutableLiveData<Resource<StartTripResponse>>()
+    fun startTrip(): LiveData<Resource<StartTripResponse>> {
+        return _startTrip
+    }
+
+    fun startTripFromWebServices(request: StartTripRequest) {
+        viewModelScope.launch {
+            _startTrip.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.startTrip(request)
+
+                _startTrip.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _startTrip.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //start trip----------------------------------
+    private val _endTrip = MutableLiveData<Resource<StartTripResponse>>()
+    fun endTrip(): LiveData<Resource<StartTripResponse>> {
+        return _endTrip
+    }
+
+    fun endTripFromWebServices(request: StartTripRequest) {
+        viewModelScope.launch {
+            _endTrip.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.endTrip(request)
+
+                _endTrip.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _endTrip.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //start trip----------------------------------
+    private val _addDestination = MutableLiveData<Resource<AddDestinationResponse>>()
+    fun addDestination(): LiveData<Resource<AddDestinationResponse>> {
+        return _addDestination
+    }
+
+    fun addDestinationToWebServices(request: AddDestinationRequest) {
+        viewModelScope.launch {
+            _addDestination.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.addDestination(request)
+
+                _addDestination.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _addDestination.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //delete start----------------------------------
+    private val _deleteStart = MutableLiveData<Resource<DeleteStartResponse>>()
+    fun deleteStart(): LiveData<Resource<DeleteStartResponse>> {
+        return _deleteStart
+    }
+
+    fun deleteStartFromWebServices(request: DeleteStartRequest) {
+        viewModelScope.launch {
+            _deleteStart.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.deleteStart(request)
+
+                _deleteStart.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _deleteStart.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //delete end----------------------------------
+    private val _deleteEnd = MutableLiveData<Resource<DeleteStartResponse>>()
+    fun deleteEnd(): LiveData<Resource<DeleteStartResponse>> {
+        return _deleteEnd
+    }
+
+    fun deleteEndFromWebServices(request: DeleteStartRequest) {
+        viewModelScope.launch {
+            _deleteEnd.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.deleteEnd(request)
+
+                _deleteEnd.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _deleteEnd.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //delete Destination----------------------------------
+    private val _deleteDestination = MutableLiveData<Resource<DeleteStartResponse>>()
+    fun deleteDestination(): LiveData<Resource<DeleteStartResponse>> {
+        return _deleteDestination
+    }
+
+    fun deleteDestinationFromWebServices(request: DeleteStartRequest) {
+        viewModelScope.launch {
+            _deleteDestination.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.deleteDestination(request)
+
+                _deleteDestination.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _deleteDestination.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //update Destination----------------------------------
+    private val _updateDestination = MutableLiveData<Resource<UpdateDestinationResponse>>()
+    fun updateDestination(): LiveData<Resource<UpdateDestinationResponse>> {
+        return _updateDestination
+    }
+
+    fun updateDestinationFromWebServices(request: UpdateDestinationRequest) {
+        viewModelScope.launch {
+            _updateDestination.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.updateDestination(request)
+
+                _updateDestination.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _updateDestination.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //get tags list----------------------------------
+    private val _getTagsList = MutableLiveData<Resource<GetTagsListResponse>>()
+    fun getTagsList(): LiveData<Resource<GetTagsListResponse>> {
+        return _getTagsList
+    }
+
+    fun getTagsListFromWebServices(request: GetTagsListRequest) {
+        viewModelScope.launch {
+            _getTagsList.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getTagsList(request)
+
+                _getTagsList.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getTagsList.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
 }

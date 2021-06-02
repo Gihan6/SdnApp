@@ -11,19 +11,18 @@ data class SessionTokenResponse(
     @SerializedName("Data")
     @Expose
     var data: Data
-)
+) {
 
-data class Data(
+    data class Data(
 
-    @SerializedName("userid")
-    @Expose
-    var userid: String,
-    @SerializedName("token")
-    @Expose
-    var token: String
-)
-
-
+            @SerializedName("userid")
+            @Expose
+            var userid: String,
+            @SerializedName("token")
+            @Expose
+            var token: String
+    )
 
 
+}
 

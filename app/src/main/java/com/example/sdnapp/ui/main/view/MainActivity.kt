@@ -174,6 +174,41 @@ class MainActivity : BaseActivity(), ListenerAdapter {
         viewModel.changeUserPasswordFromWebServices(
                 ChangeUserPasswordRequest("", "", "",
                         "", 1, ""))
+
+        viewModel.getZoneListFromWebServices(
+                ZoneListRequest("", "", 1, ""))
+
+        viewModel.getUnitsTripsFromWebServices(
+                UnitsTripsRequest("", "", 1, "", arrayListOf()))
+
+        viewModel.getTripZonesFromWebServices(
+                TripZonesRequest("", "", "", 1, ""))
+
+        viewModel.startTripFromWebServices(
+                StartTripRequest("", "", 1, "", arrayListOf()))
+
+        viewModel.endTripFromWebServices(
+                StartTripRequest("", "", 1, "", arrayListOf()))
+
+        viewModel.addDestinationToWebServices(
+                AddDestinationRequest(arrayListOf(), "", "", 1, ""))
+
+        viewModel.deleteStartFromWebServices(
+                DeleteStartRequest("", "", "", 1, ""))
+
+        viewModel.deleteEndFromWebServices(
+                DeleteStartRequest("", "", "", 1, ""))
+
+        viewModel.deleteDestinationFromWebServices(
+                DeleteStartRequest("", "", "", 1, ""))
+
+        viewModel.updateDestinationFromWebServices(
+                UpdateDestinationRequest("", true, "", "",
+                        "", 1, ""))
+
+        viewModel.getTagsListFromWebServices(
+                GetTagsListRequest("", "", 1, ""))
+
     }
 
 
@@ -661,6 +696,162 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                 }
             }
         })
+        //----------getZoneList
+        viewModel.getZoneList().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getUnitsTrips
+        viewModel.getUnitsTrips().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getTripZone
+        viewModel.getTripZones().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+
+        //----------startTrip
+        viewModel.startTrip().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------endTrip
+        viewModel.endTrip().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------addDestination
+        viewModel.addDestination().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------deleteStart
+        viewModel.deleteStart().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------deleteEnd
+        viewModel.deleteEnd().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------deleteDestination
+        viewModel.deleteDestination().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------updateDestination
+        viewModel.updateDestination().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getTagsList
+        viewModel.getTagsList().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+
     }
 
 }

@@ -112,6 +112,39 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
 
     suspend fun changeUserPassword(request: ChangeUserPasswordRequest) =
             apiHelper.changeUserPassword(request)
+
+    suspend fun getZoneList(request: ZoneListRequest) =
+            apiHelper.getZoneList(request)
+
+    suspend fun unitsTrips(request: UnitsTripsRequest) =
+            apiHelper.unitsTrips(request)
+
+    suspend fun getTripZones(request: TripZonesRequest) =
+            apiHelper.getTripZones(request)
+
+    suspend fun startTrip(request: StartTripRequest) =
+            apiHelper.startTrip(request)
+
+    suspend fun endTrip(request: StartTripRequest) =
+            apiHelper.endTrip(request)
+
+    suspend fun addDestination(request: AddDestinationRequest) =
+            apiHelper.addDestination(request)
+
+    suspend fun deleteStart(request: DeleteStartRequest) =
+            apiHelper.deleteStart(request)
+
+    suspend fun deleteEnd(request: DeleteStartRequest) =
+            apiHelper.deleteEnd(request)
+
+    suspend fun deleteDestination(request: DeleteStartRequest) =
+            apiHelper.deleteDestination(request)
+
+    suspend fun updateDestination(request: UpdateDestinationRequest) =
+            apiHelper.updateDestination(request)
+
+    suspend fun getTagsList(request: GetTagsListRequest) =
+            apiHelper.getTagsList(request)
 //    suspend fun saveRepos(repos: List<Repo>) {
 //        try {
 //            withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {

@@ -5,7 +5,6 @@ import com.example.sdnapp.data.networkModels.response.*
 import retrofit2.http.POST
 
 
-
 interface ApiService {
 
     @POST("user.getsessiontoken")
@@ -115,8 +114,44 @@ interface ApiService {
     @POST("user.getuserbyid")
     suspend fun getUserById(request: GetUserByIdRequest): GetUserByIdResponse
 
-
     @POST("user.changeuserpassword")
     suspend fun changeUserPassword(request: ChangeUserPasswordRequest): ChangeUserPasswordResponse
+
+    @POST("trip.zoneList")
+    suspend fun getZoneList(request: ZoneListRequest): ZoneListResponse
+
+    @POST("trip.unitsTrips")
+    suspend fun unitsTrips(request: UnitsTripsRequest): UnitsTripsResponse
+
+    @POST("trip.tripZones")
+    suspend fun getTripZones(request: TripZonesRequest): TripZonesResponse
+
+    @POST("trip.addStarter")
+    suspend fun startTrip(request: StartTripRequest): StartTripResponse
+
+    @POST("trip.addCloser")
+    suspend fun endTrip(request: StartTripRequest): StartTripResponse
+
+    @POST("trip.addDestination")
+    suspend fun addDestination(request: AddDestinationRequest): AddDestinationResponse
+
+    @POST("trip.deleteStarter")
+    suspend fun deleteStart(request: DeleteStartRequest): DeleteStartResponse
+
+    @POST("/trip.deleteCloser")
+    suspend fun deleteEnd(request: DeleteStartRequest): DeleteStartResponse
+
+    @POST("trip.deleteDestination")
+    suspend fun deleteDestination(request: DeleteStartRequest): DeleteStartResponse
+
+    @POST("trip.updateDestination")
+    suspend fun updateDestination(request: UpdateDestinationRequest): UpdateDestinationResponse
+
+    @POST("event.gettagslist")
+    suspend fun getTagsList(request: GetTagsListRequest): GetTagsListResponse
+
+
+
+
 
 }

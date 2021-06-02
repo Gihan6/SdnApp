@@ -85,4 +85,37 @@ class ApiHelper (private val apiService: ApiService) {
 
     suspend fun changeUserPassword(request: ChangeUserPasswordRequest) =
             apiService.changeUserPassword(request)
+
+    suspend fun getZoneList(request: ZoneListRequest) =
+            apiService.getZoneList(request)
+
+    suspend fun unitsTrips(request: UnitsTripsRequest) =
+            apiService.unitsTrips(request)
+
+    suspend fun getTripZones(request: TripZonesRequest) =
+            apiService.getTripZones(request)
+
+    suspend fun startTrip(request: StartTripRequest) =
+            apiService.startTrip(request)
+
+    suspend fun endTrip(request: StartTripRequest) =
+            apiService.endTrip(request)
+
+    suspend fun addDestination(request: AddDestinationRequest) =
+            apiService.addDestination(request)
+
+    suspend fun deleteStart(request: DeleteStartRequest) =
+            apiService.deleteStart(request)
+
+    suspend fun deleteEnd(request: DeleteStartRequest) =
+            apiService.deleteEnd(request)
+
+    suspend fun deleteDestination(request: DeleteStartRequest) =
+            apiService.deleteDestination(request)
+
+    suspend fun updateDestination(request: UpdateDestinationRequest) =
+            apiService.updateDestination(request)
+
+    suspend fun getTagsList(request: GetTagsListRequest) =
+            apiService.getTagsList(request)
 }
