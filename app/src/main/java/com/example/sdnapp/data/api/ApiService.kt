@@ -46,6 +46,31 @@ interface ApiService {
     @POST("cam.updatecommand")
     suspend fun updateCommand(request: UpdateCommandRequest): UpdateCommandResponse
 
+    @POST("location.getlocation")
+    suspend fun getLocation(request: GetLocationRequest): GetLocationResponse
+
+    @POST("geofence.add")
+    suspend fun addNewGeo(request: AddNewGeoRequest): AddNewGeoResponse
+
+    @POST("geofence.list")
+    suspend fun getGeoList(request: GetGeoListRequest): GetGeoListResponse
+
+    @POST("geofence.delete")
+    suspend fun deleteGeo(request: DeleteGeoRequest): DeleteGeoResponse
+
+    @POST("activity.getActivites")
+    suspend fun getActivities(request: GetActivitiesRequest): GetActivitiesResponse
+
+    @POST("activity.getLastActivitesTypes")
+    suspend fun getLastActivitiesTypes(request: GetLatsActivitiesTypesRequest):
+            GetLatsActivitiesTypesResponse
+
+    @POST("aactivity.getLastActivites")
+    suspend fun getLastActivities(request: GetLastActivitiesRequest): GetLastActivitiesResponse
+
+    @POST("account.getuserslist")
+    suspend fun getUsersList(request: GetUsersListRequest): GetUsersListResponse
+
     @POST("account.adduser")
     suspend fun addUser(request: AddUserRequest): AddUserResponse
 

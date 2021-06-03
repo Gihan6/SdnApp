@@ -50,6 +50,30 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
     suspend fun updateCommand(request: UpdateCommandRequest) =
             apiHelper.updateCommand(request)
 
+    suspend fun getLocation(request: GetLocationRequest) =
+            apiHelper.getLocation(request)
+
+    suspend fun addNewGeo(request: AddNewGeoRequest) =
+            apiHelper.addNewGeo(request)
+
+    suspend fun getGeoLis(request: GetGeoListRequest) =
+            apiHelper.getGeoLis(request)
+
+    suspend fun deleteGeo(request: DeleteGeoRequest) =
+            apiHelper.deleteGeo(request)
+
+    suspend fun getActivities(request: GetActivitiesRequest) =
+            apiHelper.getActivities(request)
+
+    suspend fun getLatActivitiesType(request:GetLatsActivitiesTypesRequest) =
+            apiHelper.getLastActivitiesType(request)
+
+    suspend fun getLatActivities(request:GetLastActivitiesRequest) =
+            apiHelper.getLastActivities(request)
+
+    suspend fun getUsersList(request:GetUsersListRequest) =
+            apiHelper.getUsersList(request)
+
     suspend fun addUser(request: AddUserRequest) =
             apiHelper.addUser(request)
 

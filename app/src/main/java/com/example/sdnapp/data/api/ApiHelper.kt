@@ -32,6 +32,25 @@ class ApiHelper (private val apiService: ApiService) {
 
     suspend fun updateCommand(request: UpdateCommandRequest) = apiService.updateCommand(request)
 
+    suspend fun getLocation(request: GetLocationRequest) = apiService.getLocation(request)
+
+    suspend fun addNewGeo(request: AddNewGeoRequest) = apiService.addNewGeo(request)
+
+    suspend fun getGeoLis(request: GetGeoListRequest) = apiService.getGeoList(request)
+
+    suspend fun deleteGeo(request: DeleteGeoRequest) = apiService.deleteGeo(request)
+
+    suspend fun getActivities(request: GetActivitiesRequest) = apiService.getActivities(request)
+
+    suspend fun getLastActivitiesType(request:GetLatsActivitiesTypesRequest) =
+            apiService.getLastActivitiesTypes(request)
+
+    suspend fun getLastActivities(request:GetLastActivitiesRequest) =
+            apiService.getLastActivities(request)
+
+    suspend fun getUsersList(request:GetUsersListRequest) =
+            apiService.getUsersList(request)
+
     suspend fun addUser(request: AddUserRequest) = apiService.addUser(request)
 
     suspend fun editUser(request: EditUserRequest) = apiService.editUser(request)

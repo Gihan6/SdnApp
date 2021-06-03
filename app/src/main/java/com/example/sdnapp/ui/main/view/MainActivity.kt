@@ -86,29 +86,59 @@ class MainActivity : BaseActivity(), ListenerAdapter {
         )
         viewModel.updateSilentModeFromWebServices(
                 UpdateSilentModeRequest("", true, "",
-                        "", 1,"")
+                        "", 1, "")
         )
         viewModel.sendCommandToWebServices(
                 SendCommandRequest("", "", "",
-                        "", "", 1,"")
+                        "", "", 1, "")
         )
         viewModel.getCommandFromWebServices(
                 GetCommandRequest("", "", "",
-                        "", 1,"")
+                        "", 1, "")
         )
         viewModel.updateCommandFromWebServices(UpdateCommandRequest(""))
+
+        viewModel.getLocationFromWebServices(
+                GetLocationRequest("", "", "", 1,
+                        "", "", "", arrayListOf()))
+
+        viewModel.addNewGeoToWebServices(
+                AddNewGeoRequest("", "", "", 1,
+                        "", "", "", arrayListOf()))
+
+        viewModel.getGeoListFromWebServices(
+                GetGeoListRequest("", "", 1,
+                        "", "", ""))
+
+        viewModel.deleteGeoFromWebServices(
+                DeleteGeoRequest("", "", 1,
+                        "", arrayListOf()))
+
+        viewModel.getActivitiesFromWebServices(
+                GetActivitiesRequest("", arrayListOf(), "", "",
+                        "", "", 1, ""))
+
+        viewModel.getLastActivitiesTypesFromWebServices(
+                GetLatsActivitiesTypesRequest("", "", 1, ""))
+
+        viewModel.getLastActivitiesFromWebServices(
+                GetLastActivitiesRequest("", arrayListOf(), "",
+                        "", 1, ""))
+
+        viewModel.getUsersListFromWebServices(
+                GetUsersListRequest())
 
         viewModel.addUserToWebServices(AddUserRequest(
                 "", "", "", "", true,
                 true, "", "", "", "",
-                "", 1,""))
+                "", 1, ""))
 
         viewModel.editUserToWebServices(EditUserRequest(
                 "", "", "", true,
                 true, "", "", "", "",
-                1,""))
+                1, ""))
         viewModel.deleteUserFromWebServices(DeleteUserRequest(
-                "", "", "", "", 1,""))
+                "", "", "", "", 1, ""))
 
         viewModel.getCategoryListFromWebServices(
                 GetCategoryListRequest("", "", 1, ""))
@@ -375,6 +405,118 @@ class MainActivity : BaseActivity(), ListenerAdapter {
         })
         //----------updateCommand
         viewModel.updateCommand().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getLocation
+        viewModel.getLocation().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------addNewGeo
+        viewModel.addNewGeo().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getGeoList
+        viewModel.getGeoList().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------deleteGeo
+        viewModel.deleteGeo().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getActivities
+        viewModel.getActivities().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getLastActivitiesTypes
+        viewModel.getLastActivitiesTypes().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getLastActivities
+        viewModel.getLastActivities().observe(this, Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                    }
+                    Status.ERROR -> {
+                    }
+                    Status.LOADING -> {
+                    }
+                }
+            }
+        })
+        //----------getUserList
+        viewModel.getUsersList().observe(this, Observer {
             it?.let { resource ->
                 dismissLoading()
                 when (resource.status) {

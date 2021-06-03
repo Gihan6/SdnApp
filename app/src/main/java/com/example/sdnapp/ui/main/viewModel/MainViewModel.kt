@@ -321,6 +321,198 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         }
     }
 
+    //getLocation----------------------------------
+    private val _getLocation = MutableLiveData<Resource<GetLocationResponse>>()
+    fun getLocation(): LiveData<Resource<GetLocationResponse>> {
+        return _getLocation
+    }
+
+    fun getLocationFromWebServices(request: GetLocationRequest) {
+        viewModelScope.launch {
+            _getLocation.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getLocation(request)
+
+                _getLocation.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getLocation.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //addNewGeo----------------------------------
+    private val _addNewGeo = MutableLiveData<Resource<AddNewGeoResponse>>()
+    fun addNewGeo(): LiveData<Resource<AddNewGeoResponse>> {
+        return _addNewGeo
+    }
+
+    fun addNewGeoToWebServices(request: AddNewGeoRequest) {
+        viewModelScope.launch {
+            _addNewGeo.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.addNewGeo(request)
+
+                _addNewGeo.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _addNewGeo.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getGeoList----------------------------------
+    private val _getGeoList = MutableLiveData<Resource<GetGeoListResponse>>()
+    fun getGeoList(): LiveData<Resource<GetGeoListResponse>> {
+        return _getGeoList
+    }
+
+    fun getGeoListFromWebServices(request: GetGeoListRequest) {
+        viewModelScope.launch {
+            _getGeoList.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getGeoLis(request)
+
+                _getGeoList.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getGeoList.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //deleteGeo----------------------------------
+    private val _deleteGeo = MutableLiveData<Resource<DeleteGeoResponse>>()
+    fun deleteGeo(): LiveData<Resource<DeleteGeoResponse>> {
+        return _deleteGeo
+    }
+
+    fun deleteGeoFromWebServices(request: DeleteGeoRequest) {
+        viewModelScope.launch {
+            _deleteGeo.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.deleteGeo(request)
+
+                _deleteGeo.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _deleteGeo.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getActivities----------------------------------
+    private val _getActivities = MutableLiveData<Resource<GetActivitiesResponse>>()
+    fun getActivities(): LiveData<Resource<GetActivitiesResponse>> {
+        return _getActivities
+    }
+
+    fun getActivitiesFromWebServices(request: GetActivitiesRequest) {
+        viewModelScope.launch {
+            _getActivities.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getActivities(request)
+
+                _getActivities.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getActivities.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getLastActivitiesTypes----------------------------------
+    private val _getLastActivitiesTypes = MutableLiveData<Resource<GetLatsActivitiesTypesResponse>>()
+    fun getLastActivitiesTypes(): LiveData<Resource<GetLatsActivitiesTypesResponse>> {
+        return _getLastActivitiesTypes
+    }
+
+    fun getLastActivitiesTypesFromWebServices(request: GetLatsActivitiesTypesRequest) {
+        viewModelScope.launch {
+            _getLastActivitiesTypes.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getLatActivitiesType(request)
+
+                _getLastActivitiesTypes.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getLastActivitiesTypes.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getLastActivities----------------------------------
+    private val _getLastActivities = MutableLiveData<Resource<GetLastActivitiesResponse>>()
+    fun getLastActivities(): LiveData<Resource<GetLastActivitiesResponse>> {
+        return _getLastActivities
+    }
+
+    fun getLastActivitiesFromWebServices(request: GetLastActivitiesRequest) {
+        viewModelScope.launch {
+            _getLastActivities.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getLatActivities(request)
+
+                _getLastActivities.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getLastActivities.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
+    //getUsersList----------------------------------
+    private val _getUsersList = MutableLiveData<Resource<GetUsersListResponse>>()
+    fun getUsersList(): LiveData<Resource<GetUsersListResponse>> {
+        return _getUsersList
+    }
+
+    fun getUsersListFromWebServices(request: GetUsersListRequest) {
+        viewModelScope.launch {
+            _getUsersList.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.getUsersList(request)
+
+                _getUsersList.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _getUsersList.postValue(
+                        Resource.error(
+                                data = null,
+                                message = exception.message ?: "Error Occurred!$exception"
+                        )
+                )
+            }
+        }
+    }
+
     //addUser----------------------------------
     private val _addUser = MutableLiveData<Resource<AddUserResponse>>()
     fun addUSer(): LiveData<Resource<AddUserResponse>> {
