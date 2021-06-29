@@ -53,8 +53,6 @@ class MainActivity : BaseActivity(), ListenerAdapter {
 
     private fun getDataFromServer() {
         showLoading()
-        viewModel.getSessionTokenFromWebServices(
-                SessionTokenRequest("", "", true))
 
         viewModel.getAccountEventFromWebServices(
                 AccountEventRequest(

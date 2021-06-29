@@ -10,32 +10,14 @@ import com.google.gson.annotations.SerializedName
 
 data class Repo(
     @PrimaryKey
-    @ColumnInfo(name = "Id")
+    @ColumnInfo(name = "id")
     @SerializedName("id")
-    var id: Long,
-    @SerializedName("name")
-    @ColumnInfo(name = "name")
-    var name: String,
-    @SerializedName("full_name")
-    @Expose
-    var fullName: String,
-
-    @SerializedName("description")
-    @ColumnInfo(name = "description")
-    var description: String?,
-    @SerializedName("fork")
-    @ColumnInfo(name = "fork")
-    var fork: Boolean,
-    @SerializedName("url")
-    @ColumnInfo(name = "url")
-    var url: String,
-
-//
-    @SerializedName("login")
-    @ColumnInfo(name = "login")
-    var login: String,
-    @SerializedName("url")
-    @ColumnInfo(name = "ownerUrl")
-    var ownerUrl: String
+    var id: Int,
+    @ColumnInfo(name = "userid")
+    @SerializedName("userid")
+    var userid: String,
+    @SerializedName("token")
+    @ColumnInfo(name = "token")
+    var token: String
 )
 

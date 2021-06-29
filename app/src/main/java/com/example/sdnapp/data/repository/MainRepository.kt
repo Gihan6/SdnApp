@@ -1,8 +1,13 @@
 package com.example.sdnapp.data.repository
 
+import android.util.Log
 import com.example.sdnapp.data.api.ApiHelper
 import com.example.sdnapp.data.networkModels.request.*
 import com.example.sdnapp.db.DataBase
+import com.example.sdnapp.db.Repo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -169,30 +174,38 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
 
     suspend fun getTagsList(request: GetTagsListRequest) =
             apiHelper.getTagsList(request)
-//    suspend fun saveRepos(repos: List<Repo>) {
-//        try {
-//            withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {
-//                for (repo in repos) {
-//                    dataBase.repoDao().insert(repo)
-//                }
-//            }
-//        } catch (e: Exception) {
-//            Log.e("dataBase", e.toString())
-//        }
-//    }
 
-//    suspend fun clearRepo() {
-//        try {
-//            withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {
-//                dataBase.repoDao().clear()
-//            }
-//        } catch (e: Exception) {
-//            Log.e("dataBase", e.toString())
-//
-//        }
-//
-//
-//    }
+    suspend fun saveUser(repo: Repo) {
+        try {
+            withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {
+                    dataBase.repoDao().insert(repo)
+            }
+        } catch (e: Exception) {
+            Log.e("dataBase", e.toString())
+        }
+    }
+    suspend fun getUser() : Repo? {
+        return try {
+            withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {
+                dataBase.repoDao().getUser()
+            }
+        } catch (e: Exception) {
+            Log.e("dataBase", e.toString())
+            return null
+        }
+    }
+    suspend fun clearRepo() {
+        try {
+            withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {
+                dataBase.repoDao().clear()
+            }
+        } catch (e: Exception) {
+            Log.e("dataBase", e.toString())
+
+        }
+
+
+    }
 
 //    suspend fun search(keyWord:String): List<Repo> {
 //       return try {
