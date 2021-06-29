@@ -7,21 +7,26 @@ import com.example.sdnapp.data.networkModels.request.*
 import com.example.sdnapp.db.Repo
 import com.example.sdnapp.ui.base.BaseActivity
 import com.example.sdnapp.ui.main.adapter.ListenerAdapter
-import com.example.sdnapp.ui.main.adapter.MainAdapter
 import com.example.sdnapp.ui.main.viewModel.MainViewModel
 import com.example.sdnapp.util.Status
+import com.google.android.gms.maps.SupportMapFragment.newInstance
 import org.koin.android.ext.android.inject
 
 
 class MainActivity : BaseActivity(), ListenerAdapter {
 
     private val viewModel by inject<MainViewModel>()
-    private lateinit var adapter: MainAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val mapFragment = MapsFragment()
+        supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragmentContainer, mapFragment)
+                .commit()
         initListenerForViewModel()
         getDataFromServer()
 
@@ -126,7 +131,7 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                         "", 1, ""))
 
         viewModel.getUsersListFromWebServices(
-                GetUsersListRequest())
+                GetUsersListRequest("", "", 1, ""))
 
         viewModel.addUserToWebServices(AddUserRequest(
                 "", "", "", "", true,

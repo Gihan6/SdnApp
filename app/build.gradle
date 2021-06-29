@@ -45,6 +45,7 @@ android {
 
 dependencies {
 
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
     def room_version = "2.3.0"
     def koin_version = "2.1.5"
 
