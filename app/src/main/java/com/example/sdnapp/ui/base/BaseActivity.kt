@@ -8,12 +8,14 @@ open class BaseActivity : AppCompatActivity() {
 
     fun showLoading(){
         if (mProgressDialog == null) {
+            mProgressDialog = ProgressDialog()
             mProgressDialog.show(supportFragmentManager,"")
         }else{
             mProgressDialog.show(supportFragmentManager,"")
         }
     }
     fun dismissLoading(){
+        if (mProgressDialog != null && mProgressDialog.isVisible)
             mProgressDialog.dismiss()
     }
 

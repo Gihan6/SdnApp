@@ -13,28 +13,6 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
-    private val sessionToken = MutableLiveData<Resource<SessionTokenResponse>>()
-    fun getSessionToken(): LiveData<Resource<SessionTokenResponse>> {
-        return sessionToken
-    }
-
-    fun getSessionTokenFromWebServices(request: SessionTokenRequest) {
-        viewModelScope.launch {
-            sessionToken.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.getSessionTokenRepo(request)
-
-                sessionToken.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                sessionToken.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
 
     //------getAccountEvent
     private val accountEvent = MutableLiveData<Resource<AccountEventResponse>>()
@@ -681,101 +659,8 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         }
     }
 
-    //getVehicleUnit----------------------------------
-    private val _getVehicleList = MutableLiveData<Resource<GetVehicleListResponse>>()
-    fun getVehicleList(): LiveData<Resource<GetVehicleListResponse>> {
-        return _getVehicleList
-    }
 
-    fun getVehicleListFromWebServices(request: GetVehicleListRequest) {
-        viewModelScope.launch {
-            _getVehicleList.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.getVehicleList(request)
 
-                _getVehicleList.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _getVehicleList.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
-
-    //getDriverList----------------------------------
-    private val _getDriverList = MutableLiveData<Resource<GetDriverListResponse>>()
-    fun getDriverList(): LiveData<Resource<GetDriverListResponse>> {
-        return _getDriverList
-    }
-
-    fun getDriverListFromWebServices(request: GetDriverListRequest) {
-        viewModelScope.launch {
-            _getDriverList.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.getDriverList(request)
-
-                _getDriverList.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _getDriverList.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
-
-    //addDriver----------------------------------
-    private val _addDriver = MutableLiveData<Resource<AddDriverResponse>>()
-    fun addDriver(): LiveData<Resource<AddDriverResponse>> {
-        return _addDriver
-    }
-
-    fun addDriverToWebServices(request: AddDriverRequest) {
-        viewModelScope.launch {
-            _addDriver.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.addDriver(request)
-
-                _addDriver.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _addDriver.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
-
-    //addVehicle----------------------------------
-    private val _addVehicle = MutableLiveData<Resource<AddVehicleResponse>>()
-    fun addVehicle(): LiveData<Resource<AddVehicleResponse>> {
-        return _addVehicle
-    }
-
-    fun addVehicleToWebServices(request: AddVehicleRequest) {
-        viewModelScope.launch {
-            _addVehicle.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.addVehicle(request)
-
-                _addVehicle.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _addVehicle.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
 
     //updateDriverVehicle----------------------------------
     private val _updateDriverVehicle = MutableLiveData<Resource<UpdateDriverVehicleResponse>>()

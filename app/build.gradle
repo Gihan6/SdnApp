@@ -46,6 +46,11 @@ android {
 dependencies {
 
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def room_version = "2.3.0"
     def koin_version = "2.1.5"
 
@@ -99,6 +104,19 @@ dependencies {
 
     //progress loading
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+
+    implementation 'com.github.Gkemon:XML-to-PDF-generator:2.5'
+    //adapter
+    implementation "com.leodroidcoder:generic-adapter:1.0.1"
+    //edit text
+    implementation "cz.ackee.ui:TextInputLayout:1.1.0"
+    //round button
+    implementation 'com.github.sabujak-sabujak:RoundedButton:v0.1.1'
+    //dateBacker
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+
+
 
 
 }

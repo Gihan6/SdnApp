@@ -184,7 +184,7 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
             Log.e("dataBase", e.toString())
         }
     }
-    suspend fun getUser() : Repo? {
+    suspend fun getUser(): Repo? {
         return try {
             withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {
                 dataBase.repoDao().getUser()
@@ -194,16 +194,19 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
             return null
         }
     }
-    suspend fun clearRepo() {
+
+    suspend fun clearRepo(): Boolean {
+        var result=false
         try {
             withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {
                 dataBase.repoDao().clear()
+                result=true
             }
         } catch (e: Exception) {
+            result=false
             Log.e("dataBase", e.toString())
-
         }
-
+        return  result
 
     }
 

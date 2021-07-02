@@ -9,7 +9,6 @@ import com.example.sdnapp.ui.base.BaseActivity
 import com.example.sdnapp.ui.main.adapter.ListenerAdapter
 import com.example.sdnapp.ui.main.viewModel.MainViewModel
 import com.example.sdnapp.util.Status
-import com.google.android.gms.maps.SupportMapFragment.newInstance
 import org.koin.android.ext.android.inject
 
 
@@ -153,19 +152,8 @@ class MainActivity : BaseActivity(), ListenerAdapter {
 
         viewModel.saveUserUnitsToWebServices(SaveUserUnitsRequest(""))
 
-        viewModel.getVehicleListFromWebServices(
-                GetVehicleListRequest("", "", 1, ""))
 
-        viewModel.getDriverListFromWebServices(
-                GetDriverListRequest("", "", 1, ""))
 
-        viewModel.addDriverToWebServices(
-                AddDriverRequest("", "", "", "",
-                        "", "", "", 1, ""))
-
-        viewModel.addVehicleToWebServices(
-                AddVehicleRequest("", "", "", "",
-                        "", "", 1, ""))
 
         viewModel.updateDriverVehicleToWebServices(
                 UpdateDriverVehicleRequest("", "", "", "",
@@ -251,20 +239,6 @@ class MainActivity : BaseActivity(), ListenerAdapter {
 
 
     private fun initListenerForViewModel() {
-        //sessionToken----------------------------------------
-        viewModel.getSessionToken().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
         //AccountToken ----------------------------------------
         viewModel.getAccountEvent().observe(this, Observer {
             it?.let { resource ->
@@ -630,63 +604,8 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                 }
             }
         })
-        //----------saveUserUnits
-        viewModel.getVehicleList().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
-        //----------saveUserUnits
-        viewModel.getDriverList().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
 
-        //----------addDriver
-        viewModel.addDriver().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
-        //----------addVehicle
-        viewModel.addVehicle().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
+
         //----------updateDriveVehicle
         viewModel.updateDriverVehicle().observe(this, Observer {
             it?.let { resource ->

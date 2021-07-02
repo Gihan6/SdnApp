@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.sdnapp.ui.dashboard.driver.DriverFragment"
+        android:label="@string/driver"
+        tools:layout="@layout/fragment_driver" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.sdnapp.ui.dashboard.vechicle.ui.VehicleFragment"
+        android:label="@string/vehicle"
+        tools:layout="@layout/fragment_vehicle" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.sdnapp.ui.dashboard.driverVehicle.DriverVehicleFragment"
+        android:label="@string/driver_vehicle"
+        tools:layout="@layout/fragment_driver_vehicle" />
+    <fragment
+        android:id="@+id/nav_groups"
+        android:name="com.example.sdnapp.ui.dashboard.groups.GroupsFragment"
+        android:label="@string/groups"
+        tools:layout="@layout/fragment_groups" />
+    <fragment
+        android:id="@+id/nav_logOut"
+        android:name="com.example.sdnapp.ui.dashboard.setting.SettingFragment"
+        android:label="@string/setting"
+        tools:layout="@layout/fragment_setting" />
+</navigation>
