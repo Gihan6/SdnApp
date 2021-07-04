@@ -2,13 +2,16 @@ package com.example.sdnapp.data.api
 
 import com.example.sdnapp.data.networkModels.request.*
 import com.example.sdnapp.data.networkModels.response.*
+import retrofit2.http.Body
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 
 interface ApiService {
 
     @POST("user.getsessiontoken")
-    suspend fun getSessionToken(request: SessionTokenRequest): SessionTokenResponse
+    @Headers("Content-Type: application/json")
+    suspend fun getSessionToken(@Body request: SessionTokenRequest): SessionTokenResponse
 
     @POST("event.getaccountevents")
     suspend fun getAccountEvents(request: AccountEventRequest): AccountEventResponse
