@@ -1,5 +1,6 @@
 package com.example.sdnapp.ui.login
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
@@ -7,6 +8,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
@@ -15,11 +17,15 @@ import android.graphics.pdf.PdfDocument
 import android.graphics.pdf.PdfDocument.PageInfo
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.FileProvider
 import androidx.lifecycle.Observer
 import com.example.sdnapp.BuildConfig
@@ -40,6 +46,7 @@ import java.util.*
 
 class LoginActivity : BaseActivity() {
 
+    val RECORD_REQUEST_CODE=1001
     companion object {
         lateinit var loggedInUser: Repo
     }
@@ -66,13 +73,27 @@ class LoginActivity : BaseActivity() {
         viewModel.getLoggedInUserFromLocal()
 
 
+
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun login() {
+
+
         btn_login.setOnClickListener(View.OnClickListener {
-//            bitmap = loadBitmapFromView(llPdf!!, llPdf!!.width, llPdf!!.height)
-//            createPdf()
+            val permission = checkSelfPermission(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//
+//            if (permission == PackageManager.PERMISSION_GRANTED) {
+//                Log.i("TAG", "Permission to record denied")
+//                bitmap = loadBitmapFromView(llPdf!!, llPdf!!.width, llPdf!!.height)
+//                createPdf()
+//            } else {
+//                ActivityCompat.requestPermissions(this,
+//                        arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+//                        RECORD_REQUEST_CODE)
+//            }
+
             if (!et_userName.text.toString().isNullOrEmpty()
                 && !et_password.text.toString().isNullOrEmpty()
             ) {
@@ -100,9 +121,9 @@ class LoginActivity : BaseActivity() {
                     }
                     Status.ERROR -> {
                         dismissLoading()
-//                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
 
-                        goToMain()
+
                     }
                     Status.LOADING -> {
                         showLoading()
@@ -180,8 +201,12 @@ class LoginActivity : BaseActivity() {
 
         val sdf = SimpleDateFormat("dd_M_yyyy_hh_mm_ss")
         val currentDate = sdf.format(Date())
-        val targetPdf =
-                "/storage/emulated/0/Android/data/qa.ooredoo.android/files/Ooredoo/receipte$currentDate.pdf"
+//
+
+        val targetPdf= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString().toString()+"/receipt"+currentDate+".pdf"
+
+//        val targetPdf =
+//                "/storage/emulated/o/Download/receipte$currentDate.pdf"
         val filePath: File
         filePath = File(targetPdf)
         try {
@@ -195,7 +220,7 @@ class LoginActivity : BaseActivity() {
 
         // close the document
         document.close()
-        Toast.makeText(this, "PDF is created!!!", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "PDF is created!!!", Toast.LENGTH_SHORT).show()
 
         createNotification(filePath)
     }
@@ -206,9 +231,9 @@ class LoginActivity : BaseActivity() {
 
         var intent = Intent(Intent.ACTION_VIEW)
         val uri = FileProvider.getUriForFile(
-            this,
-            BuildConfig.APPLICATION_ID.toString() + ".provider",
-            file
+                this,
+                BuildConfig.APPLICATION_ID.toString() + ".provider",
+                file
         )
 
         intent.setDataAndType(uri, "application/pdf")
@@ -217,18 +242,18 @@ class LoginActivity : BaseActivity() {
 
 
         val pendingIntent = PendingIntent.getActivity(
-            this,
-            0,
-            intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+                this,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
         )
 
         // checking if android version is greater than oreo(API 26) or not
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notificationChannel = NotificationChannel(
-                channelId,
-                description,
-                NotificationManager.IMPORTANCE_HIGH
+                    channelId,
+                    description,
+                    NotificationManager.IMPORTANCE_HIGH
             )
             notificationChannel.enableLights(true)
             notificationChannel.enableVibration(true)
@@ -252,6 +277,22 @@ class LoginActivity : BaseActivity() {
         }
         notificationManager.notify(1234, builder.build())
 
+
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+                when (requestCode) {
+                    RECORD_REQUEST_CODE -> {
+
+                        if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+
+                            Log.i("TAG", "Permission has been denied by user")
+                        } else {
+                            Log.i("TAG", "Permission has been granted by user")
+                        }
+                    }
+        }
 
     }
 

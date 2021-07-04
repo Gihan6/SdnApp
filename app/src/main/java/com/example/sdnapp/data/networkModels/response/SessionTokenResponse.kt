@@ -7,7 +7,7 @@ data class SessionTokenResponse(
     @SerializedName("type")
     @Expose
     var type: String,
-    @SerializedName("Data")
+    @SerializedName("data")
     @Expose
     var data: Data
 ) {

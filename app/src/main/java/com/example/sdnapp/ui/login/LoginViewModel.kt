@@ -26,10 +26,9 @@ class LoginViewModel(private val mainRepository: MainRepository) : ViewModel() {
                 val response = mainRepository.getSessionTokenRepo(request)
                 sessionToken.postValue(Resource.success(data = response))
                 if (response.data!=null){
-                    mainRepository.saveUser(Repo(1,response.data.userid,response.data.userid))
+                    mainRepository.saveUser(Repo(1,response.data.userid,response.data.token))
                 }
             } catch (exception: Exception) {
-                    mainRepository.saveUser(Repo(1,"Gihan","test data "))
 
                 sessionToken.postValue(
                     Resource.error(

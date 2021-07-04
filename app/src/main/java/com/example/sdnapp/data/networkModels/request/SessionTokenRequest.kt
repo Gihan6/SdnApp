@@ -10,5 +10,13 @@ data class SessionTokenRequest(
     @SerializedName("password")
     @Expose var password: String,
     @SerializedName("raw")
-    @Expose var raw: Boolean
+    @Expose var raw: Boolean,
+    @SerializedName("userid")
+    @Expose var userid: String="-200",
+    @SerializedName("token")
+    @Expose var token: String="",
+    @SerializedName("app_version")
+    @Expose var app_version: Int=49,
+    @SerializedName("_userid")
+    @Expose var _userid: String="na"
 )
