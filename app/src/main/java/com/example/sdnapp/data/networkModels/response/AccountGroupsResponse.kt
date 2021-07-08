@@ -3,5 +3,15 @@ package com.example.sdnapp.data.networkModels.response
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class AccountGroupsResponse(@SerializedName("result")
-                                 @Expose var result: String)
+data class AccountGroupsResponse(
+    @SerializedName("type") val type : String,
+    @SerializedName("data") val data : List<Data>){
+    data class Data (
+
+        @SerializedName("groupid") val groupid : String,
+        @SerializedName("group_name") val group_name : String,
+        @SerializedName("accountid") val accountid : String,
+        @SerializedName("icon_url") val icon_url : String,
+        @SerializedName("units") val units : List<String>
+    )
+}

@@ -174,6 +174,8 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
 
     suspend fun getTagsList(request: GetTagsListRequest) =
             apiHelper.getTagsList(request)
+    suspend fun getConnectionStatus(request: GetConnectionStatusRequest) =
+        apiHelper.getconnectionstatus(request)
 
     suspend fun saveUser(repo: Repo) {
         try {

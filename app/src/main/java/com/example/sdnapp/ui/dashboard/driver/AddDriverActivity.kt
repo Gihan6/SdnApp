@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.sdnapp.R
 import com.example.sdnapp.data.networkModels.request.AddDriverRequest
 import com.example.sdnapp.ui.base.BaseActivity
+import com.example.sdnapp.ui.login.LoginActivity.Companion.loggedInUser
 import com.example.sdnapp.util.Status
 import kotlinx.android.synthetic.main.activity_add_driver_a_ctivity.*
 import org.koin.android.ext.android.inject
@@ -35,13 +36,14 @@ class AddDriverActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         dismissLoading()
+                        showToast(this,it.data!!.text)
                     }
                     Status.ERROR -> {
                         dismissLoading()
+                        it.message?.let { it1 -> showToast(this,it1) }
                     }
                     Status.LOADING -> {
                         showLoading()
-                        Toast.makeText(this,it.message,Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -52,8 +54,12 @@ class AddDriverActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
     private fun addDriverToWebServices() {
         viewModel.addDriverToWebServices(
             AddDriverRequest(
-                "", "", "", "",
-                "", "", "", 1, ""
+                et_addDriverActivity_driverName.text.toString(),
+                et_addDriverActivity_plate.text.toString(),
+                et_addDriverActivity_licenseStart.text.toString(),
+                et_addDriverActivity_licenseEnd.text.toString(),
+                et_addDriverActivity_currentMiles.text.toString(),
+                "-200", loggedInUser.token, 49, loggedInUser.userid
             )
         )
     }
@@ -85,7 +91,10 @@ class AddDriverActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
             View.OnClickListener
             {
 
-                finish()
+                if(validate()){
+                    addDriverToWebServices()
+                }
+
             })
     }
 
@@ -94,6 +103,32 @@ class AddDriverActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
         if (!dateBaker.isShowing)
             dateBaker.show()
 
+    }
+    private fun validate():Boolean{
+        var valid=true
+        when {
+            et_addDriverActivity_plate.text.isNullOrEmpty() -> {
+                valid=false
+                return valid
+            }
+            et_addDriverActivity_driverName.text.isNullOrEmpty() -> {
+                valid=false
+                return valid
+            }
+            et_addDriverActivity_licenseStart.text.isNullOrEmpty() -> {
+                valid=false
+                return valid
+            }
+            et_addDriverActivity_licenseEnd.text.isNullOrEmpty() -> {
+                valid=false
+                return valid
+            }
+            et_addDriverActivity_currentMiles.text.isNullOrEmpty() -> {
+                valid=false
+                return valid
+            }
+            else -> return valid
+        }
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {

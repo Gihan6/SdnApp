@@ -710,53 +710,6 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         }
     }
 
-    //account groups----------------------------------
-    private val _accountGroups = MutableLiveData<Resource<AccountGroupsResponse>>()
-    fun accountGroups(): LiveData<Resource<AccountGroupsResponse>> {
-        return _accountGroups
-    }
-
-    fun accountGroupsFromWebServices(request: AccountGroupsRequest) {
-        viewModelScope.launch {
-            _accountGroups.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.accountGroups(request)
-
-                _accountGroups.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _accountGroups.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
-
-    //add account groups----------------------------------
-    private val _addAccountGroups = MutableLiveData<Resource<AddAccountGroupsResponse>>()
-    fun addAccountGroups(): LiveData<Resource<AddAccountGroupsResponse>> {
-        return _addAccountGroups
-    }
-
-    fun addAccountGroupsFromWebServices(request: AddAccountGroupsRequest) {
-        viewModelScope.launch {
-            _addAccountGroups.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.addAccountGroups(request)
-
-                _addAccountGroups.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _addAccountGroups.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
 
     //update vehicle----------------------------------
     private val _updateVehicle = MutableLiveData<Resource<UpdateVehicleResponse>>()
@@ -1190,4 +1143,5 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
             }
         }
     }
+
 }

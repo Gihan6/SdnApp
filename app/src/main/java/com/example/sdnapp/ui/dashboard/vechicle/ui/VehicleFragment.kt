@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sdnapp.R
 import com.example.sdnapp.data.networkModels.request.GetVehicleListRequest
+import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.example.sdnapp.ui.base.BaseFragment
 import com.example.sdnapp.ui.dashboard.vechicle.adapter.VehicleAdapter
 import com.example.sdnapp.ui.dashboard.vechicle.viewModel.VehicleViewModel
@@ -62,7 +63,7 @@ class VehicleFragment : BaseFragment() {
 
     }
 
-    private fun setAdapter(data: List<String>) {
+    private fun setAdapter(data: List<GetVehicleListResponse.Data>) {
         rv_vehicleFragment_vehicles.apply {
             layoutManager = LinearLayoutManager(context)
             (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.VERTICAL
@@ -76,7 +77,7 @@ class VehicleFragment : BaseFragment() {
 
     private fun getDataFromWebServices() {
         viewModel.getVehicleListFromWebServices(
-                GetVehicleListRequest("", "", 1, ""))
+                GetVehicleListRequest())
     }
 
     private fun initViewModel() {
@@ -89,15 +90,14 @@ class VehicleFragment : BaseFragment() {
                     }
                     Status.SUCCESS -> {
                         dismissLoading()
+                        if(!it.data!!.data.isNullOrEmpty()){
+                            setAdapter(it.data!!.data)
+                        }
+
+
                     }
                     Status.ERROR -> {
-                        var data = mutableListOf<String>()
-                        data.add("")
-                        data.add("")
-                        data.add("")
-                        data.add("")
-                        setAdapter(data)
-                        dismissLoading()
+
 //                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
 

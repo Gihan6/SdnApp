@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sdnapp.R
 import com.example.sdnapp.data.networkModels.request.GetDriverListRequest
+import com.example.sdnapp.data.networkModels.response.GetDriverListResponse
 import com.example.sdnapp.ui.base.BaseFragment
 import com.example.sdnapp.ui.dashboard.driver.adapter.DriverAdapter
 import com.example.sdnapp.util.Status
@@ -57,7 +58,7 @@ class DriverFragment : BaseFragment() {
 
     }
 
-    private fun setAdapter(data: List<String>) {
+    private fun setAdapter(data: List<GetDriverListResponse.Data>) {
         rv_driverFragment_drivers.apply {
             layoutManager = LinearLayoutManager(context)
             (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.VERTICAL
@@ -70,8 +71,7 @@ class DriverFragment : BaseFragment() {
     }
 
     private fun getDataFromWebservices() {
-        viewModel.getDriverListFromWebServices(
-                GetDriverListRequest("", "", 1, ""))
+        viewModel.getDriverListFromWebServices(GetDriverListRequest())
 
     }
 
@@ -82,21 +82,16 @@ class DriverFragment : BaseFragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         dismissLoading()
+                        if (it.data!!.data!=null){
+                            setAdapter(it.data.data)
+                        }
                     }
                     Status.ERROR -> {
                         dismissLoading()
-                        var data = mutableListOf<String>()
-                        data.add("")
-                        data.add("")
-                        data.add("")
-                        data.add("")
-                        setAdapter(data)
-//                        Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+                        it.message?.let { it1 -> showToast(requireContext(),it1) }
                     }
-
                     Status.LOADING -> {
                         dismissLoading()
-
                     }
                 }
             }

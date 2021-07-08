@@ -2,6 +2,7 @@ package com.example.sdnapp.data.api
 
 
 import com.example.sdnapp.BuildConfig
+import com.example.sdnapp.data.api.RestAdapter.getUnsafeOkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -9,8 +10,10 @@ object RetrofitBuilder {
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BuildConfig.BASE_URL)
+                .client(getUnsafeOkHttpClient().build())
+
+                .addConverterFactory(GsonConverterFactory.create())
             .build() //Doesn't require the adapter
     }
 

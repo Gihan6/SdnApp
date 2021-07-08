@@ -21,7 +21,7 @@ class App : Application() {
             //  (https://github.com/InsertKoinIO/koin/issues/847)
             koin.loadModules(listOf(appModules, viewModelModule, loginViewModelModule,
             vehicleViewModelModule, driverViewModelModule, groupsViewModelModule,
-            settingViewModelModule))
+            settingViewModelModule, liveTrackViewModel))
             koin.createRootScope()
 
         }

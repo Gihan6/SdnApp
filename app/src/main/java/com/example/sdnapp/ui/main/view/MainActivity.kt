@@ -163,12 +163,8 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                 UpdateCameraVehicleRequest("", "", "", "",
                         "", "", 1, ""))
 
-        viewModel.accountGroupsFromWebServices(
-                AccountGroupsRequest("", "", 1, ""))
 
-        viewModel.addAccountGroupsFromWebServices(
-                AddAccountGroupsRequest("", "", "",
-                        "", 1, ""))
+
 
         viewModel.updateVehicleToWebServices(UpdateVehicleRequest(""))
 
@@ -634,34 +630,8 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                 }
             }
         })
-        //----------accountGroups
-        viewModel.accountGroups().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
-        //----------addAccountGroup
-        viewModel.addAccountGroups().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
+
+
         //----------addAccountGroup
         viewModel.updateVehicle().observe(this, Observer {
             it?.let { resource ->

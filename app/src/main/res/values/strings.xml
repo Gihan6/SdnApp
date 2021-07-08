@@ -19,4 +19,5 @@
     <string name="vehicle">Vehicle</string>
     <string name="driver_vehicle">Driver Vehicle</string>
     <string name="groups">Groups</string>
+    <string name="live_tracking">Live Tracking</string>
 </resources>

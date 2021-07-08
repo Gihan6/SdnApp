@@ -33,7 +33,7 @@ class DialogGroupsAdapter(context: Context, listener: OnRecyclerItemClickListene
 
         override fun onBind(item: GroupModel) {
 
-            itemView.cb_group.text = item.name
+            itemView.cb_group.text = item.data.group_name
             itemView.cb_group.isChecked = item.select
 
         }

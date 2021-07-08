@@ -137,4 +137,7 @@ class ApiHelper (private val apiService: ApiService) {
 
     suspend fun getTagsList(request: GetTagsListRequest) =
             apiService.getTagsList(request)
+
+    suspend fun getconnectionstatus(request: GetConnectionStatusRequest) =
+        apiService.getconnectionstatus(request)
 }

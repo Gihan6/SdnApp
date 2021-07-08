@@ -48,7 +48,6 @@ class DriverViewModel(private val mainRepository: MainRepository) : ViewModel() 
             _addDriver.postValue(Resource.loading(data = null))
             try {
                 val response = mainRepository.addDriver(request)
-
                 _addDriver.postValue(Resource.success(data = response))
             } catch (exception: Exception) {
                 _addDriver.postValue(

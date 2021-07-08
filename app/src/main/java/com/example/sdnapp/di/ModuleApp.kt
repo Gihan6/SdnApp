@@ -8,6 +8,7 @@ import com.example.sdnapp.db.DataBase
 import com.example.sdnapp.ui.dashboard.driver.DriverViewModel
 import com.example.sdnapp.ui.dashboard.driverVehicle.DriverVehicleViewModel
 import com.example.sdnapp.ui.dashboard.groups.GroupsViewModel
+import com.example.sdnapp.ui.dashboard.liveTracking.LiveTrackViewModel
 import com.example.sdnapp.ui.dashboard.setting.SettingViewModel
 import com.example.sdnapp.ui.dashboard.vechicle.viewModel.VehicleViewModel
 import com.example.sdnapp.ui.login.LoginViewModel
@@ -43,4 +44,7 @@ val groupsViewModelModule = module {
 }
 val settingViewModelModule = module {
     viewModel { SettingViewModel(get()) }
+}
+val liveTrackViewModel = module {
+    viewModel { LiveTrackViewModel(get()) }
 }

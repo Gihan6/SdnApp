@@ -135,21 +135,17 @@ class LoginActivity : BaseActivity() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        dismissLoading()
+
                         if (it.data != null) {
                             loggedInUser = it.data
                             goToMain()
                         }
-
                     }
                     Status.ERROR -> {
-                        dismissLoading()
-                        goToMain()
-//                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
 
                     }
                     Status.LOADING -> {
-//                        showLoading()
 
                     }
                 }

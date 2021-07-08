@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.sdnapp.data.networkModels.request.AccountGroupsRequest
 import com.example.sdnapp.data.networkModels.request.AddVehicleRequest
 import com.example.sdnapp.data.networkModels.request.GetVehicleListRequest
+import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import com.example.sdnapp.data.networkModels.response.AddVehicleResponse
 import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.example.sdnapp.data.repository.MainRepository
@@ -60,4 +62,29 @@ class VehicleViewModel(private val mainRepository: MainRepository) : ViewModel()
             }
         }
     }
+
+    //account groups----------------------------------
+    private val _accountGroups = MutableLiveData<Resource<AccountGroupsResponse>>()
+    fun accountGroups(): LiveData<Resource<AccountGroupsResponse>> {
+        return _accountGroups
+    }
+
+    fun accountGroupsFromWebServices(request: AccountGroupsRequest) {
+        viewModelScope.launch {
+            _accountGroups.postValue(Resource.loading(data = null))
+            try {
+                val response = mainRepository.accountGroups(request)
+
+                _accountGroups.postValue(Resource.success(data = response))
+            } catch (exception: Exception) {
+                _accountGroups.postValue(
+                    Resource.error(
+                        data = null,
+                        message = exception.message ?: "Error Occurred!$exception"
+                    )
+                )
+            }
+        }
+    }
+
 }

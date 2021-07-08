@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.dashboard.liveTracking.LiveFragment">
+
+
+    <TextView
+        android:id="@+id/tv_liveTrackingFragment_online"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:text="12"
+        android:textColor="@color/teal_200"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_liveTrackingFragment_offline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:text="32"
+        android:textColor="@color/mdtp_red_focused"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tv_liveTrackingFragment_online"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/sp_liveTrackingFragment_groups"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp"
+        android:padding="@dimen/_4sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_liveTrackingFragment_offline" />
+
+    <EditText
+        android:id="@+id/tv_liveTrackingFragment_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp"
+        android:hint="Search"
+        android:padding="@dimen/_4sdp"
+        app:layout_constraintTop_toBottomOf="@+id/sp_liveTrackingFragment_groups" />
+
+    <CheckBox
+        android:id="@+id/cb_liveTrackingFragment_selectAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:padding="@dimen/_8sdp"
+        android:text="Select All"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_liveTrackingFragment_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_liveTrackingFragment_vehicle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_4sdp"
+        android:padding="@dimen/_4sdp"
+        app:layout_constraintTop_toBottomOf="@+id/cb_liveTrackingFragment_selectAll" />
+</androidx.constraintlayout.widget.ConstraintLayout>

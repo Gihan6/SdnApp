@@ -4,14 +4,15 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import com.example.sdnapp.R
-import com.example.sdnapp.ui.dashboard.vechicle.adapter.GroupsAdapter
+import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import com.leodroidcoder.genericadapter.BaseViewHolder
 import com.leodroidcoder.genericadapter.GenericRecyclerViewAdapter
 import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
+import kotlinx.android.synthetic.main.single_layout_main_group.view.*
 
-class MainGroupsAdapter (context: Context, listener: OnRecyclerItemClickListener) :
-    GenericRecyclerViewAdapter<String, OnRecyclerItemClickListener,
-            MainGroupsAdapter.BenefitsViewHolder>(context, listener) {
+class MainGroupsAdapter(context: Context, listener: OnRecyclerItemClickListener) :
+        GenericRecyclerViewAdapter<AccountGroupsResponse.Data, OnRecyclerItemClickListener,
+                MainGroupsAdapter.BenefitsViewHolder>(context, listener) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BenefitsViewHolder {
@@ -20,19 +21,22 @@ class MainGroupsAdapter (context: Context, listener: OnRecyclerItemClickListener
 
 
     inner class BenefitsViewHolder(
-        itemView: View,
-        private val listener: OnRecyclerItemClickListener
+            itemView: View,
+            private val listener: OnRecyclerItemClickListener
     ) :
-        BaseViewHolder<String, OnRecyclerItemClickListener>(itemView, listener),
-        View.OnClickListener {
+            BaseViewHolder<AccountGroupsResponse.Data, OnRecyclerItemClickListener>(itemView, listener),
+            View.OnClickListener {
 
         init {
 
             itemView.setOnClickListener(this)
         }
 
-        override fun onBind(item: String) {
-//            Glide.with(itemView.iv_icon.context).load(item).into(itemView.iv_icon)
+        override fun onBind(item: AccountGroupsResponse.Data) {
+            itemView.tv_fragmentGroup_groupName.text = item.group_name
+            if (!item.units.isNullOrEmpty())
+                itemView.tv_fragmentGroup_memberNumber.text = item.units.size.toString()
+
 
         }
 

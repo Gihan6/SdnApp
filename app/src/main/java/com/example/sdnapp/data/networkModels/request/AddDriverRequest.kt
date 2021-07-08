@@ -1,24 +1,17 @@
 package com.example.sdnapp.data.networkModels.request
 
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class AddDriverRequest(@SerializedName("driver_name")
-                            @Expose var driver_name: String,
-                            @SerializedName("license_number")
-                            @Expose var license_number: String,
-                            @SerializedName("license_start")
-                            @Expose var license_start: String,
-                            @SerializedName("license_end")
-                            @Expose var license_end: String,
-                            @SerializedName("current_mileage")
-                            @Expose var current_mileage: String,
-                            @SerializedName("userid")
-                            @Expose var userid: String,
-                            @SerializedName("token")
-                            @Expose var token: String,
-                            @SerializedName("app_version")
-                            @Expose var app_version: Int,
-                            @SerializedName("_userid")
-                            @Expose var _userid: String)
+data class AddDriverRequest(
+    @SerializedName("driver_name") val driver_name: String,
+    @SerializedName("license_number") val license_number: String,
+    @SerializedName("license_start") val license_start: String,
+    @SerializedName("license_end") val license_end: String,
+    @SerializedName("current_mileage") var current_mileage: String,
+    @SerializedName("userid") val userid: String,
+    @SerializedName("token") val token: String,
+    @SerializedName("app_version") val app_version: Int,
+    @SerializedName("_userid") val _userid: String
+)
+
 

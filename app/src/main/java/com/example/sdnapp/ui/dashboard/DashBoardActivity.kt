@@ -30,7 +30,7 @@ class DashBoardActivity : BaseActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_groups, R.id.nav_logOut
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_groups,R.id.nav_liveTracking, R.id.nav_logOut
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

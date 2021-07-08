@@ -96,16 +96,20 @@ interface ApiService {
     suspend fun saveUserUnits(request: SaveUserUnitsRequest): SaveUserUnitsResponse
 
     @POST("vehicle.getvehiclelist")
-    suspend fun getVehicleList(request: GetVehicleListRequest): GetVehicleListResponse
+    @Headers("Content-Type: application/json")
+    suspend fun getVehicleList(@Body request: GetVehicleListRequest): GetVehicleListResponse
 
     @POST("driver.getdriverlist")
-    suspend fun getDriverList(request: GetDriverListRequest): GetDriverListResponse
+    @Headers("Content-Type: application/json")
+    suspend fun getDriverList(@Body request: GetDriverListRequest): GetDriverListResponse
 
     @POST("driver.adddriver")
-    suspend fun addDriver(request: AddDriverRequest): AddDriverResponse
+    @Headers("Content-Type: application/json")
+    suspend fun addDriver(@Body request: AddDriverRequest): AddDriverResponse
 
     @POST("vehicle.addvehicle")
-    suspend fun addVehicle(request: AddVehicleRequest): AddVehicleResponse
+    @Headers("Content-Type: application/json")
+    suspend fun addVehicle(@Body request: AddVehicleRequest): AddVehicleResponse
 
     @POST("driver.updatedrivervehicle")
     suspend fun updateDriverVehicle(request: UpdateDriverVehicleRequest):
@@ -115,11 +119,13 @@ interface ApiService {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest):
             UpdateCameraVehicleResponse
 
+    @Headers("Content-Type: application/json")
     @POST("groups.accountGroups")
-    suspend fun accountGroups(request: AccountGroupsRequest): AccountGroupsResponse
+    suspend fun accountGroups(@Body request: AccountGroupsRequest): AccountGroupsResponse
 
+    @Headers("Content-Type: application/json")
     @POST("groups.addAccountGroups")
-    suspend fun addAccountGroups(request: AddAccountGroupsRequest): AddAccountGroupsResponse
+    suspend fun addAccountGroups(@Body request: AddAccountGroupsRequest): AddAccountGroupsResponse
 
     @POST("vehicle.updatevehicle")
     suspend fun updateVehicle(request: UpdateVehicleRequest): UpdateVehicleResponse
@@ -178,6 +184,11 @@ interface ApiService {
     @POST("event.gettagslist")
     suspend fun getTagsList(request: GetTagsListRequest): GetTagsListResponse
 
+
+
+    @POST("location.getconnectionstatus")
+    @Headers("Content-Type: application/json")
+    suspend fun getconnectionstatus(@Body request: GetConnectionStatusRequest): GetConnectionStatusResponse
 
 
 

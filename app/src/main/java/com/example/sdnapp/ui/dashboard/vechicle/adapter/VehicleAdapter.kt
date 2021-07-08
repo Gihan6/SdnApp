@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sdnapp.R
+import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.leodroidcoder.genericadapter.BaseViewHolder
 import com.leodroidcoder.genericadapter.GenericRecyclerViewAdapter
 import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.single_layout_vehicle.view.*
 
 
 class VehicleAdapter(context: Context, listener: OnRecyclerItemClickListener) :
-        GenericRecyclerViewAdapter<String, OnRecyclerItemClickListener,
+        GenericRecyclerViewAdapter<GetVehicleListResponse.Data, OnRecyclerItemClickListener,
                 VehicleAdapter.BenefitsViewHolder>(context, listener) {
 
     lateinit var groupsAdapter: GroupsAdapter
@@ -22,7 +23,7 @@ class VehicleAdapter(context: Context, listener: OnRecyclerItemClickListener) :
 
 
     inner class BenefitsViewHolder(itemView: View, private val listener: OnRecyclerItemClickListener) :
-            BaseViewHolder<String, OnRecyclerItemClickListener>(itemView, listener), View.OnClickListener {
+            BaseViewHolder<GetVehicleListResponse.Data, OnRecyclerItemClickListener>(itemView, listener), View.OnClickListener {
 
         init {
             groupsAdapter = GroupsAdapter(
@@ -33,23 +34,25 @@ class VehicleAdapter(context: Context, listener: OnRecyclerItemClickListener) :
             itemView.setOnClickListener(this)
         }
 
-        override fun onBind(item: String) {
-//            Glide.with(itemView.iv_icon.context).load(item).into(itemView.iv_icon)
+        override fun onBind(item: GetVehicleListResponse.Data) {
 
-            var data = mutableListOf<String>()
-            data.add("")
-            data.add("")
-            data.add("")
+            itemView.tv_singleLayoutVehicle_vehicleName.text=item.vehicle_name.toString()
+            itemView.tv_singleLayoutVehicle_plate.text=item.plate_no
+            itemView.tv_singleLayoutVehicle_startDate.text=item.license_start
+            itemView.tv_singleLayoutVehicle_endDate.text=item.license_end
+            itemView.tv_singleLayoutVehicle_mileAge.text=item.current_mileage.toString()
 
-            itemView.rv_singleLayoutVehicle_groups.apply {
-                layoutManager = LinearLayoutManager(context)
-                (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.HORIZONTAL
-                itemView.rv_singleLayoutVehicle_groups.layoutManager = layoutManager
-                adapter = groupsAdapter
+            if (item.groups!=null&& item.groups.isNotEmpty()) {
+                itemView.rv_singleLayoutVehicle_groups.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    (layoutManager as LinearLayoutManager).orientation =
+                        LinearLayoutManager.HORIZONTAL
+                    itemView.rv_singleLayoutVehicle_groups.layoutManager = layoutManager
+                    adapter = groupsAdapter
+                }
+                groupsAdapter.items = item.groups
+
             }
-            groupsAdapter.items = data
-
-
         }
 
         override fun onClick(view: View) {

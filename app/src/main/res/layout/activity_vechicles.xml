@@ -25,13 +25,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-
             app:layout_constraintTop_toTopOf="parent">
 
             <cz.ackee.ui.textfield.TextInputLayout
-
-                android:id="@+id/ti_plate"
+                android:id="@+id/ti_addVehicleActivity_plate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -53,10 +50,10 @@
                 app:hintPaddingTop="12dp"
                 app:hintTextColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent"
-
                 >
 
                 <cz.ackee.ui.textfield.TextInputEditText
+                    android:id="@+id/et_addVehicleActivity_plate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -69,7 +66,7 @@
 
             <cz.ackee.ui.textfield.TextInputLayout
 
-                android:id="@+id/ti_vehicleName"
+                android:id="@+id/ti_addVehicleActivity_vehicleName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -90,11 +87,12 @@
                 app:hintEnabled="true"
                 app:hintPaddingTop="12dp"
                 app:hintTextColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/ti_plate"
+                app:layout_constraintTop_toBottomOf="@+id/ti_addVehicleActivity_plate"
 
                 >
 
                 <cz.ackee.ui.textfield.TextInputEditText
+                    android:id="@+id/et_addVehicleActivity_vehicleName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -107,7 +105,7 @@
 
             <cz.ackee.ui.textfield.TextInputLayout
 
-                android:id="@+id/ti_licenseStart"
+                android:id="@+id/ti_addVehicleActivity_licenseStart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -128,12 +126,12 @@
                 app:hintEnabled="true"
                 app:hintPaddingTop="12dp"
                 app:hintTextColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/ti_vehicleName"
+                app:layout_constraintTop_toBottomOf="@+id/ti_addVehicleActivity_vehicleName"
 
                 >
 
                 <cz.ackee.ui.textfield.TextInputEditText
-                    android:id="@+id/et_licenseStart"
+                    android:id="@+id/et_addVehicleActivity_licenseStart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -147,7 +145,7 @@
 
             <cz.ackee.ui.textfield.TextInputLayout
 
-                android:id="@+id/ti_licenseEnd"
+                android:id="@+id/ti_addVehicleActivity_licenseEnd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -168,12 +166,12 @@
                 app:hintEnabled="true"
                 app:hintPaddingTop="12dp"
                 app:hintTextColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/ti_licenseStart"
+                app:layout_constraintTop_toBottomOf="@+id/ti_addVehicleActivity_licenseStart"
 
                 >
 
                 <cz.ackee.ui.textfield.TextInputEditText
-                    android:id="@+id/et_licenseEnd"
+                    android:id="@+id/et_addVehicleActivity_licenseEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -187,7 +185,7 @@
 
             <cz.ackee.ui.textfield.TextInputLayout
 
-                android:id="@+id/ti_unitId"
+                android:id="@+id/ti_addVehicleActivity_unitId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -208,11 +206,12 @@
                 app:hintEnabled="true"
                 app:hintPaddingTop="12dp"
                 app:hintTextColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/ti_licenseEnd"
+                app:layout_constraintTop_toBottomOf="@+id/ti_addVehicleActivity_licenseEnd"
 
                 >
 
                 <cz.ackee.ui.textfield.TextInputEditText
+                    android:id="@+id/et_addVehicleActivity_gpsUnit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -225,7 +224,7 @@
 
             <cz.ackee.ui.textfield.TextInputLayout
 
-                android:id="@+id/ti_currentMiles"
+                android:id="@+id/ti_addVehicleActivity_currentMiles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -246,11 +245,12 @@
                 app:hintEnabled="true"
                 app:hintPaddingTop="12dp"
                 app:hintTextColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/ti_unitId"
+                app:layout_constraintTop_toBottomOf="@+id/ti_addVehicleActivity_unitId"
 
                 >
 
                 <cz.ackee.ui.textfield.TextInputEditText
+                    android:id="@+id/et_addVehicleActivity_currentMilAge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -264,7 +264,7 @@
 
             <cz.ackee.ui.textfield.TextInputLayout
 
-                android:id="@+id/ti_groups"
+                android:id="@+id/ti_addVehicleActivity_groups"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -286,12 +286,12 @@
                 app:hintEnabled="true"
                 app:hintPaddingTop="12dp"
                 app:hintTextColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/ti_currentMiles"
+                app:layout_constraintTop_toBottomOf="@+id/ti_addVehicleActivity_currentMiles"
 
                 >
 
                 <cz.ackee.ui.textfield.TextInputEditText
-                    android:id="@+id/et_group"
+                    android:id="@+id/et_addVehicleActivity_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -305,7 +305,7 @@
 
             <cz.ackee.ui.textfield.TextInputLayout
 
-                android:id="@+id/ti_sim"
+                android:id="@+id/ti_addVehicleActivity_sim"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -326,10 +326,11 @@
                 app:hintEnabled="true"
                 app:hintPaddingTop="12dp"
                 app:hintTextColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/ti_groups">
+                app:layout_constraintTop_toBottomOf="@+id/ti_addVehicleActivity_groups">
 
 
                 <cz.ackee.ui.textfield.TextInputEditText
+                    android:id="@+id/et_addVehicleActivity_sim"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -342,7 +343,7 @@
 
             <cz.ackee.ui.textfield.TextInputLayout
 
-                android:id="@+id/ti_maxSpeed"
+                android:id="@+id/ti_addVehicleActivity_maxSpeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -363,10 +364,11 @@
                 app:hintEnabled="true"
                 app:hintPaddingTop="12dp"
                 app:hintTextColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/ti_sim">
+                app:layout_constraintTop_toBottomOf="@+id/ti_addVehicleActivity_sim">
 
 
                 <cz.ackee.ui.textfield.TextInputEditText
+                    android:id="@+id/et_addVehicleActivity_maxSpeed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -379,7 +381,7 @@
             </cz.ackee.ui.textfield.TextInputLayout>
 
             <life.sabujak.roundedbutton.RoundedButton
-                android:id="@+id/btn_save"
+                android:id="@+id/btn_addVehicleActivity_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="24dp"
@@ -392,12 +394,12 @@
                 app:buttonGradientEndColor="@color/teal_200"
                 app:buttonGradientStartColor="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ti_maxSpeed" />
+                app:layout_constraintTop_toBottomOf="@+id/ti_addVehicleActivity_maxSpeed" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_70sdp"
-                app:layout_constraintTop_toBottomOf="@+id/btn_save" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_addVehicleActivity_save" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

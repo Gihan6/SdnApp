@@ -15,5 +15,5 @@ data class AccountEventRequest(
     @SerializedName("app_version")
     @Expose var app_version: Int,
     @SerializedName("_userid")
-    @Expose var _userid: String,
+    @Expose var _userid: String
 )
