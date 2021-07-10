@@ -2,9 +2,7 @@ package com.example.sdnapp.data.api
 
 import com.example.sdnapp.data.networkModels.request.*
 import com.example.sdnapp.data.networkModels.response.*
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 interface ApiService {
@@ -119,11 +117,13 @@ interface ApiService {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest):
             UpdateCameraVehicleResponse
 
-    @Headers("Content-Type: application/json")
+    @FormUrlEncoded
     @POST("groups.accountGroups")
-    suspend fun accountGroups(@Body request: AccountGroupsRequest): AccountGroupsResponse
+    suspend fun accountGroups(@Field("userid") userid: String,
+                              @Field("token") token: String,
+                              @Field("app_version") app_version: Int,
+                              @Field("_userid") _userid: String): AccountGroupsResponse
 
-    @Headers("Content-Type: application/json")
     @POST("groups.addAccountGroups")
     suspend fun addAccountGroups(@Body request: AddAccountGroupsRequest): AddAccountGroupsResponse
 

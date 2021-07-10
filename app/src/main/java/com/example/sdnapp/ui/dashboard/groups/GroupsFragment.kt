@@ -77,7 +77,6 @@ class GroupsFragment : BaseFragment() {
     }
     private fun getGroups() {
         viewModel.accountGroupsFromWebServices(
-                AccountGroupsRequest()
         )
 
     }

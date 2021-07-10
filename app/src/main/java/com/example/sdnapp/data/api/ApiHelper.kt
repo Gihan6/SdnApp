@@ -79,7 +79,8 @@ class ApiHelper (private val apiService: ApiService) {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest) =
             apiService.updateCameraVehicle(request)
 
-    suspend fun accountGroups(request: AccountGroupsRequest) = apiService.accountGroups(request)
+    suspend fun accountGroups(userid: String, token: String, app_version: Int, _userid: String) =
+            apiService.accountGroups(userid, token, app_version, _userid)
 
     suspend fun addAccountGroups(request: AddAccountGroupsRequest) =
             apiService.addAccountGroups(request)
