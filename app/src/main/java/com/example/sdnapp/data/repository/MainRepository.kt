@@ -119,9 +119,8 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest) =
             apiHelper.updateCameraVehicle(request)
 
-    suspend fun accountGroups(userid: MultipartBody.Part, token: MultipartBody.Part,
-                              app_version: MultipartBody.Part, _userid: MultipartBody.Part) =
-            apiHelper.accountGroups(userid, token, app_version, _userid)
+    suspend fun accountGroups(request:AccountGroupsRequest) =
+            apiHelper.accountGroups(request)
 
     suspend fun addAccountGroups(request: AddAccountGroupsRequest) =
             apiHelper.addAccountGroups(request)

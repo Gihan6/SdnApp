@@ -2,7 +2,6 @@ package com.example.sdnapp.data.api
 
 import com.example.sdnapp.data.networkModels.request.*
 import com.example.sdnapp.data.networkModels.response.*
-import okhttp3.MultipartBody
 import retrofit2.http.*
 
 
@@ -118,12 +117,25 @@ interface ApiService {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest):
             UpdateCameraVehicleResponse
 
-    @Multipart
+
+
+//    @FormUrlEncoded
+//    @POST("groups.accountGroups")
+//    suspend fun accountGroups(@Field("userid") userid: String,
+//                              @Field("token") token: String,
+//                              @Field("app_version") app_version: String,
+//                              @Field("_userid") _userid: String): AccountGroupsResponse
+
+//    @FormUrlEncoded
+//    @POST("groups.accountGroups")
+//    suspend fun accountGroups(@Field("userid") userid: String,
+//                      @Field("token") token: String,
+//                      @Field("app_version") app_version: String,
+//                      @Field("_userid") _userid: String): AccountGroupsResponse
+
+
     @POST("groups.accountGroups")
-    suspend fun accountGroups(@Part userid: MultipartBody.Part,
-                              @Part token: MultipartBody.Part,
-                              @Part app_version: MultipartBody.Part,
-                              @Part _userid: MultipartBody.Part): AccountGroupsResponse
+    suspend fun accountGroups(@Body request:AccountGroupsRequest): AccountGroupsResponse
 
     @POST("groups.addAccountGroups")
     suspend fun addAccountGroups(@Body request: AddAccountGroupsRequest): AddAccountGroupsResponse
