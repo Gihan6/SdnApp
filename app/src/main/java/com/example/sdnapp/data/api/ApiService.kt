@@ -120,10 +120,10 @@ interface ApiService {
 
     @Multipart
     @POST("groups.accountGroups")
-    suspend fun accountGroups(@Part userid: String,
-                              @Part token: String,
-                              @Part app_version: String,
-                              @Part _userid: String): AccountGroupsResponse
+    suspend fun accountGroups(@Part userid: MultipartBody.Part,
+                              @Part token: MultipartBody.Part,
+                              @Part app_version: MultipartBody.Part,
+                              @Part _userid: MultipartBody.Part): AccountGroupsResponse
 
     @POST("groups.addAccountGroups")
     suspend fun addAccountGroups(@Body request: AddAccountGroupsRequest): AddAccountGroupsResponse
