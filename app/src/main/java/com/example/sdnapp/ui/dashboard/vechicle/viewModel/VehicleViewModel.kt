@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.sdnapp.data.networkModels.request.AccountGroupsRequest
 import com.example.sdnapp.data.networkModels.request.AddVehicleRequest
 import com.example.sdnapp.data.networkModels.request.GetVehicleListRequest
 import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
@@ -74,10 +75,7 @@ class VehicleViewModel(private val mainRepository: MainRepository) : ViewModel()
             _accountGroups.postValue(Resource.loading(data = null))
             try {
                 val response = mainRepository.accountGroups(
-                        MultipartBody.Part.createFormData("userid","-200"),
-                        MultipartBody.Part.createFormData("token","25d48e686a35c064ca36e55bd0a6d95f"),
-                        MultipartBody.Part.createFormData("app_version","49"),
-                        MultipartBody.Part.createFormData("_userid","98af3d52110566829f75bc928aa0ee7b"),
+                        AccountGroupsRequest()
                 )
 
                 _accountGroups.postValue(Resource.success(data = response))
