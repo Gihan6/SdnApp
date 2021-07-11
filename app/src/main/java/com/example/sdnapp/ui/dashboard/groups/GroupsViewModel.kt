@@ -12,6 +12,7 @@ import com.example.sdnapp.data.repository.MainRepository
 import com.example.sdnapp.ui.login.LoginActivity
 import com.example.sdnapp.util.Resource
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
 
 class GroupsViewModel(private val mainRepository: MainRepository):ViewModel() {
 
@@ -25,9 +26,12 @@ class GroupsViewModel(private val mainRepository: MainRepository):ViewModel() {
         viewModelScope.launch {
             _accountGroups.postValue(Resource.loading(data = null))
             try {
-                val response = mainRepository.accountGroups("-200",
-                        "25d48e686a35c064ca36e55bd0a6d95f", "49",
-                       "98af3d52110566829f75bc928aa0ee7b")
+                val response = mainRepository.accountGroups(
+                        MultipartBody.Part.createFormData("userid","-200"),
+                        MultipartBody.Part.createFormData("token","25d48e686a35c064ca36e55bd0a6d95f"),
+                        MultipartBody.Part.createFormData("app_version","49"),
+                        MultipartBody.Part.createFormData("_userid","98af3d52110566829f75bc928aa0ee7b"),
+                     )
 
                 _accountGroups.postValue(Resource.success(data = response))
             } catch (exception: Exception) {

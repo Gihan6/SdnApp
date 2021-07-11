@@ -1,6 +1,7 @@
 package com.example.sdnapp.data.api
 
 import com.example.sdnapp.data.networkModels.request.*
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 
@@ -80,7 +81,8 @@ class ApiHelper (private val apiService: ApiService) {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest) =
             apiService.updateCameraVehicle(request)
 
-    suspend fun accountGroups(userid: String, token: String, app_version: String, _userid: String) =
+    suspend fun accountGroups(userid: MultipartBody.Part, token: MultipartBody.Part,
+                              app_version: MultipartBody.Part, _userid: MultipartBody.Part) =
             apiService.accountGroups(userid, token, app_version, _userid)
 
     suspend fun addAccountGroups(request: AddAccountGroupsRequest) =
