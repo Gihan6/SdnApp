@@ -15,14 +15,14 @@ import kotlinx.android.synthetic.main.dialog_for_group_layout.*
 
 class DialogForGroups : BottomSheetDialogFragment() {
     private var fragmentView: View? = null
-    private var data: ArrayList<AccountGroupsResponse.Data>? = null
+    private var data: ArrayList<AccountGroupsResponse.Group>? = null
     private var position: Int? = null
     private lateinit var migrateCallback: MigrateCallback
     private lateinit var dialogGroupsAdapter: DialogGroupsAdapter
     var selectList = mutableListOf<GroupModel>()
 
     companion object {
-        fun newInstance(data: ArrayList<AccountGroupsResponse.Data>): DialogForGroups? {
+        fun newInstance(data: ArrayList<AccountGroupsResponse.Group>): DialogForGroups? {
             val args = Bundle()
             args.putSerializable("data", data)
             val fragment = DialogForGroups()
@@ -39,7 +39,7 @@ class DialogForGroups : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        data = requireArguments().getSerializable("data") as ArrayList<AccountGroupsResponse.Data>?
+        data = requireArguments().getSerializable("data") as ArrayList<AccountGroupsResponse.Group>?
         initAdapter()
     }
 
@@ -69,7 +69,7 @@ class DialogForGroups : BottomSheetDialogFragment() {
         setAdapter()
 
         btnDone.setOnClickListener {
-            var selectedGroup = mutableListOf<AccountGroupsResponse.Data>()
+            var selectedGroup = mutableListOf<AccountGroupsResponse.Group>()
             for (i in selectList) {
                 if (i.select)
                     selectedGroup.add(i.data)
@@ -102,7 +102,7 @@ class DialogForGroups : BottomSheetDialogFragment() {
     }
 
     interface MigrateCallback {
-        fun onConfirmClick(selectGroups: List<AccountGroupsResponse.Data>)
+        fun onConfirmClick(selectGroups: List<AccountGroupsResponse.Group>)
     }
 
 

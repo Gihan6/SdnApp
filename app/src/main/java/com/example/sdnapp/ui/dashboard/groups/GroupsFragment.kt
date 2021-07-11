@@ -64,7 +64,7 @@ class GroupsFragment : BaseFragment() {
 
     }
 
-    private fun setAdapter(data: List< AccountGroupsResponse.Data>) {
+    private fun setAdapter(data: List< AccountGroupsResponse.Group>) {
         rv_fragmentGroup_Group.apply {
             layoutManager = LinearLayoutManager(context)
             (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.VERTICAL

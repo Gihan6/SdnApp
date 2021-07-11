@@ -7,27 +7,24 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.sdnapp.R
+import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import kotlinx.android.synthetic.main.fragment_live.view.*
 import kotlinx.android.synthetic.main.fragment_live.view.sp_liveTrackingFragment_groups
 import kotlinx.android.synthetic.main.single_layout_spinner_group.view.*
 
-class SpinnerGroupAdapter (val context: Context, var dataSource: List<String>) : BaseAdapter() {
+class SpinnerGroupAdapter (val context: Context, var dataSource: List<AccountGroupsResponse.Group>) : BaseAdapter() {
 
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-        val view: View
-//        val vh: ItemHolder
-        if (convertView == null) {
-            view = inflater.inflate(R.layout.single_layout_spinner_group, parent, false)
-//            vh = ItemHolder(view)
-//            view?.tag = vh
-        } else {
-            view = convertView
-//            vh = view.tag as ItemHolder
-        }
-        view.tv_singleLayoutSpinnerGroup_groupName.text = dataSource[position]
+        //        val vh: ItemHolder
+        val view: View = convertView
+                //            vh = view.tag as ItemHolder
+            ?: inflater.inflate(R.layout.single_layout_spinner_group, parent, false)
+        //            vh = ItemHolder(view)
+        //            view?.tag = vh
+        view.tv_singleLayoutSpinnerGroup_groupName.text = dataSource[position].group_name
 
         return view
     }

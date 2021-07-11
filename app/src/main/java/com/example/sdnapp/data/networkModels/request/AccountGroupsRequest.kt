@@ -12,4 +12,5 @@ data class AccountGroupsRequest(
         var app_version: Int = 49,
         @SerializedName("_userid")
         var _userid: String = loggedInUser.userid
+
 )

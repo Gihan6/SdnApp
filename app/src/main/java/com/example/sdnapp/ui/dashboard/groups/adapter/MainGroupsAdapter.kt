@@ -11,7 +11,7 @@ import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
 import kotlinx.android.synthetic.main.single_layout_main_group.view.*
 
 class MainGroupsAdapter(context: Context, listener: OnRecyclerItemClickListener) :
-        GenericRecyclerViewAdapter<AccountGroupsResponse.Data, OnRecyclerItemClickListener,
+        GenericRecyclerViewAdapter<AccountGroupsResponse.Group, OnRecyclerItemClickListener,
                 MainGroupsAdapter.BenefitsViewHolder>(context, listener) {
 
 
@@ -24,7 +24,7 @@ class MainGroupsAdapter(context: Context, listener: OnRecyclerItemClickListener)
             itemView: View,
             private val listener: OnRecyclerItemClickListener
     ) :
-            BaseViewHolder<AccountGroupsResponse.Data, OnRecyclerItemClickListener>(itemView, listener),
+            BaseViewHolder<AccountGroupsResponse.Group, OnRecyclerItemClickListener>(itemView, listener),
             View.OnClickListener {
 
         init {
@@ -32,7 +32,7 @@ class MainGroupsAdapter(context: Context, listener: OnRecyclerItemClickListener)
             itemView.setOnClickListener(this)
         }
 
-        override fun onBind(item: AccountGroupsResponse.Data) {
+        override fun onBind(item: AccountGroupsResponse.Group) {
             itemView.tv_fragmentGroup_groupName.text = item.group_name
             if (!item.units.isNullOrEmpty())
                 itemView.tv_fragmentGroup_memberNumber.text = item.units.size.toString()

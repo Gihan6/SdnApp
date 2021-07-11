@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sdnapp.R
+import com.example.sdnapp.data.networkModels.request.AccountGroupsRequest
 import com.example.sdnapp.data.networkModels.request.GetConnectionStatusRequest
 import com.example.sdnapp.data.networkModels.request.GetVehicleListRequest
+import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import com.example.sdnapp.db.Repo
 import com.example.sdnapp.ui.base.BaseFragment
 import com.example.sdnapp.ui.dashboard.liveTracking.adapter.LiveVehicleAdapter
@@ -42,7 +44,7 @@ class LiveFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initSpinner()
+      //  initSpinner()
         initAdapter()
         var data = mutableListOf<String>()
         data.add("")
@@ -51,6 +53,14 @@ class LiveFragment : BaseFragment() {
         setAVehicleAdapter(data)
         getConnectionStatusFromWebservice()
         getDataFromWebServices()
+        getGroups()
+
+    }
+
+    private fun getGroups() {
+        viewModel.accountGroupsFromWebServices(
+            AccountGroupsRequest()
+        )
 
     }
 
@@ -78,10 +88,10 @@ class LiveFragment : BaseFragment() {
             })
     }
 
-    private fun initSpinner() {
-        var modelList = mutableListOf<String>()
-        modelList.add("Group")
-        var spinnerGroupAdapter = SpinnerGroupAdapter(requireContext(), modelList)
+    private fun initSpinner(groups: MutableList<AccountGroupsResponse.Group>) {
+        var modelList = mutableListOf<AccountGroupsResponse.Group>()
+        //  modelList.add("Group")
+        var spinnerGroupAdapter = SpinnerGroupAdapter(requireContext(), groups)
         sp_liveTrackingFragment_groups.adapter = spinnerGroupAdapter
     }
 
@@ -103,13 +113,13 @@ class LiveFragment : BaseFragment() {
                             tv_liveTrackingFragment_offline.setText(it.data.data[0].offline)
 
                         } else {
-                            showToast(requireContext(),it.data!!.type)
+                            showToast(requireContext(), it.data!!.type)
 
                         }
                     }
                     Status.ERROR -> {
 
-                        it.message?.let { it1 -> showToast(requireContext(),it1) }
+                        it.message?.let { it1 -> showToast(requireContext(), it1) }
 //                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
 
@@ -128,11 +138,30 @@ class LiveFragment : BaseFragment() {
                     }
                     Status.ERROR -> {
                         dismissLoading()
-                        it.message?.let { it1 -> showToast(requireContext(),it1) }
+                        it.message?.let { it1 -> showToast(requireContext(), it1) }
 
                     }
 
                 }
+            }
+        })
+        viewModel.accountGroups().observe(requireActivity(), {
+            it.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        dismissLoading()
+                        if (!it.data!!.data.isNullOrEmpty())
+                            initSpinner(it.data.data as MutableList<AccountGroupsResponse.Group>)
+                    }
+                    Status.ERROR -> {
+                        dismissLoading()
+                        it.message?.let { it1 -> showToast(requireContext(), it1) }
+                    }
+                    Status.LOADING -> {
+                        showLoading()
+                    }
+                }
+
             }
         })
     }
