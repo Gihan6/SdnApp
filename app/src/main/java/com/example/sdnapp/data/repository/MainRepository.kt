@@ -8,6 +8,7 @@ import com.example.sdnapp.db.Repo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.RequestBody
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
@@ -117,7 +118,7 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest) =
             apiHelper.updateCameraVehicle(request)
 
-    suspend fun accountGroups(userid: String, token: String, app_version: Int, _userid: String) =
+    suspend fun accountGroups(userid: String, token: String, app_version: String, _userid: String) =
             apiHelper.accountGroups(userid, token, app_version, _userid)
 
     suspend fun addAccountGroups(request: AddAccountGroupsRequest) =

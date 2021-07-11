@@ -26,7 +26,7 @@ class GroupsViewModel(private val mainRepository: MainRepository):ViewModel() {
             _accountGroups.postValue(Resource.loading(data = null))
             try {
                 val response = mainRepository.accountGroups("-200",
-                        "25d48e686a35c064ca36e55bd0a6d95f", 49,
+                        "25d48e686a35c064ca36e55bd0a6d95f", "49",
                        "98af3d52110566829f75bc928aa0ee7b")
 
                 _accountGroups.postValue(Resource.success(data = response))

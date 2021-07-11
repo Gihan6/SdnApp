@@ -10,7 +10,6 @@ import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import com.example.sdnapp.data.networkModels.response.AddVehicleResponse
 import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.example.sdnapp.data.repository.MainRepository
-import com.example.sdnapp.ui.login.LoginActivity.Companion.loggedInUser
 import com.example.sdnapp.util.Resource
 import kotlinx.coroutines.launch
 
@@ -73,8 +72,9 @@ class VehicleViewModel(private val mainRepository: MainRepository) : ViewModel()
         viewModelScope.launch {
             _accountGroups.postValue(Resource.loading(data = null))
             try {
-                val response = mainRepository.accountGroups("-200", loggedInUser.token, 49,
-                        loggedInUser.userid)
+                val response = mainRepository.accountGroups("-200",
+                        "25d48e686a35c064ca36e55bd0a6d95f", "49",
+                        "98af3d52110566829f75bc928aa0ee7b")
 
                 _accountGroups.postValue(Resource.success(data = response))
             } catch (exception: Exception) {
