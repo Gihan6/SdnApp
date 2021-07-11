@@ -101,7 +101,6 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
 
     private fun getGroups() {
         viewModel.accountGroupsFromWebServices(
-                AccountGroupsRequest()
         )
 
     }
