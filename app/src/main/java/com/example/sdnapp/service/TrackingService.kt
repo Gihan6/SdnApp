@@ -16,6 +16,7 @@ import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.example.sdnapp.ui.dashboard.vechicle.viewModel.VehicleViewModel
 import com.example.sdnapp.util.Constants.ACTION_PAUSE_SERVICE
 import com.example.sdnapp.util.Constants.ACTION_START_OR_RESUME_SERVICE
 import com.example.sdnapp.util.Constants.ACTION_STOP_SERVICE
@@ -36,6 +37,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -46,6 +48,8 @@ class TrackingService : LifecycleService() {
 
     var isFirstRun = true
     var serviceKilled = false
+    private val viewModel by inject<VehicleViewModel>()
+
 
     @Inject
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient

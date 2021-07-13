@@ -127,7 +127,7 @@ class LiveFragment : BaseFragment() {
             }
         })
 
-        viewModel.getVehicleList().observe(requireActivity(), Observer {
+        viewModel.getVehicleList().observe(requireActivity(), {
             it?.let { resource ->
                 when (resource.status) {
                     Status.LOADING -> {
