@@ -53,16 +53,16 @@ class LiveFragment : BaseFragment() {
         setAVehicleAdapter(data)
         getConnectionStatusFromWebservice()
         getDataFromWebServices()
-        getGroups()
+       // getGroups()
 
     }
 
-    private fun getGroups() {
-        viewModel.accountGroupsFromWebServices(
-            AccountGroupsRequest()
-        )
-
-    }
+//    private fun getGroups() {
+//        viewModel.accountGroupsFromWebServices(
+//            AccountGroupsRequest()
+//        )
+//
+//    }
 
     private fun getConnectionStatusFromWebservice() {
         liveTrackingViewModel.getConnectionStatusFromWebServices(GetConnectionStatusRequest())
