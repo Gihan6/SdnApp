@@ -109,6 +109,7 @@ class LiveTrackingFragment : BaseFragment() {
     }
 
     private fun setAVehicleAdapter(data: List<GetVehicleListResponse.Vehicle>) {
+        data.sortedByDescending { it.vehicle_name }
         rv_liveTrackingFragment_vehicle.apply {
             layoutManager = LinearLayoutManager(context)
             (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.VERTICAL
@@ -181,10 +182,10 @@ class LiveTrackingFragment : BaseFragment() {
                     }
                     Status.SUCCESS -> {
                         if (it.data?.connectionStatus != null) {
-                            tv_liveTrackingFragment_online.text =
-                                it.data.connectionStatus[0].online.toString()
-                            tv_liveTrackingFragment_offline.text =
-                                it.data.connectionStatus[0].offline.toString()
+                            tv_liveTrackingFragment_online.text = "online devices: " +
+                                    it.data.connectionStatus[0].online.toString()
+                            tv_liveTrackingFragment_offline.text = "offline devices: " +
+                                    it.data.connectionStatus[0].offline.toString()
 
                         } else {
                             showToast(requireContext(), it.data!!.type)

@@ -5,37 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.TextView
-import android.widget.Toast
 import com.example.sdnapp.R
 import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
-import kotlinx.android.synthetic.main.fragment_live.view.*
-import kotlinx.android.synthetic.main.fragment_live.view.sp_liveTrackingFragment_groups
 import kotlinx.android.synthetic.main.single_layout_spinner_group.view.*
 
-class SpinnerGroupAdapter (val context: Context, var dataSource: List<AccountGroupsResponse.Group>) : BaseAdapter() {
+class SpinnerGroupAdapter (val context: Context, private var dataSource: List<AccountGroupsResponse.Group>) : BaseAdapter() {
 
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
-        val view: View
-//        val vh: ItemHolder
-        if (convertView == null) {
-            view = inflater.inflate(R.layout.single_layout_spinner_group, parent, false)
-//            vh = ItemHolder(view)
-//            view?.tag = vh
-        } else {
-            view = convertView
-//            vh = view.tag as ItemHolder
-        }
+        val view: View = convertView
+            ?: inflater.inflate(R.layout.single_layout_spinner_group, parent, false)
         view.tv_singleLayoutSpinnerGroup_groupName.text = dataSource[position].group_name
 
 
         return view
     }
 
-    override fun getItem(position: Int): Any? {
+    override fun getItem(position: Int): Any {
         return dataSource[position]
     }
 
@@ -47,12 +34,5 @@ class SpinnerGroupAdapter (val context: Context, var dataSource: List<AccountGro
         return position.toLong()
     }
 
-//    private class ItemHolder(row: View?) {
-//        val label: TextView
-//
-//        init {
-//            label = row?.findViewById(R.id.sp_liveTrackingFragment_groups) as TextView
-//        }
-//    }
 
 }

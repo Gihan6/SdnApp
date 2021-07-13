@@ -7,7 +7,7 @@
     tools:context=".ui.dashboard.liveTracking.LiveTrackingFragment">
 
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_liveTrackingFragment_online"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,11 +16,10 @@
         android:textColor="@color/teal_200"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_liveTrackingFragment_offline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,10 +28,10 @@
         android:textColor="@color/mdtp_red_focused"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_liveTrackingFragment_online"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
+    <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/sp_liveTrackingFragment_groups"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,7 +39,7 @@
         android:padding="@dimen/_4sdp"
         app:layout_constraintTop_toBottomOf="@+id/tv_liveTrackingFragment_offline" />
 
-    <EditText
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/tv_liveTrackingFragment_search"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
@@ -51,7 +50,7 @@
         android:textColorHint="@color/primary"
         app:layout_constraintTop_toBottomOf="@+id/sp_liveTrackingFragment_groups" />
 
-    <CheckBox
+    <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/cb_liveTrackingFragment_selectAll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,17 +64,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_liveTrackingFragment_vehicle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/_4sdp"
         android:padding="@dimen/_4sdp"
+        app:layout_constraintBottom_toTopOf="@id/btnLive"
         app:layout_constraintTop_toBottomOf="@+id/cb_liveTrackingFragment_selectAll" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="showLive"
         android:layout_marginBottom="@dimen/_20sdp"
+        android:text="showLive"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

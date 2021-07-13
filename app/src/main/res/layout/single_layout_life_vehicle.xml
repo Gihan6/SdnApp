@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_margin="@dimen/_4sdp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp">
 
-    <CheckBox
+    <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/cb_singleLayoutLifeVehicle_selectVehicle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,9 +14,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_singleLayoutLifeVehicle_plate"
-        android:layout_width="@dimen/_80sdp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_4sdp"
         android:padding="@dimen/_4sdp"
@@ -24,11 +24,14 @@
         android:textColor="@color/black"
         android:textSize="@dimen/_12ssp"
         android:textStyle="bold"
+        android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cb_singleLayoutLifeVehicle_selectVehicle"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".4"/>
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_singleLayoutLifeVehicle_place"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
@@ -38,7 +41,7 @@
         app:layout_constraintStart_toEndOf="@+id/tv_singleLayoutLifeVehicle_plate"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_singleLayoutLifeVehicle_car"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
@@ -48,7 +51,7 @@
         app:layout_constraintStart_toEndOf="@+id/iv_singleLayoutLifeVehicle_place"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_singleLayoutLifeVehicle_acc"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
@@ -58,7 +61,7 @@
         app:layout_constraintStart_toEndOf="@+id/iv_singleLayoutLifeVehicle_car"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_singleLayoutLifeVehicle_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,11 +73,12 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
+        android:layout_margin="@dimen/_4sdp"
         android:background="@color/primary_dark"
-        app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutLifeVehicle_status"
-        android:layout_margin="@dimen/_4sdp"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutLifeVehicle_status" />
 </androidx.constraintlayout.widget.ConstraintLayout>

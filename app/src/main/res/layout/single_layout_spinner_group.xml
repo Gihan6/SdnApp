@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:layout_height="wrap_content">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_singleLayoutSpinnerGroup_groupName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,12 +13,14 @@
         android:padding="@dimen/_4sdp"
         android:text="GroupName"
         android:textColor="@color/black"
+        android:textAlignment="viewStart"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_2sdp"
         app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutSpinnerGroup_groupName"
         android:background="@color/primary_dark"/>
 

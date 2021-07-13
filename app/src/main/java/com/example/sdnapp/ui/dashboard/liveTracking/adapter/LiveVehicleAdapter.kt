@@ -43,7 +43,7 @@ class LiveVehicleAdapter (context: Context, listener: OnRecyclerItemClickListene
         override fun onBind(item: GetVehicleListResponse.Vehicle) {
 
 
-            itemView.tv_singleLayoutLifeVehicle_plate.text=item.driver_name
+            itemView.tv_singleLayoutLifeVehicle_plate.text=item.vehicle_name
             if (item.vehicleAccOn) {
                 itemView.tv_singleLayoutLifeVehicle_status.text = "ON"
             }else{
