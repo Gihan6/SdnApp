@@ -24,7 +24,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.core.content.FileProvider
 import androidx.lifecycle.Observer
@@ -49,6 +48,8 @@ class LoginActivity : BaseActivity() {
     val RECORD_REQUEST_CODE=1001
     companion object {
         lateinit var loggedInUser: Repo
+        var userId="-200"
+        var app_verision="49"
     }
 
     private val viewModel by inject<LoginViewModel>()

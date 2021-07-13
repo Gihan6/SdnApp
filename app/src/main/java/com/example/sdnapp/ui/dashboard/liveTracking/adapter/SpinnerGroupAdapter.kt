@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import android.widget.Toast
 import com.example.sdnapp.R
+import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import kotlinx.android.synthetic.main.fragment_live.view.*
 import kotlinx.android.synthetic.main.fragment_live.view.sp_liveTrackingFragment_groups
 import kotlinx.android.synthetic.main.single_layout_spinner_group.view.*
 
-class SpinnerGroupAdapter (val context: Context, var dataSource: List<String>) : BaseAdapter() {
+class SpinnerGroupAdapter (val context: Context, var dataSource: List<AccountGroupsResponse.Group>) : BaseAdapter() {
 
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
@@ -27,21 +29,22 @@ class SpinnerGroupAdapter (val context: Context, var dataSource: List<String>) :
             view = convertView
 //            vh = view.tag as ItemHolder
         }
-        view.tv_singleLayoutSpinnerGroup_groupName.text = dataSource[position]
+        view.tv_singleLayoutSpinnerGroup_groupName.text = dataSource[position].group_name
+
 
         return view
     }
 
     override fun getItem(position: Int): Any? {
-        return dataSource[position];
+        return dataSource[position]
     }
 
     override fun getCount(): Int {
-        return dataSource.size;
+        return dataSource.size
     }
 
     override fun getItemId(position: Int): Long {
-        return position.toLong();
+        return position.toLong()
     }
 
 //    private class ItemHolder(row: View?) {

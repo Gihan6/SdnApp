@@ -5,15 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sdnapp.R
+import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.example.sdnapp.ui.dashboard.vechicle.adapter.GroupsAdapter
 import com.example.sdnapp.ui.dashboard.vechicle.adapter.VehicleAdapter
 import com.leodroidcoder.genericadapter.BaseViewHolder
 import com.leodroidcoder.genericadapter.GenericRecyclerViewAdapter
 import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
+import kotlinx.android.synthetic.main.single_layout_life_vehicle.view.*
 import kotlinx.android.synthetic.main.single_layout_vehicle.view.*
 
 class LiveVehicleAdapter (context: Context, listener: OnRecyclerItemClickListener) :
-    GenericRecyclerViewAdapter<String, OnRecyclerItemClickListener,
+    GenericRecyclerViewAdapter<GetVehicleListResponse.Vehicle, OnRecyclerItemClickListener,
             LiveVehicleAdapter.BenefitsViewHolder>(context, listener) {
 
     lateinit var groupsAdapter: GroupsAdapter
@@ -26,7 +28,7 @@ class LiveVehicleAdapter (context: Context, listener: OnRecyclerItemClickListene
         itemView: View,
         private val listener: OnRecyclerItemClickListener
     ) :
-        BaseViewHolder<String, OnRecyclerItemClickListener>(itemView, listener),
+        BaseViewHolder<GetVehicleListResponse.Vehicle, OnRecyclerItemClickListener>(itemView, listener),
         View.OnClickListener {
 
         init {
@@ -38,10 +40,17 @@ class LiveVehicleAdapter (context: Context, listener: OnRecyclerItemClickListene
             itemView.setOnClickListener(this)
         }
 
-        override fun onBind(item: String) {
-//            Glide.with(itemView.iv_icon.context).load(item).into(itemView.iv_icon)
+        override fun onBind(item: GetVehicleListResponse.Vehicle) {
 
 
+            itemView.tv_singleLayoutLifeVehicle_plate.text=item.plate_no
+            if (item.vehicleAccOn) {
+                itemView.tv_singleLayoutLifeVehicle_status.text = "ON"
+            }else{
+                itemView.tv_singleLayoutLifeVehicle_status.text = "OFF"
+
+            }
+            itemView.cb_singleLayoutLifeVehicle_selectVehicle.isChecked=item.select
 
         }
 

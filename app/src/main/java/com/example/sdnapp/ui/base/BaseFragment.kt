@@ -14,13 +14,13 @@ open class BaseFragment : Fragment() {
     fun showLoading() {
         if (mProgressDialog == null) {
             mProgressDialog=ProgressDialog()
-            if (mProgressDialog.isAdded)
+            if (!mProgressDialog.isVisible)
                 mProgressDialog.show(
                     requireActivity().supportFragmentManager.beginTransaction(),
                     ""
                 )
         } else {
-            if (mProgressDialog.isAdded)
+            if (!mProgressDialog.isVisible)
                 mProgressDialog.show(
                     requireActivity().supportFragmentManager.beginTransaction(),
                     ""

@@ -34,7 +34,7 @@ class DriverFragment : BaseFragment() {
         initViewModel()
         initAdapter()
         addDriver()
-        getDataFromWebservices()
+        getDriverFromWebservices()
     }
 
     private fun addDriver() {
@@ -58,7 +58,7 @@ class DriverFragment : BaseFragment() {
 
     }
 
-    private fun setAdapter(data: List<GetDriverListResponse.Data>) {
+    private fun setAdapter(data: List<GetDriverListResponse.Driver>) {
         rv_driverFragment_drivers.apply {
             layoutManager = LinearLayoutManager(context)
             (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.VERTICAL
@@ -70,8 +70,8 @@ class DriverFragment : BaseFragment() {
 
     }
 
-    private fun getDataFromWebservices() {
-        viewModel.getDriverListFromWebServices(GetDriverListRequest())
+    private fun getDriverFromWebservices() {
+        viewModel.getDriverListFromWebServices()
 
     }
 
@@ -82,8 +82,8 @@ class DriverFragment : BaseFragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         dismissLoading()
-                        if (it.data!!.data!=null){
-                            setAdapter(it.data.data)
+                        if (it.data!!.drivers!=null){
+                            setAdapter(it.data.drivers)
                         }
                     }
                     Status.ERROR -> {
@@ -91,7 +91,7 @@ class DriverFragment : BaseFragment() {
                         it.message?.let { it1 -> showToast(requireContext(),it1) }
                     }
                     Status.LOADING -> {
-                        dismissLoading()
+                        showLoading()
                     }
                 }
             }

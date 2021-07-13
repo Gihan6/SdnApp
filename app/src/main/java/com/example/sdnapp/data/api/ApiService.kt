@@ -2,6 +2,7 @@ package com.example.sdnapp.data.api
 
 import com.example.sdnapp.data.networkModels.request.*
 import com.example.sdnapp.data.networkModels.response.*
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 
@@ -93,13 +94,19 @@ interface ApiService {
     @POST("user.saveuserunits")
     suspend fun saveUserUnits(request: SaveUserUnitsRequest): SaveUserUnitsResponse
 
+    @Multipart
     @POST("vehicle.getvehiclelist")
-    @Headers("Content-Type: application/json")
-    suspend fun getVehicleList(@Body request: GetVehicleListRequest): GetVehicleListResponse
+    suspend fun getVehicleList(@Part("userid") userid: RequestBody,
+                               @Part("token") token: RequestBody,
+                               @Part("app_version") app_version: RequestBody,
+                               @Part("_userid") _userid: RequestBody): GetVehicleListResponse
 
+    @Multipart
     @POST("driver.getdriverlist")
-    @Headers("Content-Type: application/json")
-    suspend fun getDriverList(@Body request: GetDriverListRequest): GetDriverListResponse
+    suspend fun getDriverList(@Part("userid") userid: RequestBody,
+                              @Part("token") token: RequestBody,
+                              @Part("app_version") app_version: RequestBody,
+                              @Part("_userid") _userid: RequestBody): GetDriverListResponse
 
     @POST("driver.adddriver")
     @Headers("Content-Type: application/json")
@@ -117,28 +124,21 @@ interface ApiService {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest):
             UpdateCameraVehicleResponse
 
-
-
-//    @FormUrlEncoded
-//    @POST("groups.accountGroups")
-//    suspend fun accountGroups(@Field("userid") userid: String,
-//                              @Field("token") token: String,
-//                              @Field("app_version") app_version: String,
-//                              @Field("_userid") _userid: String): AccountGroupsResponse
-
-//    @FormUrlEncoded
-//    @POST("groups.accountGroups")
-//    suspend fun accountGroups(@Field("userid") userid: String,
-//                      @Field("token") token: String,
-//                      @Field("app_version") app_version: String,
-//                      @Field("_userid") _userid: String): AccountGroupsResponse
-
-
+    @Multipart
     @POST("groups.accountGroups")
-    suspend fun accountGroups(@Body request:AccountGroupsRequest): AccountGroupsResponse
+    suspend fun accountGroups(@Part("userid") userid: RequestBody,
+                              @Part("token") token: RequestBody,
+                              @Part("app_version") app_version: RequestBody,
+                              @Part("_userid") _userid: RequestBody): AccountGroupsResponse
 
-    @POST("groups.addAccountGroups")
-    suspend fun addAccountGroups(@Body request: AddAccountGroupsRequest): AddAccountGroupsResponse
+    @Multipart
+    @POST("groups.addAccountGroup")
+    suspend fun addAccountGroups(@Part("name") name: RequestBody,
+                                 @Part("groupid") groupid: RequestBody,
+                                 @Part("userid") userid: RequestBody,
+                                 @Part("token") token: RequestBody,
+                                 @Part("app_version") app_version: RequestBody,
+                                 @Part("_userid") _userid: RequestBody): AddAccountGroupsResponse
 
     @POST("vehicle.updatevehicle")
     suspend fun updateVehicle(request: UpdateVehicleRequest): UpdateVehicleResponse
@@ -198,10 +198,12 @@ interface ApiService {
     suspend fun getTagsList(request: GetTagsListRequest): GetTagsListResponse
 
 
-
+    @Multipart
     @POST("location.getconnectionstatus")
-    @Headers("Content-Type: application/json")
-    suspend fun getconnectionstatus(@Body request: GetConnectionStatusRequest): GetConnectionStatusResponse
+    suspend fun getconnectionstatus(@Part("userid") userid: RequestBody,
+                                    @Part("token") token: RequestBody,
+                                    @Part("app_version") app_version: RequestBody,
+                                    @Part("_userid") _userid: RequestBody): GetConnectionStatusResponse
 
 
 

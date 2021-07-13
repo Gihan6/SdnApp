@@ -26,6 +26,12 @@ class GroupsFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
     }
 
+    override fun onStart() {
+        super.onStart()
+        getGroups()
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,7 +47,6 @@ class GroupsFragment : BaseFragment() {
         initAdapter()
         initViewModel()
         addGroup()
-        getGroups()
 
 
     }
@@ -64,7 +69,7 @@ class GroupsFragment : BaseFragment() {
 
     }
 
-    private fun setAdapter(data: List< AccountGroupsResponse.Data>) {
+    private fun setAdapter(data: List< AccountGroupsResponse.Group>) {
         rv_fragmentGroup_Group.apply {
             layoutManager = LinearLayoutManager(context)
             (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.VERTICAL
@@ -76,8 +81,7 @@ class GroupsFragment : BaseFragment() {
 
     }
     private fun getGroups() {
-        viewModel.accountGroupsFromWebServices(
-        )
+        viewModel.accountGroupsFromWebServices()
 
     }
 
@@ -87,8 +91,8 @@ class GroupsFragment : BaseFragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         dismissLoading()
-                        if (!it.data!!.data.isNullOrEmpty())
-                           setAdapter(it.data!!.data)
+                        if (!it.data!!.groups.isNullOrEmpty())
+                           setAdapter(it.data!!.groups)
                     }
                     Status.ERROR -> {
                         dismissLoading()

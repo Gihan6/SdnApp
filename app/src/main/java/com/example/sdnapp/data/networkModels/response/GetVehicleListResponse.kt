@@ -5,14 +5,13 @@ import com.google.gson.annotations.SerializedName
 
 data class GetVehicleListResponse(
         @SerializedName("type") val type : String,
-        @SerializedName("data") val data : List<Data>
+        @SerializedName("data") val Vehicles : List<Vehicle>
 ) {
 
-        data class Data(
-
+        data class Vehicle(
                 @SerializedName("vehicleid") val vehicleid: String,
                 @SerializedName("plate_no") val plate_no: String,
-                @SerializedName("vehicle_name") val vehicle_name: Int,
+                @SerializedName("vehicle_name") val vehicle_name: String,
                 @SerializedName("license_start") val license_start: String,
                 @SerializedName("license_end") val license_end: String,
                 @SerializedName("accountid") val accountid: String,
@@ -20,9 +19,9 @@ data class GetVehicleListResponse(
                 @SerializedName("last_location") val last_location: String,
                 @SerializedName("last_loc_update") val last_loc_update: String,
                 @SerializedName("current_mileage") val current_mileage: Int,
-                @SerializedName("gps_unitid") val gps_unitid: Int,
-                @SerializedName("sim_number") val sim_number: Int,
-                @SerializedName("max_speed") val max_speed: Int,
+                @SerializedName("gps_unitid") val gps_unitid: String,
+                @SerializedName("sim_number") val sim_number: String,
+                @SerializedName("max_speed") val max_speed: String,
                 @SerializedName("last_command") val last_command: String,
                 @SerializedName("fuel_fr") val fuel_fr: String,
                 @SerializedName("density") val density: String,
@@ -42,6 +41,14 @@ data class GetVehicleListResponse(
                 @SerializedName("vehicle_license_end") val vehicle_license_end: String,
                 @SerializedName("vehicle_current_mileage") val vehicle_current_mileage: Int,
                 @SerializedName("vehicleAccOn") val vehicleAccOn: Boolean,
-                @SerializedName("groups") val groups: List<String>
+                @SerializedName("groups") val groups: List<Group>,
+                var select: Boolean =false
+        )
+        data class Group (
+                @SerializedName("groupid") val groupid : String,
+                @SerializedName("group_name") val group_name : String,
+                @SerializedName("accountid") val accountid : String,
+                @SerializedName("icon_url") val icon_url : String,
+                @SerializedName("unitid") val units : String
         )
 }

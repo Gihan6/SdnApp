@@ -102,11 +102,13 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
     suspend fun saveUserUnits(request: SaveUserUnitsRequest) =
             apiHelper.saveUserUnits(request)
 
-    suspend fun getVehicleList(request: GetVehicleListRequest) =
-            apiHelper.getVehicleList(request)
+    suspend fun getVehicleList(userid: RequestBody, token: RequestBody, app_version: RequestBody,
+                               _userid: RequestBody) =
+            apiHelper.getVehicleList(userid, token, app_version, _userid)
 
-    suspend fun getDriverList(request: GetDriverListRequest) =
-            apiHelper.getDriverList(request)
+    suspend fun getDriverList(userid: RequestBody, token: RequestBody, app_version: RequestBody,
+                              _userid: RequestBody) =
+            apiHelper.getDriverList(userid, token, app_version, _userid)
 
     suspend fun addDriver(request: AddDriverRequest) =
             apiHelper.addDriver(request)
@@ -119,11 +121,12 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest) =
             apiHelper.updateCameraVehicle(request)
 
-    suspend fun accountGroups(request:AccountGroupsRequest) =
-            apiHelper.accountGroups(request)
+    suspend fun accountGroups(userid: RequestBody, token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
+            apiHelper.accountGroups(userid,token,app_version,_userid)
 
-    suspend fun addAccountGroups(request: AddAccountGroupsRequest) =
-            apiHelper.addAccountGroups(request)
+    suspend fun addAccountGroups(name: RequestBody,groupid: RequestBody,userid: RequestBody, token: RequestBody,
+                                 app_version: RequestBody, _userid: RequestBody) =
+            apiHelper.addAccountGroups(name,groupid,userid,token,app_version,_userid)
 
     suspend fun updateVehicle(request: UpdateVehicleRequest) = apiHelper.updateVehicle(request)
 
@@ -177,8 +180,9 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
 
     suspend fun getTagsList(request: GetTagsListRequest) =
             apiHelper.getTagsList(request)
-    suspend fun getConnectionStatus(request: GetConnectionStatusRequest) =
-        apiHelper.getconnectionstatus(request)
+    suspend fun getConnectionStatus(userid: RequestBody, token: RequestBody,
+                                    app_version: RequestBody, _userid: RequestBody) =
+        apiHelper.getconnectionstatus(userid,token,app_version,_userid)
 
     suspend fun saveUser(repo: Repo) {
         try {

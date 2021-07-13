@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.single_layout_driver.view.*
 import kotlinx.android.synthetic.main.single_layout_vehicle.view.*
 
 class DriverAdapter(context: Context, listener: OnRecyclerItemClickListener) :
-        GenericRecyclerViewAdapter<GetDriverListResponse.Data, OnRecyclerItemClickListener,
+        GenericRecyclerViewAdapter<GetDriverListResponse.Driver, OnRecyclerItemClickListener,
                 DriverAdapter.BenefitsViewHolder>(context, listener) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BenefitsViewHolder {
@@ -23,13 +23,13 @@ class DriverAdapter(context: Context, listener: OnRecyclerItemClickListener) :
 
 
     inner class BenefitsViewHolder(itemView: View, private val listener: OnRecyclerItemClickListener) :
-            BaseViewHolder<GetDriverListResponse.Data, OnRecyclerItemClickListener>(itemView, listener), View.OnClickListener {
+            BaseViewHolder<GetDriverListResponse.Driver, OnRecyclerItemClickListener>(itemView, listener), View.OnClickListener {
 
         init {
             itemView.setOnClickListener(this)
         }
 
-        override fun onBind(item: GetDriverListResponse.Data) {
+        override fun onBind(item: GetDriverListResponse.Driver) {
 
             itemView.tv_singleLayoutDriver_driverName.text=item.driver_name
             itemView.tv_singleLayoutDriver_licenseNumber.text=item.license_number.toString()

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.single_layout_vehicle.view.*
 
 
 class VehicleAdapter(context: Context, listener: OnRecyclerItemClickListener) :
-        GenericRecyclerViewAdapter<GetVehicleListResponse.Data, OnRecyclerItemClickListener,
+        GenericRecyclerViewAdapter<GetVehicleListResponse.Vehicle, OnRecyclerItemClickListener,
                 VehicleAdapter.BenefitsViewHolder>(context, listener) {
 
     lateinit var groupsAdapter: GroupsAdapter
@@ -23,7 +23,7 @@ class VehicleAdapter(context: Context, listener: OnRecyclerItemClickListener) :
 
 
     inner class BenefitsViewHolder(itemView: View, private val listener: OnRecyclerItemClickListener) :
-            BaseViewHolder<GetVehicleListResponse.Data, OnRecyclerItemClickListener>(itemView, listener), View.OnClickListener {
+            BaseViewHolder<GetVehicleListResponse.Vehicle, OnRecyclerItemClickListener>(itemView, listener), View.OnClickListener {
 
         init {
             groupsAdapter = GroupsAdapter(
@@ -34,15 +34,15 @@ class VehicleAdapter(context: Context, listener: OnRecyclerItemClickListener) :
             itemView.setOnClickListener(this)
         }
 
-        override fun onBind(item: GetVehicleListResponse.Data) {
+        override fun onBind(item: GetVehicleListResponse.Vehicle) {
 
-            itemView.tv_singleLayoutVehicle_vehicleName.text=item.vehicle_name.toString()
-            itemView.tv_singleLayoutVehicle_plate.text=item.plate_no
-            itemView.tv_singleLayoutVehicle_startDate.text=item.license_start
-            itemView.tv_singleLayoutVehicle_endDate.text=item.license_end
-            itemView.tv_singleLayoutVehicle_mileAge.text=item.current_mileage.toString()
+            itemView.tv_singleLayoutVehicle_vehicleName.text = item.vehicle_name
+            itemView.tv_singleLayoutVehicle_plate.text = item.plate_no
+            itemView.tv_singleLayoutVehicle_startDate.text = "License start :"+item.license_start
+            itemView.tv_singleLayoutVehicle_endDate.text = "License end :"+item.license_end
+            itemView.tv_singleLayoutVehicle_mileAge.text = "mileAge :"+item.current_mileage.toString()
 
-            if (item.groups!=null&& item.groups.isNotEmpty()) {
+            if (item.groups != null && item.groups.isNotEmpty()) {
                 itemView.rv_singleLayoutVehicle_groups.apply {
                     layoutManager = LinearLayoutManager(context)
                     (layoutManager as LinearLayoutManager).orientation =

@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class GetConnectionStatusResponse(
 
     @SerializedName("type") val type: String,
-    @SerializedName("data") val data: List<Data>
+    @SerializedName("data") val connectionStatus: List<Status>
 ) {
-    data class Data(
+    data class Status(
 
         @SerializedName("online") val online: Int,
         @SerializedName("offline") val offline: Int

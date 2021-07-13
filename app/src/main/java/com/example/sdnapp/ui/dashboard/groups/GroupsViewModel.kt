@@ -9,8 +9,13 @@ import com.example.sdnapp.data.networkModels.request.AddAccountGroupsRequest
 import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import com.example.sdnapp.data.networkModels.response.AddAccountGroupsResponse
 import com.example.sdnapp.data.repository.MainRepository
+import com.example.sdnapp.ui.login.LoginActivity
+import com.example.sdnapp.ui.login.LoginActivity.Companion.loggedInUser
 import com.example.sdnapp.util.Resource
+import com.google.gson.annotations.SerializedName
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
 
 class GroupsViewModel(private val mainRepository: MainRepository):ViewModel() {
 
@@ -23,10 +28,17 @@ class GroupsViewModel(private val mainRepository: MainRepository):ViewModel() {
     fun accountGroupsFromWebServices() {
         viewModelScope.launch {
             _accountGroups.postValue(Resource.loading(data = null))
+
+
+
+
             try {
                 val response = mainRepository.accountGroups(
-                        AccountGroupsRequest()
-                )
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),LoginActivity.userId),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),loggedInUser.token),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),LoginActivity.app_verision),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),loggedInUser.userid)
+                        )
 
                 _accountGroups.postValue(Resource.success(data = response))
             } catch (exception: Exception) {
@@ -45,11 +57,19 @@ class GroupsViewModel(private val mainRepository: MainRepository):ViewModel() {
         return _addAccountGroups
     }
 
-    fun addAccountGroupsFromWebServices(request: AddAccountGroupsRequest) {
+
+    fun addAccountGroupsFromWebServices(groupName:String ) {
         viewModelScope.launch {
             _addAccountGroups.postValue(Resource.loading(data = null))
             try {
-                val response = mainRepository.addAccountGroups(request)
+                val response = mainRepository.addAccountGroups(
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),groupName),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),""),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),LoginActivity.userId),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),loggedInUser.token),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),LoginActivity.app_verision),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),loggedInUser.userid),
+                )
 
                 _addAccountGroups.postValue(Resource.success(data = response))
             } catch (exception: Exception) {

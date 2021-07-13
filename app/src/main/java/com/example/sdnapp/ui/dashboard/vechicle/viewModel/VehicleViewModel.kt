@@ -11,9 +11,13 @@ import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import com.example.sdnapp.data.networkModels.response.AddVehicleResponse
 import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.example.sdnapp.data.repository.MainRepository
+import com.example.sdnapp.ui.login.LoginActivity
 import com.example.sdnapp.util.Resource
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class VehicleViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
@@ -23,11 +27,18 @@ class VehicleViewModel(private val mainRepository: MainRepository) : ViewModel()
         return _getVehicleList
     }
 
-    fun getVehicleListFromWebServices(request: GetVehicleListRequest) {
+    fun getVehicleListFromWebServices() {
         viewModelScope.launch {
             _getVehicleList.postValue(Resource.loading(data = null))
             try {
-                val response = mainRepository.getVehicleList(request)
+                val response = mainRepository.getVehicleList(
+                        RequestBody.create("text/plain".toMediaTypeOrNull(), LoginActivity.userId),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(), LoginActivity.loggedInUser.token),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(), LoginActivity.app_verision),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(), LoginActivity.loggedInUser.userid),
+
+
+                        )
                 _getVehicleList.postValue(Resource.success(data = response))
             } catch (exception: Exception) {
                 _getVehicleList.postValue(
@@ -75,7 +86,10 @@ class VehicleViewModel(private val mainRepository: MainRepository) : ViewModel()
             _accountGroups.postValue(Resource.loading(data = null))
             try {
                 val response = mainRepository.accountGroups(
-                        AccountGroupsRequest()
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),LoginActivity.userId),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(), LoginActivity.loggedInUser.token),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(),LoginActivity.app_verision),
+                        RequestBody.create("text/plain".toMediaTypeOrNull(), LoginActivity.loggedInUser.userid),
                 )
 
                 _accountGroups.postValue(Resource.success(data = response))

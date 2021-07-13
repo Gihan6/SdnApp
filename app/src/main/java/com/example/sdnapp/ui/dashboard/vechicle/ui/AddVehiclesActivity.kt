@@ -19,7 +19,7 @@ import java.util.*
 class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
     private val viewModel by inject<VehicleViewModel>()
 
-    private var groups = listOf<AccountGroupsResponse.Data>()
+    private var groups = listOf<AccountGroupsResponse.Group>()
     private lateinit var selectGroupsId: MutableList<String>
     private lateinit var dateBaker: DatePickerDialog
     private lateinit var dialogForGroups: DialogForGroups
@@ -100,8 +100,7 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun getGroups() {
-        viewModel.accountGroupsFromWebServices(
-        )
+        viewModel.accountGroupsFromWebServices()
 
     }
 
@@ -112,8 +111,8 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         dismissLoading()
-                        if (!it.data!!.data.isNullOrEmpty())
-                            groups = it.data!!.data
+                        if (!it.data!!.groups.isNullOrEmpty())
+                            groups = it.data!!.groups
                     }
                     Status.ERROR -> {
                         dismissLoading()
@@ -150,7 +149,7 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
     private fun initGroupDialog() {
         if (groups != null && groups.isNotEmpty())
             dialogForGroups =
-                    DialogForGroups.newInstance(groups as ArrayList<AccountGroupsResponse.Data>)!!
+                    DialogForGroups.newInstance(groups as ArrayList<AccountGroupsResponse.Group>)!!
 
     }
 
@@ -203,9 +202,9 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
             selectGroupsId = listOf<String>().toMutableList()
 
             dialogForGroups =
-                    DialogForGroups.newInstance(groups as ArrayList<AccountGroupsResponse.Data>)!!
+                    DialogForGroups.newInstance(groups as ArrayList<AccountGroupsResponse.Group>)!!
             dialogForGroups.setMigrateCallback(object : DialogForGroups.MigrateCallback {
-                override fun onConfirmClick(selectGroups: List<AccountGroupsResponse.Data>) {
+                override fun onConfirmClick(selectGroups: List<AccountGroupsResponse.Group>) {
                     var selectData = ""
                     for (i in selectGroups) {
                         selectData += "${i.group_name}  "

@@ -16,10 +16,11 @@
         android:id="@+id/et_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_margin="@dimen/_8sdp"
         android:hint="email"
         android:padding="@dimen/_8sdp"
 
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,8 +28,9 @@
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_margin="@dimen/_8sdp"
         android:hint="password"
+        android:inputType="textPassword"
         android:padding="@dimen/_8sdp"
         app:layout_constraintTop_toBottomOf="@+id/et_userName" />
 
