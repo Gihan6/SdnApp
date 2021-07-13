@@ -34,7 +34,7 @@ class VehicleFragment : BaseFragment() {
 
     override fun onStart() {
         super.onStart()
-        getDataFromWebServices()
+        getVehicleFromWebServices()
 
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,7 +63,7 @@ class VehicleFragment : BaseFragment() {
 
     }
 
-    private fun setAdapter(data: List<GetVehicleListResponse.Data>) {
+    private fun setAdapter(data: List<GetVehicleListResponse.Vehicle>) {
         rv_vehicleFragment_vehicles.apply {
             layoutManager = LinearLayoutManager(context)
             (layoutManager as LinearLayoutManager).orientation = LinearLayoutManager.VERTICAL
@@ -75,9 +75,8 @@ class VehicleFragment : BaseFragment() {
 
     }
 
-    private fun getDataFromWebServices() {
-        viewModel.getVehicleListFromWebServices(
-                GetVehicleListRequest())
+    private fun getVehicleFromWebServices() {
+        viewModel.getVehicleListFromWebServices()
     }
 
     private fun initViewModel() {
@@ -90,15 +89,15 @@ class VehicleFragment : BaseFragment() {
                     }
                     Status.SUCCESS -> {
                         dismissLoading()
-                        if(!it.data!!.data.isNullOrEmpty()){
-                            setAdapter(it.data!!.data)
+                        if(!it.data!!.Vehicles.isNullOrEmpty()){
+                            setAdapter(it.data!!.Vehicles)
                         }
 
 
                     }
                     Status.ERROR -> {
+                        it.message?.let { it1 -> showToast(requireContext(), it1) }
 
-//                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
                     }
 
                 }

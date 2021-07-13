@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import com.example.sdnapp.R
-import com.example.sdnapp.data.networkModels.request.AddAccountGroupsRequest
 import com.example.sdnapp.ui.base.BaseActivity
 import com.example.sdnapp.util.Status
 import kotlinx.android.synthetic.main.activity_add_group.*
@@ -35,6 +34,11 @@ class AddGroupActivity : BaseActivity() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         dismissLoading()
+                        if (it.data!!.type == "ok"){
+                            finish()
+                        }else{
+                            it.message?.let { it1 -> showToast(this, it1) }
+                        }
                     }
                     Status.ERROR -> {
                         dismissLoading()
@@ -50,7 +54,6 @@ class AddGroupActivity : BaseActivity() {
 
     private fun addGroupToWebservices() {
         if (!et_fragmentGroup_groupName.text.isNullOrEmpty())
-            viewModel.addAccountGroupsFromWebServices(
-                    AddAccountGroupsRequest(""))
+            viewModel.addAccountGroupsFromWebServices(et_fragmentGroup_groupName.text.toString())
     }
 }

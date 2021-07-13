@@ -100,8 +100,7 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
     }
 
     private fun getGroups() {
-        viewModel.accountGroupsFromWebServices(
-        )
+        viewModel.accountGroupsFromWebServices()
 
     }
 
@@ -112,8 +111,8 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         dismissLoading()
-                        if (!it.data!!.data.isNullOrEmpty())
-                            groups = it.data!!.data
+                        if (!it.data!!.groups.isNullOrEmpty())
+                            groups = it.data!!.groups
                     }
                     Status.ERROR -> {
                         dismissLoading()

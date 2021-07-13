@@ -67,9 +67,12 @@ class ApiHelper (private val apiService: ApiService) {
 
     suspend fun saveUserUnits(request: SaveUserUnitsRequest) = apiService.saveUserUnits(request)
 
-    suspend fun getVehicleList(request: GetVehicleListRequest) = apiService.getVehicleList(request)
+    suspend fun getVehicleList(userid: RequestBody, token: RequestBody, app_version: RequestBody,
+                               _userid: RequestBody) =
+            apiService.getVehicleList(userid, token, app_version, _userid)
 
-    suspend fun getDriverList(request: GetDriverListRequest) = apiService.getDriverList(request)
+    suspend fun getDriverList(userid: RequestBody, token: RequestBody, app_version: RequestBody,
+                              _userid: RequestBody) = apiService.getDriverList(userid, token, app_version, _userid)
 
     suspend fun addDriver(request: AddDriverRequest) = apiService.addDriver(request)
 
@@ -81,11 +84,13 @@ class ApiHelper (private val apiService: ApiService) {
     suspend fun updateCameraVehicle(request: UpdateCameraVehicleRequest) =
             apiService.updateCameraVehicle(request)
 
-    suspend fun accountGroups(request:AccountGroupsRequest) =
-            apiService.accountGroups(request)
+    suspend fun accountGroups(userid: RequestBody, token: RequestBody,
+                              app_version: RequestBody, _userid: RequestBody) =
+            apiService.accountGroups(userid, token, app_version, _userid)
 
-    suspend fun addAccountGroups(request: AddAccountGroupsRequest) =
-            apiService.addAccountGroups(request)
+    suspend fun addAccountGroups(name: RequestBody,groupid: RequestBody,userid: RequestBody, token: RequestBody,
+                                 app_version: RequestBody, _userid: RequestBody) =
+            apiService.addAccountGroups(name,groupid,userid,token,app_version,_userid)
 
     suspend fun updateVehicle(request: UpdateVehicleRequest) =
             apiService.updateVehicle(request)
@@ -141,6 +146,7 @@ class ApiHelper (private val apiService: ApiService) {
     suspend fun getTagsList(request: GetTagsListRequest) =
             apiService.getTagsList(request)
 
-    suspend fun getconnectionstatus(request: GetConnectionStatusRequest) =
-        apiService.getconnectionstatus(request)
+    suspend fun getconnectionstatus(userid: RequestBody, token: RequestBody,
+                                    app_version: RequestBody, _userid: RequestBody) =
+        apiService.getconnectionstatus(userid,token,app_version,_userid)
 }

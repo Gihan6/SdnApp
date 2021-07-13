@@ -4,12 +4,14 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import com.example.sdnapp.R
+import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.leodroidcoder.genericadapter.BaseViewHolder
 import com.leodroidcoder.genericadapter.GenericRecyclerViewAdapter
 import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
+import kotlinx.android.synthetic.main.single_layout_vehicle_group.view.*
 
 class GroupsAdapter(context: Context, listener: OnRecyclerItemClickListener) :
-    GenericRecyclerViewAdapter<String, OnRecyclerItemClickListener,
+    GenericRecyclerViewAdapter<GetVehicleListResponse.Group, OnRecyclerItemClickListener,
             GroupsAdapter.BenefitsViewHolder>(context, listener) {
 
 
@@ -22,7 +24,7 @@ class GroupsAdapter(context: Context, listener: OnRecyclerItemClickListener) :
         itemView: View,
         private val listener: OnRecyclerItemClickListener
     ) :
-        BaseViewHolder<String, OnRecyclerItemClickListener>(itemView, listener),
+        BaseViewHolder<GetVehicleListResponse.Group, OnRecyclerItemClickListener>(itemView, listener),
         View.OnClickListener {
 
         init {
@@ -30,9 +32,9 @@ class GroupsAdapter(context: Context, listener: OnRecyclerItemClickListener) :
             itemView.setOnClickListener(this)
         }
 
-        override fun onBind(item: String) {
-//            Glide.with(itemView.iv_icon.context).load(item).into(itemView.iv_icon)
+        override fun onBind(item: GetVehicleListResponse.Group) {
 
+            itemView.tv_singleLayoutVehicleGroup_groupName.text=item.group_name
         }
 
         override fun onClick(view: View) {
