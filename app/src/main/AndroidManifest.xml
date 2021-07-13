@@ -58,6 +58,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.main.view.MainActivity" />
+
+        <service android:name=".service.TrackingService"
+            android:foregroundServiceType="location" />
     </application>
 
 </manifest>

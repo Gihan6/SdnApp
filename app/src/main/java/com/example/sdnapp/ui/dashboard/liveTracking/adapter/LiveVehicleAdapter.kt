@@ -3,16 +3,16 @@ package com.example.sdnapp.ui.dashboard.liveTracking.adapter
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.CompoundButton
 import com.example.sdnapp.R
 import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
+import com.example.sdnapp.ui.dashboard.liveTracking.LiveTrackingFragment
 import com.example.sdnapp.ui.dashboard.vechicle.adapter.GroupsAdapter
-import com.example.sdnapp.ui.dashboard.vechicle.adapter.VehicleAdapter
 import com.leodroidcoder.genericadapter.BaseViewHolder
 import com.leodroidcoder.genericadapter.GenericRecyclerViewAdapter
 import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
 import kotlinx.android.synthetic.main.single_layout_life_vehicle.view.*
-import kotlinx.android.synthetic.main.single_layout_vehicle.view.*
+
 
 class LiveVehicleAdapter (context: Context, listener: OnRecyclerItemClickListener) :
     GenericRecyclerViewAdapter<GetVehicleListResponse.Vehicle, OnRecyclerItemClickListener,
@@ -34,7 +34,7 @@ class LiveVehicleAdapter (context: Context, listener: OnRecyclerItemClickListene
         init {
             groupsAdapter = GroupsAdapter(
                 itemView.context,
-                OnRecyclerItemClickListener {
+                {
 
                 })
             itemView.setOnClickListener(this)
@@ -43,13 +43,24 @@ class LiveVehicleAdapter (context: Context, listener: OnRecyclerItemClickListene
         override fun onBind(item: GetVehicleListResponse.Vehicle) {
 
 
-            itemView.tv_singleLayoutLifeVehicle_plate.text=item.plate_no
+            itemView.tv_singleLayoutLifeVehicle_plate.text=item.driver_name
             if (item.vehicleAccOn) {
                 itemView.tv_singleLayoutLifeVehicle_status.text = "ON"
             }else{
                 itemView.tv_singleLayoutLifeVehicle_status.text = "OFF"
 
             }
+            itemView.cb_singleLayoutLifeVehicle_selectVehicle.setOnClickListener { view ->
+                if ((view as CompoundButton).isChecked) {
+                    LiveTrackingFragment.selectedVehicleIds.add(item)
+                    println("Checked")
+                } else {
+                    var vehicle: GetVehicleListResponse.Vehicle? = LiveTrackingFragment.selectedVehicleIds.find { it.vehicleid==item.vehicleid }
+                    LiveTrackingFragment.selectedVehicleIds.remove(vehicle)
+                    println("Un-Checked")
+                }
+            }
+
             itemView.cb_singleLayoutLifeVehicle_selectVehicle.isChecked=item.select
 
         }

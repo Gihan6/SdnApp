@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dashboard.liveTracking.LiveFragment">
+    tools:context=".ui.dashboard.liveTracking.LiveTrackingFragment">
 
 
     <TextView
@@ -46,9 +46,9 @@
         android:layout_height="@dimen/_50sdp"
         android:layout_margin="@dimen/_4sdp"
         android:hint="Search"
+        android:padding="@dimen/_4sdp"
         android:textColor="@color/black"
         android:textColorHint="@color/primary"
-        android:padding="@dimen/_4sdp"
         app:layout_constraintTop_toBottomOf="@+id/sp_liveTrackingFragment_groups" />
 
     <CheckBox
@@ -69,4 +69,14 @@
         android:layout_margin="@dimen/_4sdp"
         android:padding="@dimen/_4sdp"
         app:layout_constraintTop_toBottomOf="@+id/cb_liveTrackingFragment_selectAll" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="showLive"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

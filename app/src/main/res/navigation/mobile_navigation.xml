@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_groups" />
     <fragment
         android:id="@+id/nav_liveTracking"
-        android:name="com.example.sdnapp.ui.dashboard.liveTracking.LiveFragment"
+        android:name="com.example.sdnapp.ui.dashboard.liveTracking.LiveTrackingFragment"
         android:label="@string/live_tracking"
         tools:layout="@layout/fragment_live" />
     <fragment
