@@ -12,33 +12,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_8sdp"
-            android:hint="email"
+            android:hint="@string/email"
             android:padding="@dimen/_8sdp"
             android:text="admin@elkmmar.com"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_8sdp"
-            android:hint="password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:padding="@dimen/_8sdp"
             android:text="elkmmar2020"
             app:layout_constraintTop_toBottomOf="@+id/et_userName" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_margin="@dimen/_8sdp"
             android:padding="@dimen/_8sdp"
             android:text="Login"
             app:layout_constraintEnd_toEndOf="parent"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".ui.dashboard.driver.AddDriverActivity">
-    <Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_addDriver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:hint="Plate#"
+                android:hint="@string/plate"
                 android:textColorHint="@color/black"
                 app:boxBackgroundColor="#F1F0F0"
                 app:boxBackgroundMode="outline"
@@ -71,7 +71,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:hint="Driver Name"
+                android:hint="@string/driver_name"
                 android:textColorHint="@color/black"
                 app:boxBackgroundColor="#F1F0F0"
                 app:boxBackgroundMode="outline"
@@ -110,7 +110,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:hint="License Start"
+                android:hint="@string/license_start"
                 android:textColorHint="@color/black"
                 app:boxBackgroundColor="#F1F0F0"
                 app:boxBackgroundMode="outline"
@@ -150,7 +150,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:hint="License End"
+                android:hint="@string/license_end"
                 android:textColorHint="@color/black"
                 app:boxBackgroundColor="#F1F0F0"
                 app:boxBackgroundMode="outline"
@@ -192,7 +192,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:hint="Current Miles Age"
+                android:hint="@string/current_miles_age"
                 android:textColorHint="@color/black"
                 app:boxBackgroundColor="#F1F0F0"
                 app:boxBackgroundMode="outline"
@@ -233,16 +233,16 @@
                 android:padding="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textSize="20dp"
-                android:text="SAVE"
-                android:textColor="#ffffff"
-                app:buttonGradientStartColor="@color/primary"
-                app:buttonGradientEndColor="@color/teal_200"
-                app:buttonCornerRadius="20dp"
+                   android:text="@string/save"
+                   android:textColor="@color/white"
+                   app:buttonCornerRadius="@dimen/_20sdp"
+                   app:buttonGradientEndColor="@color/teal_200"
+                   app:buttonGradientStartColor="@color/primary"
                 />
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_70sdp"
-                app:layout_constraintTop_toBottomOf="@+id/btn_save"
+                app:layout_constraintTop_toBottomOf="@+id/btn_addDriverActivity_save"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

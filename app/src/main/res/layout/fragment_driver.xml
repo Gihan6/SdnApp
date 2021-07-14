@@ -7,11 +7,21 @@
     android:background="@color/white"
     tools:context=".ui.dashboard.driver.DriverFragment">
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_driverFragment_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_margin="@dimen/_8sdp"
+        android:hint="@string/search"
+        android:padding="@dimen/_8sdp"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="wrap_content"
         android:id="@+id/rv_driverFragment_drivers"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/_4sdp" />
+        app:layout_constraintTop_toBottomOf="@+id/et_driverFragment_search"
+        android:layout_margin="@dimen/_8sdp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"

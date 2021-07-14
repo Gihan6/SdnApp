@@ -20,4 +20,20 @@
     <string name="driver_vehicle">Driver Vehicle</string>
     <string name="groups">Groups</string>
     <string name="live_tracking">Live Tracking</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="search">search</string>
+    <string name="plate">Plate#</string>
+    <string name="driver_name">Driver Name</string>
+    <string name="license_start">License Start</string>
+    <string name="license_end">License End</string>
+    <string name="current_miles_age">Current Miles Age</string>
+    <string name="new_group">New Group</string>
+    <string name="group_name">Group Name</string>
+    <string name="logout">LogOut</string>
+    <string name="vehicle_name">Vehicle Name</string>
+    <string name="gps_unitid">GPS UnitID</string>
+    <string name="sim">Sim</string>
+    <string name="max_speed">Max Speed</string>
+    <string name="save">SAVE</string>
 </resources>
