@@ -36,11 +36,11 @@ class VehicleAdapter(context: Context, listener: OnRecyclerItemClickListener) :
 
         override fun onBind(item: GetVehicleListResponse.Vehicle) {
 
-            itemView.tv_singleLayoutVehicle_vehicleName.text = item.vehicle_name
-            itemView.tv_singleLayoutVehicle_plate.text = item.plate_no
-            itemView.tv_singleLayoutVehicle_startDate.text = "License start :"+item.license_start
-            itemView.tv_singleLayoutVehicle_endDate.text = "License end :"+item.license_end
-            itemView.tv_singleLayoutVehicle_mileAge.text = "mileAge :"+item.current_mileage.toString()
+            itemView.tv_singleLayoutVehicle_vehicleName.setText(item.vehicle_name)
+            itemView.tv_singleLayoutVehicle_plate.setText( item.plate_no)
+            itemView.tv_singleLayoutVehicle_startDate.setText(itemView.context.getString(R.string.license_start)+" : "+item.license_start)
+            itemView.tv_singleLayoutVehicle_endDate.setText(itemView.context.getString(R.string.license_end)+" : "+item.license_end)
+            itemView.tv_singleLayoutVehicle_mileAge.setText(itemView.context.getString(R.string.current_miles_age)+" : "+item.current_mileage.toString())
 
             if (item.groups != null && item.groups.isNotEmpty()) {
                 itemView.rv_singleLayoutVehicle_groups.apply {

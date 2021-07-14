@@ -12,12 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutVehicle_vehicleName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/_4sdp"
-        android:text="vehicle name"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
@@ -26,40 +26,40 @@
 
         />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutVehicle_plate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/_4sdp"
-        android:text="Plate"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/_10ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutVehicle_startDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/_4sdp"
-        android:text="start date :2020-09-14"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutVehicle_vehicleName" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutVehicle_endDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/_4sdp"
-        android:text="end date :2022-09-14"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutVehicle_startDate" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutVehicle_mileAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

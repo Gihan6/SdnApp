@@ -4,12 +4,14 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import com.example.sdnapp.R
+import com.example.sdnapp.data.networkModels.response.GetDriverListResponse
 import com.leodroidcoder.genericadapter.BaseViewHolder
 import com.leodroidcoder.genericadapter.GenericRecyclerViewAdapter
 import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
+import kotlinx.android.synthetic.main.single_layout_driver_vehicle.view.*
 
 class DriverVehicleAdapter(context: Context, listener: OnRecyclerItemClickListener) :
-    GenericRecyclerViewAdapter<String, OnRecyclerItemClickListener,
+    GenericRecyclerViewAdapter<GetDriverListResponse.Driver, OnRecyclerItemClickListener,
             DriverVehicleAdapter.BenefitsViewHolder>(context, listener) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BenefitsViewHolder {
@@ -21,15 +23,22 @@ class DriverVehicleAdapter(context: Context, listener: OnRecyclerItemClickListen
         itemView: View,
         private val listener: OnRecyclerItemClickListener
     ) :
-        BaseViewHolder<String, OnRecyclerItemClickListener>(itemView, listener),
+        BaseViewHolder<GetDriverListResponse.Driver, OnRecyclerItemClickListener>(
+            itemView,
+            listener
+        ),
         View.OnClickListener {
 
         init {
 
-            itemView.setOnClickListener(this)
+            itemView.iv_singleLayoutDiverVehicle_edit.setOnClickListener(this)
         }
 
-        override fun onBind(item: String) {
+        override fun onBind(item: GetDriverListResponse.Driver) {
+            itemView.tv_singleLayoutDiverVehicle_driverName.setText(item.driver_name)
+            itemView.tv_singleLayoutDiverVehicle_linkedVehicle.setText(item.vehicle_name)
+            itemView.tv_singleLayoutDiverVehicle_plate.setText(item.plate_no)
+
 
         }
 

@@ -12,38 +12,48 @@
         android:layout_height="wrap_content"
         android:background="@color/white">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_singleLayoutDiverVehicle_edit"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_margin="@dimen/_8sdp"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
             android:id="@+id/tv_singleLayoutDiverVehicle_driverName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
             android:padding="@dimen/_4sdp"
-            android:text="Mohamed Ahmed"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
             android:id="@+id/tv_singleLayoutDiverVehicle_linkedVehicle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
             android:padding="@dimen/_4sdp"
-            android:text="12354 mohamed "
+            android:text=" "
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutDiverVehicle_driverName" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
             android:id="@+id/tv_singleLayoutDiverVehicle_plate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_4sdp"
             android:padding="@dimen/_4sdp"
-            android:text="123546658792 "
+            android:text=""
             android:textColor="@color/black"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintStart_toStartOf="parent"

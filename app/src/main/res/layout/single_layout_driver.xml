@@ -12,7 +12,7 @@
 
     android:layout_height="wrap_content">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutDriver_driverName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutDriver_licenseNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutDriver_driverName" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutDriver_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutDriver_driverName" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutDriver_localScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutDriver_score" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutDriver_sdnScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutDriver_score" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutDriver_startDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutDriver_localScore" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutDriver_endDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,10 +94,10 @@
         android:text="end date :2022-09-14"
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutDriver_localScore" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutDriver_startDate" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutDriver_mileAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

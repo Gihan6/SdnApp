@@ -13,7 +13,10 @@
         android:layout_height="@dimen/_50sdp"
         android:layout_margin="@dimen/_8sdp"
         android:hint="@string/search"
+        android:textColor="@color/black"
+        android:textColorHint="@color/primary_dark"
         android:padding="@dimen/_8sdp"
+        android:background="@drawable/background_search"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView

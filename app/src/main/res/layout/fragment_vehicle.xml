@@ -7,10 +7,23 @@
     android:background="@color/white"
     tools:context=".ui.dashboard.vechicle.ui.VehicleFragment">
 
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_vehicleFragment_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_margin="@dimen/_8sdp"
+        android:background="@drawable/background_search"
+        android:hint="@string/search"
+        android:padding="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/primary_dark"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="wrap_content"
         android:id="@+id/rv_vehicleFragment_vehicles"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_vehicleFragment_search"
         android:layout_margin="@dimen/_4sdp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

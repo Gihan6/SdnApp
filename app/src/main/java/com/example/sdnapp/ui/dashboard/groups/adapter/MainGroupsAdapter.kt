@@ -33,9 +33,9 @@ class MainGroupsAdapter(context: Context, listener: OnRecyclerItemClickListener)
         }
 
         override fun onBind(item: AccountGroupsResponse.Group) {
-            itemView.tv_fragmentGroup_groupName.text = item.group_name
+            itemView.tv_fragmentGroup_groupName.setText(item.group_name)
             if (!item.units.isNullOrEmpty())
-                itemView.tv_fragmentGroup_memberNumber.text = item.units.size.toString()
+                itemView.tv_fragmentGroup_memberNumber.setText(item.units.size.toString())
 
 
         }

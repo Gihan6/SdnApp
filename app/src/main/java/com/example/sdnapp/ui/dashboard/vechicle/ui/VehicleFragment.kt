@@ -2,14 +2,14 @@ package com.example.sdnapp.ui.dashboard.vechicle.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sdnapp.R
-import com.example.sdnapp.data.networkModels.request.GetVehicleListRequest
 import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.example.sdnapp.ui.base.BaseFragment
 import com.example.sdnapp.ui.dashboard.vechicle.adapter.VehicleAdapter
@@ -23,6 +23,7 @@ class VehicleFragment : BaseFragment() {
 
     private val viewModel by inject<VehicleViewModel>()
     lateinit var vehicleAdapter: VehicleAdapter
+    var vehicleList = mutableListOf<GetVehicleListResponse.Vehicle>()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -37,12 +38,39 @@ class VehicleFragment : BaseFragment() {
         getVehicleFromWebServices()
 
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
         initAdapter()
         addVehicle()
+        search()
 
+    }
+
+    private fun search() {
+        et_vehicleFragment_search.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (!vehicleList.isNullOrEmpty() && s != null) {
+                    var searchList = vehicleList.filter {
+                        it.vehicle_name.contains(s)
+                    }
+                    if (!searchList.isNullOrEmpty()) {
+                        setAdapter(searchList)
+                    }
+                }else if (s == null||s.isEmpty())
+                {
+                    setAdapter(vehicleList)
+                }
+            }
+        })
     }
 
     private fun addVehicle() {
@@ -89,8 +117,10 @@ class VehicleFragment : BaseFragment() {
                     }
                     Status.SUCCESS -> {
                         dismissLoading()
-                        if(!it.data!!.Vehicles.isNullOrEmpty()){
+                        if (!it.data!!.Vehicles.isNullOrEmpty()) {
                             setAdapter(it.data!!.Vehicles)
+                            vehicleList =
+                                it.data!!.Vehicles as MutableList<GetVehicleListResponse.Vehicle>
                         }
 
 
