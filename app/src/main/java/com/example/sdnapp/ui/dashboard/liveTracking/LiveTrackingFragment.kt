@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sdnapp.R
-import com.example.sdnapp.data.networkModels.request.GetLocationRequest
 import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.example.sdnapp.service.TrackingService
@@ -74,7 +73,7 @@ class LiveTrackingFragment : BaseFragment() {
 
         }
 
-
+        callGetLocation()
     }
 
     private fun sendCommandToService(action: String) =
@@ -266,10 +265,11 @@ class LiveTrackingFragment : BaseFragment() {
     }
     private fun callGetLocation(){
         //----------getLocation
-        liveTrackingViewModel.getLocationFromWebServices("","","",
-        "","", emptyList(),true)
+        liveTrackingViewModel.getLocationFromWebServices("2021-07-14T08:18:40.000",
+                "2021-07-14T09:18:40.000Z","0",
+        "0","500", listOf("0358899050775025","0353701096468828","0358899054191211","0358899051045246","0864717002508335"),true)
 
-        liveTrackingViewModel.getLocation().observe(this, Observer {
+        liveTrackingViewModel.getLocation().observe(requireActivity(), Observer {
             it?.let { resource ->
                 dismissLoading()
                 when (resource.status) {
@@ -283,4 +283,5 @@ class LiveTrackingFragment : BaseFragment() {
             }
         })
     }
+
 }
