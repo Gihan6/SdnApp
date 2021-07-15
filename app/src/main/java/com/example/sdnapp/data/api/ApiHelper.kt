@@ -1,7 +1,6 @@
 package com.example.sdnapp.data.api
 
 import com.example.sdnapp.data.networkModels.request.*
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 
@@ -34,7 +33,12 @@ class ApiHelper (private val apiService: ApiService) {
 
     suspend fun updateCommand(request: UpdateCommandRequest) = apiService.updateCommand(request)
 
-    suspend fun getLocation(request: GetLocationRequest) = apiService.getLocation(request)
+    suspend fun getLocation(
+            start_time: RequestBody, end_time: RequestBody, min_speed: RequestBody, start: RequestBody,
+            limit: RequestBody, objectids: RequestBody, playmode: RequestBody, userid: RequestBody,
+            token: RequestBody, app_version: RequestBody, _userid: RequestBody
+    ) = apiService.getLocation(start_time, end_time, min_speed, start, limit, objectids, playmode, userid,
+            token, app_version, _userid)
 
     suspend fun addNewGeo(request: AddNewGeoRequest) = apiService.addNewGeo(request)
 
@@ -44,7 +48,7 @@ class ApiHelper (private val apiService: ApiService) {
 
     suspend fun getActivities(request: GetActivitiesRequest) = apiService.getActivities(request)
 
-    suspend fun getLastActivitiesType(request:GetLatsActivitiesTypesRequest) =
+    suspend fun getLastActivitiesType(request: GetLatsActivitiesTypesRequest) =
             apiService.getLastActivitiesTypes(request)
 
     suspend fun getLastActivities(request:GetLastActivitiesRequest) =

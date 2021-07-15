@@ -100,9 +100,7 @@ class MainActivity : BaseActivity(), ListenerAdapter {
         )
         viewModel.updateCommandFromWebServices(UpdateCommandRequest(""))
 
-        viewModel.getLocationFromWebServices(
-                GetLocationRequest("", "", "", 1,
-                        "", "", "", arrayListOf()))
+
 
         viewModel.addNewGeoToWebServices(
                 AddNewGeoRequest("", "", "", 1,
@@ -390,20 +388,7 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                 }
             }
         })
-        //----------getLocation
-        viewModel.getLocation().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
+
         //----------addNewGeo
         viewModel.addNewGeo().observe(this, Observer {
             it?.let { resource ->

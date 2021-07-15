@@ -48,8 +48,21 @@ interface ApiService {
     @POST("cam.updatecommand")
     suspend fun updateCommand(request: UpdateCommandRequest): UpdateCommandResponse
 
+    @Multipart
     @POST("location.getlocation")
-    suspend fun getLocation(request: GetLocationRequest): GetLocationResponse
+    suspend fun getLocation(
+            @Part("start_time") start_time: RequestBody,
+            @Part("end_time") end_time: RequestBody,
+            @Part("min_speed") min_speed: RequestBody,
+            @Part("start") start: RequestBody,
+            @Part("limit") limit: RequestBody,
+            @Part("objectids") objectids: RequestBody,
+            @Part("playmode") playmode: RequestBody,
+            @Part("userid") userid: RequestBody,
+            @Part("token") token: RequestBody,
+            @Part("app_version") app_version: RequestBody,
+            @Part("_userid") _userid: RequestBody,
+    ): GetLocationResponse
 
     @POST("geofence.add")
     suspend fun addNewGeo(request: AddNewGeoRequest): AddNewGeoResponse

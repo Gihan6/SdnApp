@@ -8,7 +8,6 @@ import com.example.sdnapp.db.Repo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -57,8 +56,14 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
     suspend fun updateCommand(request: UpdateCommandRequest) =
             apiHelper.updateCommand(request)
 
-    suspend fun getLocation(request: GetLocationRequest) =
-            apiHelper.getLocation(request)
+    suspend fun getLocation(start_time: RequestBody, end_time: RequestBody,
+                            min_speed: RequestBody, start: RequestBody,
+                            limit: RequestBody, objectids: RequestBody,
+                            playmode: RequestBody, userid: RequestBody,
+                            token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
+            apiHelper.getLocation(start_time, end_time, min_speed, start, limit,
+                    objectids, playmode, userid,
+                    token, app_version, _userid)
 
     suspend fun addNewGeo(request: AddNewGeoRequest) =
             apiHelper.addNewGeo(request)

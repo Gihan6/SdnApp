@@ -10,6 +10,7 @@ import com.example.sdnapp.data.networkModels.response.*
 import com.example.sdnapp.data.repository.MainRepository
 import com.example.sdnapp.util.Resource
 import kotlinx.coroutines.launch
+import okhttp3.RequestBody
 
 class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
@@ -290,30 +291,6 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
                 _updateCommand.postValue(Resource.success(data = response))
             } catch (exception: Exception) {
                 _updateCommand.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
-
-    //getLocation----------------------------------
-    private val _getLocation = MutableLiveData<Resource<GetLocationResponse>>()
-    fun getLocation(): LiveData<Resource<GetLocationResponse>> {
-        return _getLocation
-    }
-
-    fun getLocationFromWebServices(request: GetLocationRequest) {
-        viewModelScope.launch {
-            _getLocation.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.getLocation(request)
-
-                _getLocation.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _getLocation.postValue(
                         Resource.error(
                                 data = null,
                                 message = exception.message ?: "Error Occurred!$exception"
