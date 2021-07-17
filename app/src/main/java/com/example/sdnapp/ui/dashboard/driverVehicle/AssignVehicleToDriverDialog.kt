@@ -12,23 +12,24 @@ import com.example.sdnapp.data.networkModels.response.GetVehicleListResponse
 import com.example.sdnapp.ui.dashboard.driverVehicle.adapter.VehicleAssignForDriverAdapter
 import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
 import kotlinx.android.synthetic.main.assign_vehicle_to_driver_dialog.*
-import okhttp3.internal.notify
 
-class AssignVehicleToDriverDialog(private val data: List<GetVehicleListResponse.Vehicle>) :
-    DialogFragment() {
-    private lateinit var vehicleAssignForDriverAdapter:VehicleAssignForDriverAdapter
+class AssignVehicleToDriverDialog(private val data: List<GetVehicleListResponse.Vehicle>) : DialogFragment() {
+    private var pos = -1
+    private lateinit var migrateCallback: MigrateCallback
+
+    private lateinit var vehicleAssignForDriverAdapter: VehicleAssignForDriverAdapter
     override fun onStart() {
         super.onStart()
         dialog?.window?.setLayout(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.WRAP_CONTENT
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT
         )
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.assign_vehicle_to_driver_dialog, null, false)
     }
@@ -38,24 +39,27 @@ class AssignVehicleToDriverDialog(private val data: List<GetVehicleListResponse.
         setupView()
     }
 
+    fun setMigrateCallback(migrateCallback: AssignVehicleToDriverDialog.MigrateCallback) {
+        this@AssignVehicleToDriverDialog.migrateCallback = migrateCallback
+    }
+
     private fun setupView() {
-         vehicleAssignForDriverAdapter = VehicleAssignForDriverAdapter(
-            requireContext(),
-            OnRecyclerItemClickListener {
+        vehicleAssignForDriverAdapter = VehicleAssignForDriverAdapter(
+                requireContext(),
+                OnRecyclerItemClickListener {
 
-                data[it].select = true
-                for (v in data) {
-                    if (v.vehicleid != data[it].vehicleid) {
-                        v.select = false
+                    pos = it
+                    data[it].select = true
+                    for (v in data) {
+                        if (v.vehicleid != data[it].vehicleid) {
+                            v.select = false
+                        }
+
                     }
-
-                }
-                vehicleAssignForDriverAdapter.notifyDataSetChanged()
+                    vehicleAssignForDriverAdapter.notifyDataSetChanged()
 
 
-
-
-            })
+                })
 
         rv_assignVehicleToDriverDialog_vehicles.apply {
             layoutManager = LinearLayoutManager(context)
@@ -69,9 +73,14 @@ class AssignVehicleToDriverDialog(private val data: List<GetVehicleListResponse.
             dismiss()
         }
         btn_assignVehicleToDriverDialog_save.setOnClickListener {
-            dismiss()
+            if (pos >= 0) {
+                migrateCallback.onConfirmClick(data[pos])
+            }
         }
     }
 
+    interface MigrateCallback {
+        fun onConfirmClick(pos: GetVehicleListResponse.Vehicle)
+    }
 
 }

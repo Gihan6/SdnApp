@@ -25,6 +25,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_singleLayoutDriver_delete"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_margin="@dimen/_4sdp"
+        android:padding="@dimen/_4sdp"
+        android:src="@drawable/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_singleLayoutDriver_edit"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:src="@drawable/edit"
+        android:padding="@dimen/_4sdp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_singleLayoutDriver_delete"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatAutoCompleteTextView
         android:id="@+id/tv_singleLayoutDriver_licenseNumber"
         android:layout_width="wrap_content"

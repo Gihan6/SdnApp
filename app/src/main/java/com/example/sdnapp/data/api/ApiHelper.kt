@@ -78,7 +78,22 @@ class ApiHelper (private val apiService: ApiService) {
     suspend fun getDriverList(userid: RequestBody, token: RequestBody, app_version: RequestBody,
                               _userid: RequestBody) = apiService.getDriverList(userid, token, app_version, _userid)
 
-    suspend fun addDriver(request: AddDriverRequest) = apiService.addDriver(request)
+    suspend fun addDriver(driver_name: RequestBody, license_number: RequestBody, license_start: RequestBody,
+                          license_end: RequestBody, current_mileage: RequestBody, userid: RequestBody,
+                          token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
+            apiService.addDriver(driver_name, license_number, license_start, license_end,
+                    current_mileage, userid, token, app_version, _userid)
+
+    suspend fun updateDriver(driver_name: RequestBody, license_number: RequestBody, license_start: RequestBody,
+                             license_end: RequestBody, current_mileage: RequestBody,
+                             driverId: RequestBody, userid: RequestBody,
+                             token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
+            apiService.updateDriver(driver_name, license_number, license_start, license_end,
+                    current_mileage, driverId, userid, token, app_version, _userid)
+
+    suspend fun deleteDriver(driverId: RequestBody, userid: RequestBody,
+                             token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
+            apiService.deleteDriver(driverId, userid, token, app_version, _userid)
 
     suspend fun addVehicle(request: AddVehicleRequest) = apiService.addVehicle(request)
 
@@ -99,8 +114,6 @@ class ApiHelper (private val apiService: ApiService) {
     suspend fun updateVehicle(request: UpdateVehicleRequest) =
             apiService.updateVehicle(request)
 
-    suspend fun updateDriver(request: UpdateDriverRequest) =
-            apiService.updateDriver(request)
 
     suspend fun groupUnitsInformation(request: GroupUnitsInformationRequest) =
             apiService.groupUnitInformation(request)

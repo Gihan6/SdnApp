@@ -1,13 +1,12 @@
 package com.example.sdnapp.data.networkModels.response
 
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class AddDriverResponse(
         @SerializedName("type")
-        @Expose var type: String,
+        val type: String,
         @SerializedName("value")
-        @Expose var value: String,
+        val value: String,
         @SerializedName("text")
-        @Expose var text: String
+        val text: String
 )

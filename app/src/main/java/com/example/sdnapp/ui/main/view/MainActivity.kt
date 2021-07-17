@@ -166,10 +166,7 @@ class MainActivity : BaseActivity(), ListenerAdapter {
 
         viewModel.updateVehicleToWebServices(UpdateVehicleRequest(""))
 
-        viewModel.updateDriverToWebServices(
-                UpdateDriverRequest("", "", "",
-                        "", "", "", "", "", 2,
-                        ""))
+
 
         viewModel.getGroupUnitsInformationFromWebServices(
                 GroupUnitsInformationRequest("", "", "",
@@ -631,20 +628,7 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                 }
             }
         })
-        //----------Update Driver
-        viewModel.updateDriver().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
+
         //----------groupUnitsInformation
         viewModel.groupUnitsInformation().observe(this, Observer {
             it?.let { resource ->

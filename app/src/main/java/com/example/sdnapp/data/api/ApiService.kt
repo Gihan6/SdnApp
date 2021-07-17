@@ -121,9 +121,40 @@ interface ApiService {
                               @Part("app_version") app_version: RequestBody,
                               @Part("_userid") _userid: RequestBody): GetDriverListResponse
 
+    @Multipart
     @POST("driver.adddriver")
-    @Headers("Content-Type: application/json")
-    suspend fun addDriver(@Body request: AddDriverRequest): AddDriverResponse
+    suspend fun addDriver(
+            @Part("driver_name") driver_name: RequestBody,
+            @Part("license_number") license_number: RequestBody,
+            @Part("license_start") license_start: RequestBody,
+            @Part("license_end") license_end: RequestBody,
+            @Part("current_mileage") current_mileage: RequestBody,
+            @Part("userid") userid: RequestBody,
+            @Part("token") token: RequestBody,
+            @Part("app_version") app_version: RequestBody,
+            @Part("_userid") _userid: RequestBody): AddDriverResponse
+
+    @Multipart
+    @POST("driver.updatedriver")
+    suspend fun updateDriver(@Part("driver_name") driver_name: RequestBody,
+                             @Part("license_number") license_number: RequestBody,
+                             @Part("license_start") license_start: RequestBody,
+                             @Part("license_end") license_end: RequestBody,
+                             @Part("current_mileage") current_mileage: RequestBody,
+                             @Part("driverid") driverid: RequestBody,
+                             @Part("userid") userid: RequestBody,
+                             @Part("token") token: RequestBody,
+                             @Part("app_version") app_version: RequestBody,
+                             @Part("_userid") _userid: RequestBody): UpdateDriverResponse
+
+    @Multipart
+    @POST("driver.deletedriver")
+    suspend fun deleteDriver(
+            @Part("driverid") driverid: RequestBody,
+            @Part("userid") userid: RequestBody,
+            @Part("token") token: RequestBody,
+            @Part("app_version") app_version: RequestBody,
+            @Part("_userid") _userid: RequestBody): AddDriverResponse
 
     @POST("vehicle.addvehicle")
     @Headers("Content-Type: application/json")
@@ -156,8 +187,6 @@ interface ApiService {
     @POST("vehicle.updatevehicle")
     suspend fun updateVehicle(request: UpdateVehicleRequest): UpdateVehicleResponse
 
-    @POST("driver.updatedriver")
-    suspend fun updateDriver(request: UpdateDriverRequest): UpdateDriverResponse
 
     @POST("groups.groupUnitsInformation")
     suspend fun groupUnitInformation(request: GroupUnitsInformationRequest):

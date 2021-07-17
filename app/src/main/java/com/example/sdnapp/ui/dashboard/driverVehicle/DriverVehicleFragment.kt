@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sdnapp.R
@@ -85,20 +86,35 @@ class DriverVehicleFragment : BaseFragment() {
     private fun initAdapter() {
 
         driverVehicleAdapter = DriverVehicleAdapter(
-            requireContext(),
-            OnRecyclerItemClickListener {
+                requireContext(),
+                OnRecyclerItemClickListener {
 
-                if (!vehicleList.isNullOrEmpty()) {
-                    showDialog(vehicleList)
-                }
+                    if (!vehicleList.isNullOrEmpty()) {
 
-            })
+
+                        var unReservedVehicle = vehicleList.filter {
+                            it.driver_name == null
+                        }
+                        if (!unReservedVehicle.isNullOrEmpty())
+                            showDialog(unReservedVehicle)
+                    }
+
+                })
 
     }
 
     private fun showDialog(data: List<GetVehicleListResponse.Vehicle>) {
         val ft = parentFragmentManager.beginTransaction()
         val newFragment = AssignVehicleToDriverDialog(data)
+        newFragment.setMigrateCallback(object : AssignVehicleToDriverDialog.MigrateCallback {
+            override fun onConfirmClick(selectVehicle: GetVehicleListResponse.Vehicle) {
+
+                //pos of vehicle
+                Toast.makeText(context, selectVehicle.vehicle_name, Toast.LENGTH_SHORT).show()
+                newFragment.dismiss()
+
+            }
+        })
         newFragment.show(ft, "dialog")
     }
 

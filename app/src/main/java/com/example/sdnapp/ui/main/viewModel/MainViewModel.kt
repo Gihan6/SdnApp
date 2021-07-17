@@ -712,29 +712,6 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         }
     }
 
-    //update Driver----------------------------------
-    private val _updateDriver = MutableLiveData<Resource<UpdateDriverResponse>>()
-    fun updateDriver(): LiveData<Resource<UpdateDriverResponse>> {
-        return _updateDriver
-    }
-
-    fun updateDriverToWebServices(request: UpdateDriverRequest) {
-        viewModelScope.launch {
-            _updateDriver.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.updateDriver(request)
-
-                _updateDriver.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _updateDriver.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
 
     //GroupUnitsInformation----------------------------------
     private val _groupUnitsInformation = MutableLiveData<Resource<GroupUnitsInformationResponse>>()

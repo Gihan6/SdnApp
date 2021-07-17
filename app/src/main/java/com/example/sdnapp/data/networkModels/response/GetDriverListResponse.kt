@@ -1,6 +1,7 @@
 package com.example.sdnapp.data.networkModels.response
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class GetDriverListResponse(
         @SerializedName("type") val type: String,
@@ -28,5 +29,7 @@ data class GetDriverListResponse(
                 @SerializedName("local_perc_score") val local_perc_score: String,
                 @SerializedName("global_perc_score") val global_perc_score: String,
                 @SerializedName("sdn_perc_score") val sdn_perc_score: String
-        )
+        ):Serializable {
+
+        }
 }

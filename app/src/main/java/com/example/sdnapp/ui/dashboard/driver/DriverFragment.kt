@@ -14,7 +14,6 @@ import com.example.sdnapp.data.networkModels.response.GetDriverListResponse
 import com.example.sdnapp.ui.base.BaseFragment
 import com.example.sdnapp.ui.dashboard.driver.adapter.DriverAdapter
 import com.example.sdnapp.util.Status
-import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
 import kotlinx.android.synthetic.main.fragment_driver.*
 import org.koin.android.ext.android.inject
 
@@ -31,12 +30,16 @@ class DriverFragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_driver, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+        getDriverFromWebservices()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
         initAdapter()
         addDriver()
-        getDriverFromWebservices()
         search()
     }
 
@@ -73,6 +76,8 @@ class DriverFragment : BaseFragment() {
 
     private fun goToAddDriver() {
         val intent = Intent(requireContext(), AddDriverActivity::class.java)
+        intent.putExtra("type","add")
+
         startActivity(intent)
     }
 
@@ -80,11 +85,24 @@ class DriverFragment : BaseFragment() {
 
         driverAdapter = DriverAdapter(
                 requireContext(),
-                OnRecyclerItemClickListener {
+                object : DriverAdapter.OnRecyclerItemClickListenerForDriver {
+                    override fun onItemClick(position: Int, edit: Boolean, delete: Boolean) {
 
+                        if (delete) {
+                            viewModel.deleteDriverFromWebServices(driverList[position].driverid)
+                        }
+                        if (edit) {
+                            val intent = Intent(requireContext(), AddDriverActivity::class.java)
+                            intent.putExtra("type","edit")
+                            intent.putExtra("driver", driverList[position])
+                            startActivity(intent)
+                        }
+
+                    }
                 })
 
     }
+
 
     private fun setAdapter(data: List<GetDriverListResponse.Driver>) {
         rv_driverFragment_drivers.apply {
@@ -113,7 +131,7 @@ class DriverFragment : BaseFragment() {
                         if (it.data!!.drivers != null) {
                             setAdapter(it.data.drivers)
                             driverList =
-                                it.data.drivers as MutableList<GetDriverListResponse.Driver>
+                                    it.data.drivers as MutableList<GetDriverListResponse.Driver>
                         }
                     }
                     Status.ERROR -> {
@@ -126,5 +144,27 @@ class DriverFragment : BaseFragment() {
                 }
             }
         })
+        viewModel.deleteDriver().observe(requireActivity(), Observer {
+            it?.let { resource ->
+
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        dismissLoading()
+                        if (it.data!!.type == "ok")
+                            getDriverFromWebservices()
+                        else
+                            showToast(requireContext(), it.data!!.text)
+                    }
+                    Status.ERROR -> {
+                        dismissLoading()
+                        it.message?.let { it1 -> showToast(requireContext(), it1) }
+                    }
+                    Status.LOADING -> {
+                        showLoading()
+                    }
+                }
+            }
+        })
+
     }
 }

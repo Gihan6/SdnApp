@@ -1,8 +1,7 @@
 package com.example.sdnapp.data.api;
 
-import com.example.sdnapp.BuildConfig;
-
 import java.security.cert.CertificateException;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -13,8 +12,6 @@ import javax.net.ssl.X509TrustManager;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestAdapter {
 
@@ -45,6 +42,10 @@ public class RestAdapter {
 
                 OkHttpClient.Builder builder = new OkHttpClient.Builder();
                 builder.addInterceptor(getLoggin());
+                builder.connectTimeout(5, TimeUnit.MINUTES) // connect timeout
+                        .writeTimeout(5, TimeUnit.MINUTES) // write timeout
+                        .readTimeout(5, TimeUnit.MINUTES);
+
                 builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
                 builder.hostnameVerifier(new HostnameVerifier() {
                     @Override

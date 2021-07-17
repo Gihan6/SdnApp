@@ -115,11 +115,26 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
                               _userid: RequestBody) =
             apiHelper.getDriverList(userid, token, app_version, _userid)
 
-    suspend fun addDriver(request: AddDriverRequest) =
-            apiHelper.addDriver(request)
+    suspend fun addDriver(driver_name: RequestBody, license_number: RequestBody, license_start: RequestBody,
+                          license_end: RequestBody, current_mileage: RequestBody, userid: RequestBody,
+                          token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
+            apiHelper.addDriver(driver_name, license_number, license_start, license_end,
+                    current_mileage, userid, token, app_version, _userid)
+
+    suspend fun updateDriver(driver_name: RequestBody, license_number: RequestBody, license_start: RequestBody,
+                             license_end: RequestBody, current_mileage: RequestBody,
+                             driverId: RequestBody, userid: RequestBody,
+                             token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
+            apiHelper.updateDriver(driver_name, license_number, license_start, license_end,
+                    current_mileage, driverId, userid, token, app_version, _userid)
+
+    suspend fun deleteDriver(driverId: RequestBody, userid: RequestBody,
+                             token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
+            apiHelper.deleteDriver(driverId, userid, token, app_version, _userid)
 
     suspend fun addVehicle(request: AddVehicleRequest) =
             apiHelper.addVehicle(request)
+
     suspend fun updateDriverVehicle(request: UpdateDriverVehicleRequest) =
             apiHelper.updateDriverVehicle(request)
 
@@ -127,7 +142,7 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
             apiHelper.updateCameraVehicle(request)
 
     suspend fun accountGroups(userid: RequestBody, token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
-            apiHelper.accountGroups(userid,token,app_version,_userid)
+            apiHelper.accountGroups(userid, token, app_version, _userid)
 
     suspend fun addAccountGroups(name: RequestBody,groupid: RequestBody,userid: RequestBody, token: RequestBody,
                                  app_version: RequestBody, _userid: RequestBody) =
@@ -135,8 +150,6 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
 
     suspend fun updateVehicle(request: UpdateVehicleRequest) = apiHelper.updateVehicle(request)
 
-    suspend fun updateDriver(request: UpdateDriverRequest) =
-            apiHelper.updateDriver(request)
 
     suspend fun groupUnitsInformation(request: GroupUnitsInformationRequest) =
             apiHelper.groupUnitsInformation(request)
