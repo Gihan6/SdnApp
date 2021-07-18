@@ -132,8 +132,16 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
                              token: RequestBody, app_version: RequestBody, _userid: RequestBody) =
             apiHelper.deleteDriver(driverId, userid, token, app_version, _userid)
 
-    suspend fun addVehicle(request: AddVehicleRequest) =
-            apiHelper.addVehicle(request)
+    suspend fun addVehicle(vehicle_name: RequestBody, plate_no: RequestBody,
+                           license_start: RequestBody, license_end: RequestBody,
+                           current_mileage: RequestBody, gps_unitid: RequestBody,
+                           groupList: RequestBody, max_speed: RequestBody,
+                           sim_number: RequestBody,
+                           userid: RequestBody, token: RequestBody,
+                           app_version: RequestBody, _userid: RequestBody) =
+            apiHelper.addVehicle(vehicle_name, plate_no, license_start, license_end, current_mileage,
+                    gps_unitid, groupList, max_speed, sim_number, userid, token,
+                    app_version, _userid)
 
     suspend fun updateDriverVehicle(request: UpdateDriverVehicleRequest) =
             apiHelper.updateDriverVehicle(request)
@@ -154,11 +162,14 @@ class MainRepository(private val apiHelper: ApiHelper) : KoinComponent {
     suspend fun groupUnitsInformation(request: GroupUnitsInformationRequest) =
             apiHelper.groupUnitsInformation(request)
 
-    suspend fun updateAccountGroupName(request: UpdateAccountGroupNameRequest) =
-            apiHelper.updateAccountGroupName(request)
+    suspend fun updateAccountGroupName(name: RequestBody,groupid: RequestBody, userid: RequestBody,
+                                       token: RequestBody,
+                                       app_version: RequestBody, _userid: RequestBody) =
+            apiHelper.updateAccountGroupName(name,groupid, userid, token, app_version, _userid)
 
-    suspend fun deleteAccountGroup(request: DeleteAccountGroupRequest) =
-            apiHelper.deleteAccountGroup(request)
+    suspend fun deleteAccountGroup(groupid: RequestBody, userid: RequestBody, token: RequestBody,
+                                   app_version: RequestBody, _userid: RequestBody) =
+            apiHelper.deleteAccountGroup(groupid, userid, token, app_version, _userid)
 
     suspend fun getUserById(request: GetUserByIdRequest) =
             apiHelper.getUserById(request)

@@ -173,12 +173,7 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                         2,
                         ""))
 
-        viewModel.updateAccountGroupNameToWebServices(
-                UpdateAccountGroupNameRequest("", "", "", "",
-                        2, ""))
 
-        viewModel.deleteAccountGroupFromWebServices(
-                DeleteAccountGroupRequest("", "", "", 1, ""))
 
         viewModel.getUSerByIdFromWebServices(
                 GetUserByIdRequest("", "", 1, ""))
@@ -643,34 +638,8 @@ class MainActivity : BaseActivity(), ListenerAdapter {
                 }
             }
         })
-        //----------updateAccountGroupName
-        viewModel.updateAccountGroupName().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
-        //----------deleteAccountGroupName
-        viewModel.deleteAccountGroupName().observe(this, Observer {
-            it?.let { resource ->
-                dismissLoading()
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                    }
-                    Status.ERROR -> {
-                    }
-                    Status.LOADING -> {
-                    }
-                }
-            }
-        })
+
+
         //----------getUserByID
         viewModel.getUSerById().observe(this, Observer {
             it?.let { resource ->

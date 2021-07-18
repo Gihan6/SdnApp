@@ -8,7 +8,7 @@
     tools:context=".ui.dashboard.groups.AddGroupActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_fragmentGroup_addGroup"
+        android:id="@+id/toolbar_addGroupActivity_addGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <cz.ackee.ui.textfield.TextInputLayout
-        android:id="@+id/ti_fragmentGroup_groupName"
+        android:id="@+id/ti_addGroupActivity_groupName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -38,12 +38,12 @@
         app:hintEnabled="true"
         app:hintPaddingTop="12dp"
         app:hintTextColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_fragmentGroup_addGroup"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_addGroupActivity_addGroup"
 
         >
 
         <cz.ackee.ui.textfield.TextInputEditText
-            android:id="@+id/et_fragmentGroup_groupName"
+            android:id="@+id/et_addGroupActivity_groupName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -55,7 +55,7 @@
     </cz.ackee.ui.textfield.TextInputLayout>
 
     <life.sabujak.roundedbutton.RoundedButton
-        android:id="@+id/btn_fragmentGroup_save"
+        android:id="@+id/btn_addGroupActivity_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
@@ -68,7 +68,7 @@
         app:buttonGradientEndColor="@color/teal_200"
         app:buttonGradientStartColor="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ti_fragmentGroup_groupName" />
+        app:layout_constraintTop_toBottomOf="@+id/ti_addGroupActivity_groupName" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

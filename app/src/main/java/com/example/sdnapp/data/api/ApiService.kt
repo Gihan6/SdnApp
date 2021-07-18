@@ -156,9 +156,24 @@ interface ApiService {
             @Part("app_version") app_version: RequestBody,
             @Part("_userid") _userid: RequestBody): AddDriverResponse
 
+    @Multipart
     @POST("vehicle.addvehicle")
-    @Headers("Content-Type: application/json")
-    suspend fun addVehicle(@Body request: AddVehicleRequest): AddVehicleResponse
+    suspend fun addVehicle(
+            @Part("vehicle_name") vehicle_name: RequestBody,
+            @Part("plate_no") plate_no: RequestBody,
+            @Part("license_start") license_start: RequestBody,
+            @Part("license_end") license_end: RequestBody,
+            @Part("current_mileage") current_mileage: RequestBody,
+            @Part("gps_unitid") gps_unitid: RequestBody,
+            @Part("groupList") groupList: RequestBody,
+            @Part("max_speed") max_speed: RequestBody,
+            @Part("sim_number") sim_number: RequestBody,
+            @Part("userid") userid: RequestBody,
+            @Part("token") token: RequestBody,
+            @Part("app_version") app_version: RequestBody,
+            @Part("_userid") _userid: RequestBody
+
+    ): AddVehicleResponse
 
     @POST("driver.updatedrivervehicle")
     suspend fun updateDriverVehicle(request: UpdateDriverVehicleRequest):
@@ -192,13 +207,27 @@ interface ApiService {
     suspend fun groupUnitInformation(request: GroupUnitsInformationRequest):
             GroupUnitsInformationResponse
 
+    @Multipart
     @POST("groups.updateAccountGroupName")
-    suspend fun updateAccountGroupName(request: UpdateAccountGroupNameRequest):
+    suspend fun updateAccountGroupName(
+            @Part("name") name: RequestBody,
+            @Part("groupid") groupid: RequestBody,
+            @Part("userid") userid: RequestBody,
+            @Part("token") token: RequestBody,
+            @Part("app_version") app_version: RequestBody,
+            @Part("_userid") _userid: RequestBody
+    ):
             UpdateAccountGroupNameResponse
 
+    @Multipart
+
     @POST("groups.deleteAccountGroup")
-    suspend fun deleteAccountGroup(request: DeleteAccountGroupRequest):
-            DeleteAccountGroupResponse
+    suspend fun deleteAccountGroup(
+            @Part("groupid") groupid: RequestBody,
+            @Part("userid") userid: RequestBody,
+            @Part("token") token: RequestBody,
+            @Part("app_version") app_version: RequestBody,
+            @Part("_userid") _userid: RequestBody): DeleteAccountGroupResponse
 
     @POST("user.getuserbyid")
     suspend fun getUserById(request: GetUserByIdRequest): GetUserByIdResponse

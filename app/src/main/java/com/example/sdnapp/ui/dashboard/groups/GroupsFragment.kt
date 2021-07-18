@@ -7,16 +7,14 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sdnapp.R
 import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import com.example.sdnapp.ui.base.BaseFragment
 import com.example.sdnapp.ui.dashboard.groups.adapter.MainGroupsAdapter
 import com.example.sdnapp.util.Status
-import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
-import kotlinx.android.synthetic.main.fragment_driver.*
 import kotlinx.android.synthetic.main.fragment_groups.*
-import kotlinx.android.synthetic.main.fragment_vehicle.*
 import org.koin.android.ext.android.inject
 
 class GroupsFragment : BaseFragment() {
@@ -82,6 +80,8 @@ class GroupsFragment : BaseFragment() {
     private fun addGroup() {
         btn_fragmentGroup_addGroup.setOnClickListener(View.OnClickListener {
             var intent = Intent(requireContext(), AddGroupActivity::class.java)
+            intent.putExtra("type", "add")
+
             startActivity(intent)
 
         })
@@ -90,10 +90,23 @@ class GroupsFragment : BaseFragment() {
     private fun initAdapter() {
 
         mainGroupsAdapter = MainGroupsAdapter(
-            requireContext(),
-            OnRecyclerItemClickListener {
+                requireContext(),
+                object : MainGroupsAdapter.OnRecyclerItemClickListenerForGroup {
+                    override fun onItemClick(position: Int, edit: Boolean, delete: Boolean) {
 
-            })
+                        if (delete) {
+                            viewModel.deleteAccountGroupFromWebServices(groupList[position].groupid)
+
+                        }
+                        if (edit) {
+                            val intent = Intent(requireContext(), AddGroupActivity::class.java)
+                            intent.putExtra("type", "edit")
+                            intent.putExtra("group", groupList[position])
+                            startActivity(intent)
+                        }
+
+                    }
+                })
 
     }
 
@@ -110,7 +123,6 @@ class GroupsFragment : BaseFragment() {
     }
     private fun getGroups() {
         viewModel.accountGroupsFromWebServices()
-
     }
 
     private fun initViewModel() {
@@ -121,7 +133,7 @@ class GroupsFragment : BaseFragment() {
                         dismissLoading()
                         if (!it.data!!.groups.isNullOrEmpty()) {
                             setAdapter(it.data!!.groups)
-                            groupList= it.data!!.groups as MutableList<AccountGroupsResponse.Group>
+                            groupList = it.data!!.groups as MutableList<AccountGroupsResponse.Group>
                         }
                     }
                     Status.ERROR -> {
@@ -135,5 +147,32 @@ class GroupsFragment : BaseFragment() {
 
             }
         })
+        //----------deleteAccountGroupName
+        viewModel.deleteAccountGroupName().observe(requireActivity(), Observer {
+            it?.let { resource ->
+                dismissLoading()
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        dismissLoading()
+                        if (it.data?.type == "ok") {
+                            getGroups()
+                        } else {
+                            it.data?.text?.let { it1 -> showToast(requireContext(), it1) }
+
+                        }
+                    }
+                    Status.ERROR -> {
+                        dismissLoading()
+                        it.message?.let { it1 -> showToast(requireContext(), it1) }
+
+                    }
+                    Status.LOADING -> {
+                        showLoading()
+                    }
+                }
+            }
+        })
+
     }
+
 }

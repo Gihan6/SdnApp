@@ -13,7 +13,7 @@
         android:background="@color/white">
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-            android:id="@+id/tv_fragmentGroup_groupName"
+            android:id="@+id/tv_singleLayoutGroup_groupName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/_4sdp"
@@ -26,6 +26,28 @@
 
             />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_singleLayoutGroup_delete"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_margin="@dimen/_4sdp"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_singleLayoutGroup_edit"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:src="@drawable/edit"
+            android:padding="@dimen/_4sdp"
+            app:layout_constraintEnd_toStartOf="@+id/iv_singleLayoutGroup_delete"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
             android:id="@+id/tv_fragmentGroup_memberNumber"
             android:layout_width="wrap_content"
@@ -35,6 +57,6 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_fragmentGroup_groupName" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_singleLayoutGroup_groupName" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.DatePicker
 import com.example.sdnapp.R
-import com.example.sdnapp.data.networkModels.request.AccountGroupsRequest
-import com.example.sdnapp.data.networkModels.request.AddVehicleRequest
 import com.example.sdnapp.data.networkModels.response.AccountGroupsResponse
 import com.example.sdnapp.ui.base.BaseActivity
 import com.example.sdnapp.ui.dashboard.vechicle.viewModel.VehicleViewModel
@@ -63,10 +61,10 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
                 valid = false
                 return valid
             }
-//            et_addVehicleActivity_group.text.isNullOrEmpty() -> {
-//                valid = false
-//                return valid
-//            }
+            et_addVehicleActivity_group.text.isNullOrEmpty() -> {
+                valid = false
+                return valid
+            }
             et_addVehicleActivity_sim.text.isNullOrEmpty() -> {
                 valid = false
                 return valid
@@ -81,21 +79,18 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
 
     private fun addVehicleToWebServices() {
         if (validate()) {
-            selectGroupsId = listOf<String>().toMutableList()
-            selectGroupsId.add("nm")
             viewModel.addVehicleToWebServices(
-                    AddVehicleRequest(
-                            et_addVehicleActivity_vehicleName.text.toString(),
-                            et_addVehicleActivity_plate.text.toString(),
-                            et_addVehicleActivity_licenseStart.text.toString(),
-                            et_addVehicleActivity_licenseEnd.text.toString(),
-                            et_addVehicleActivity_currentMilAge.text.toString(),
-                            et_addVehicleActivity_gpsUnit.text.toString(),
-                            selectGroupsId,
-                            et_addVehicleActivity_maxSpeed.text.toString(),
-                            et_addVehicleActivity_sim.text.toString(),
+                    et_addVehicleActivity_vehicleName.text.toString(),
+                    et_addVehicleActivity_plate.text.toString(),
+                    et_addVehicleActivity_licenseStart.text.toString(),
+                    et_addVehicleActivity_licenseEnd.text.toString(),
+                    et_addVehicleActivity_currentMilAge.text.toString(),
+                    et_addVehicleActivity_gpsUnit.text.toString(),
+                    selectGroupsId,
+                    et_addVehicleActivity_maxSpeed.text.toString(),
+                    et_addVehicleActivity_sim.text.toString(),
+
                     )
-            )
         }
     }
 
@@ -131,6 +126,12 @@ class AddVehiclesActivity : BaseActivity(), DatePickerDialog.OnDateSetListener {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         dismissLoading()
+                        if (it.data?.type == "ok") {
+                            finish()
+                        } else {
+                            it.data?.let { it1 -> showToast(this, it1?.text) }
+
+                        }
 
 
                     }

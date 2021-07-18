@@ -737,53 +737,6 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         }
     }
 
-    //updateAccount----------------------------------
-    private val _updateAccountGroupName = MutableLiveData<Resource<UpdateAccountGroupNameResponse>>()
-    fun updateAccountGroupName(): LiveData<Resource<UpdateAccountGroupNameResponse>> {
-        return _updateAccountGroupName
-    }
-
-    fun updateAccountGroupNameToWebServices(request: UpdateAccountGroupNameRequest) {
-        viewModelScope.launch {
-            _updateAccountGroupName.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.updateAccountGroupName(request)
-
-                _updateAccountGroupName.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _updateAccountGroupName.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
-
-    //deleteAccount----------------------------------
-    private val _deleteAccountGroupName = MutableLiveData<Resource<DeleteAccountGroupResponse>>()
-    fun deleteAccountGroupName(): LiveData<Resource<DeleteAccountGroupResponse>> {
-        return _deleteAccountGroupName
-    }
-
-    fun deleteAccountGroupFromWebServices(request: DeleteAccountGroupRequest) {
-        viewModelScope.launch {
-            _deleteAccountGroupName.postValue(Resource.loading(data = null))
-            try {
-                val response = mainRepository.deleteAccountGroup(request)
-
-                _deleteAccountGroupName.postValue(Resource.success(data = response))
-            } catch (exception: Exception) {
-                _deleteAccountGroupName.postValue(
-                        Resource.error(
-                                data = null,
-                                message = exception.message ?: "Error Occurred!$exception"
-                        )
-                )
-            }
-        }
-    }
 
     //getUSerById----------------------------------
     private val _getUSerById = MutableLiveData<Resource<GetUserByIdResponse>>()
